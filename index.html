@@ -87,7 +87,7 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .section-title h2 {
@@ -99,12 +99,27 @@
             color: #666;
         }
 
+        /* FILTER */
+
+        .filter-section {
+            margin-bottom: 35px;
+        }
+
+        .filter-title {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #777;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .filters {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 35px;
         }
 
         .filter-button {
@@ -127,6 +142,8 @@
             color: white;
         }
 
+        /* STORYS */
+
         .stories {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -142,13 +159,29 @@
             flex-direction: column;
         }
 
+        .story-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 10px;
+        }
+
         .category {
             display: inline-block;
+            font-size: 11px;
+            font-weight: bold;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .episode {
             font-size: 12px;
             font-weight: bold;
-            color: #777;
-            text-transform: uppercase;
-            margin-bottom: 10px;
+            background: #eee;
+            padding: 5px 9px;
+            border-radius: 20px;
+            white-space: nowrap;
         }
 
         .story h3 {
@@ -161,6 +194,12 @@
             color: #666;
             font-size: 15px;
             margin-bottom: 20px;
+        }
+
+        .subreddit {
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 15px;
         }
 
         .story a {
@@ -179,6 +218,13 @@
             opacity: 0.8;
         }
 
+        .no-results {
+            display: none;
+            text-align: center;
+            color: #777;
+            padding: 40px;
+        }
+
         footer {
             background: #111;
             color: #aaa;
@@ -194,6 +240,7 @@
         }
 
         @media (max-width: 600px) {
+
             header h1 {
                 font-size: 32px;
             }
@@ -204,6 +251,10 @@
 
             .listen {
                 width: 95%;
+            }
+
+            .story-meta {
+                align-items: flex-start;
             }
         }
     </style>
@@ -235,262 +286,5 @@
 
             <a class="platform" href="#">🎧 Deezer</a>
 
-            <a class="platform" href="#">▶ RTL+</a>
-
-        </div>
-
-    </section>
-
-</div>
-
-
-<main>
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>Reddit Storys</h2>
-
-            <p>
-                Unsere Sammlung der interessantesten Geschichten aus Reddit.
-            </p>
-
-        </div>
-
-
-        <div class="filters">
-
-            <button class="filter-button active" data-filter="alle">
-                Alle
-            </button>
-
-            <button class="filter-button" data-filter="aita">
-                Bin ich das Arschloch?
-            </button>
-
-            <button class="filter-button" data-filter="beichtstuhl">
-                Beichtstuhl
-            </button>
-
-            <button class="filter-button" data-filter="beziehungen">
-                Beziehungen
-            </button>
-
-            <button class="filter-button" data-filter="kurios">
-                Kurioses
-            </button>
-
-        </div>
-
-
-        <div class="stories">
-
-
-            <!-- STORY 1 -->
-
-            <article class="story" data-category="aita">
-
-                <span class="category">
-                    Bin ich das Arschloch?
-                </span>
-
-                <h3>
-                    Bin ich das Arschloch, weil ich meinem Freund verboten habe, in meinem Auto zu essen?
-                </h3>
-
-                <p>
-                    Eine neue Autofahrerin stellt für einen Roadtrip eine klare Regel auf:
-                    Keine offenen Lebensmittel im Auto. Ihr Freund ist davon alles andere
-                    als begeistert.
-                </p>
-
-                <a href="https://www.reddit.com/r/AmItheAsshole/comments/1712lrl/aita_for_forbidding_my_boyfriend_from_eating_in/" target="_blank">
-                    Auf Reddit lesen →
-                </a>
-
-            </article>
-
-
-            <!-- STORY 2 -->
-
-            <article class="story" data-category="beichtstuhl">
-
-                <span class="category">
-                    Beichtstuhl
-                </span>
-
-                <h3>
-                    Ich habe mir mit einem Handy-Ladegerät eine Gehirnerschütterung zugezogen
-                </h3>
-
-                <p>
-                    Eine ziemlich absurde Geschichte: Ein Ladegerät fällt nachts aus
-                    einem Regal und sorgt für einen Krankenhausbesuch – und ein Geheimnis,
-                    das die Familie bis heute nicht kennt.
-                </p>
-
-                <a href="https://www.reddit.com/r/TrueOffMyChest/comments/1u3k3ti/i_gave_myself_a_concussion_with_a_phone_charger/" target="_blank">
-                    Auf Reddit lesen →
-                </a>
-
-            </article>
-
-
-            <!-- STORY 3 -->
-
-            <article class="story" data-category="beziehungen">
-
-                <span class="category">
-                    Beziehungen
-                </span>
-
-                <h3>
-                    Mein Vater möchte, dass ich eine Beziehung zu meiner Halb-Schwester aufbaue
-                </h3>
-
-                <p>
-                    Zwei Menschen erfahren, dass sie Geschwister sind. Doch eine gemeinsame
-                    Vergangenheit sorgt dafür, dass eine Seite überhaupt keine Beziehung
-                    möchte.
-                </p>
-
-                <a href="https://www.reddit.com/r/relationship_advice/comments/1t8bgq9/my_dad_44m_wants_me_19m_to_have_a_relationship/" target="_blank">
-                    Auf Reddit lesen →
-                </a>
-
-            </article>
-
-
-            <!-- STORY 4 -->
-
-            <article class="story" data-category="beziehungen">
-
-                <span class="category">
-                    Beziehungen
-                </span>
-
-                <h3>
-                    Ich möchte keinen Kontakt zu meiner Halb-Schwester
-                </h3>
-
-                <p>
-                    Eine Familie versucht, eine Beziehung zwischen zwei Halbgeschwistern
-                    aufzubauen. Doch eine der beiden Personen möchte lieber Abstand halten.
-                </p>
-
-                <a href="https://www.reddit.com/r/relationship_advice/comments/v2kk84/i_dont_want_a_relationship_with_my_half_sister_but/" target="_blank">
-                    Auf Reddit lesen →
-                </a>
-
-            </article>
-
-
-            <!-- STORY 5 -->
-
-            <article class="story" data-category="beziehungen">
-
-                <span class="category">
-                    Beziehungen
-                </span>
-
-                <h3>
-                    Ich fühle mich unter Druck gesetzt, Kontakt zu meiner Halb-Schwester zu haben
-                </h3>
-
-                <p>
-                    Eine komplizierte Familiengeschichte und die Frage, ob man eine
-                    familiäre Beziehung erzwingen kann.
-                </p>
-
-                <a href="https://www.reddit.com/r/relationship_advice/comments/1vg78l0/i_19f_feel_pressured_to_have_contact_with_my_half/" target="_blank">
-                    Auf Reddit lesen →
-                </a>
-
-            </article>
-
-
-            <!-- STORY 6 -->
-
-            <article class="story" data-category="kurios">
-
-                <span class="category">
-                    Kurioses
-                </span>
-
-                <h3>
-                    Ich habe mir mit einem Ladegerät den Kopf verletzt
-                </h3>
-
-                <p>
-                    Eine der wohl ungewöhnlichsten Unfallgeschichten auf Reddit:
-                    Ein alltäglicher Gegenstand sorgt für eine völlig unerwartete
-                    Situation.
-                </p>
-
-                <a href="https://www.reddit.com/r/TrueOffMyChest/comments/1u3k3ti/i_gave_myself_a_concussion_with_a_phone_charger/" target="_blank">
-                    Auf Reddit lesen →
-                </a>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</main>
-
-
-<footer>
-
-    <p>
-        Mit Verlaub – Best of Reddit
-    </p>
-
-</footer>
-
-
-<script>
-
-    const buttons = document.querySelectorAll(".filter-button");
-    const stories = document.querySelectorAll(".story");
-
-    buttons.forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            const filter = button.dataset.filter;
-
-            buttons.forEach(btn => {
-                btn.classList.remove("active");
-            });
-
-            button.classList.add("active");
-
-            stories.forEach(story => {
-
-                if (
-                    filter === "alle" ||
-                    story.dataset.category === filter
-                ) {
-
-                    story.style.display = "flex";
-
-                } else {
-
-                    story.style.display = "none";
-
-                }
-
-            });
-
-        });
-
-    });
-
-</script>
-
-</body>
-</html>
+            <a class="platform" href="#">▶ RTL+
 ```
