@@ -75,7 +75,9 @@
             font-weight: bold;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
+            min-height: 48px;
         }
 
         .platform:hover {
@@ -84,8 +86,14 @@
         }
 
         .platform-icon {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .rtl-icon {
+            width: 75px;
+            height: 28px;
             object-fit: contain;
         }
 
@@ -285,6 +293,8 @@
 
         <div class="platforms">
 
+            <!-- SPOTIFY -->
+
             <a class="platform"
                href="https://open.spotify.com/show/1vw3NAgj6bdS60r13hYVzk"
                target="_blank"
@@ -299,25 +309,48 @@
 
             </a>
 
+
+            <!-- APPLE PODCASTS -->
+
             <a class="platform"
                href="https://podcasts.apple.com/us/podcast/mit-verlaub-best-of-reddit/id1725187632"
                target="_blank"
                rel="noopener noreferrer">
+
                  Apple Podcasts
+
             </a>
+
+
+            <!-- RTL+ -->
 
             <a class="platform"
                href="https://plus.rtl.de/mit-verlaub-p_18073"
                target="_blank"
                rel="noopener noreferrer">
-                ▶ RTL+
+
+                <img
+                    src="icons/rtl-t15290.webp"
+                    alt="RTL+"
+                    class="rtl-icon">
+
             </a>
+
+
+            <!-- DEEZER -->
 
             <a class="platform"
                href="https://www.deezer.com/de/show/1000171545"
                target="_blank"
                rel="noopener noreferrer">
-                🎧 Deezer
+
+                <img
+                    src="icons/icons8-deezer-100.png"
+                    alt="Deezer"
+                    class="platform-icon">
+
+                <span>Deezer</span>
+
             </a>
 
         </div>
@@ -330,6 +363,7 @@
             <h2>Reddit Storys</h2>
             <p>Die wildesten Geschichten aus den Folgen 79–83</p>
         </div>
+
 
         <!-- FOLGEN-FILTER -->
 
@@ -369,6 +403,7 @@
 
         </div>
 
+
         <!-- KATEGORIE-FILTER -->
 
         <div class="filter-section">
@@ -402,6 +437,7 @@
             </div>
 
         </div>
+
 
         <!-- STORYS -->
 
@@ -664,6 +700,7 @@
 
 </div>
 
+
 <footer>
     <p>Mit Verlaub – Best of Reddit</p>
 </footer>
@@ -687,8 +724,6 @@
 
     function filterStories() {
 
-        let visibleStories = 0;
-
         stories.forEach(function(story) {
 
             const storyEpisode = story.dataset.episode;
@@ -705,7 +740,6 @@
             if (episodeMatches && categoryMatches) {
 
                 story.style.display = "flex";
-                visibleStories++;
 
             } else {
 
