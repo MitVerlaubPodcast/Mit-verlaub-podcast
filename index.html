@@ -1,285 +1,304 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mit Verlaub – Best of Reddit</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>Mit Verlaub – Best of Reddit</title>
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f5f5;
-            color: #222;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        header {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 45px 20px 40px;
-        }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
 
-        header h1 {
-            margin: 0 0 10px;
-            font-size: 38px;
-        }
+/* HEADER */
 
-        header p {
-            margin: 0;
-            font-size: 18px;
-            color: #ccc;
-        }
+header {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 45px 20px 40px;
+}
 
-        .listen-section {
-            max-width: 900px;
-            margin: 35px auto 45px;
-            padding: 0 20px;
-        }
+header h1 {
+    margin: 0 0 10px;
+    font-size: 38px;
+}
 
-        .listen-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 35px;
-        }
+header p {
+    margin: 0;
+    font-size: 18px;
+    color: #ccc;
+}
 
-        .podcast-cover {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            flex-shrink: 0;
-        }
+/* PODCAST / LISTEN */
 
-        .listen-content {
-            text-align: left;
-        }
+.listen-section {
+    max-width: 900px;
+    margin: 35px auto 45px;
+    padding: 0 20px;
+}
 
-        .listen-content h2 {
-            margin: 0 0 18px;
-            font-size: 24px;
-        }
+.listen-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
 
-        .platforms {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
+.podcast-cover {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+}
 
-        .platform {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            min-height: 48px;
-            padding: 10px 16px;
-            background: white;
-            color: #222;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
+.listen-content {
+    text-align: left;
+}
 
-        .platform:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 14px rgba(0,0,0,0.15);
-        }
+.listen-content h2 {
+    margin: 0 0 18px;
+    font-size: 24px;
+}
 
-        .platform-icon {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
+.platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
 
-        .rtl-icon {
-            width: 75px;
-            height: 28px;
-            object-fit: contain;
-        }
+.platform {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 10px 16px;
+    background: white;
+    color: #222;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
 
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 50px;
-        }
+.platform:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(0,0,0,0.15);
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+.platform-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
 
-        .section-title h2 {
-            margin: 0 0 8px;
-            font-size: 32px;
-        }
+/* RTL+ LOGO */
 
-        .section-title p {
-            margin: 0;
-            color: #666;
-            font-size: 17px;
-        }
+.rtl-icon {
+    width: 85px;
+    height: 30px;
+    object-fit: contain;
+}
 
-        .filters {
-            margin-bottom: 30px;
-        }
+/* MAIN */
 
-        .filter-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 50px;
+}
 
-        /* Folgen-Dropdown */
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-        .episode-select {
-            border: none;
-            background: white;
-            color: #333;
-            padding: 11px 42px 11px 18px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
-            appearance: auto;
-        }
+.section-title h2 {
+    margin: 0 0 8px;
+    font-size: 32px;
+}
 
-        .episode-select:focus {
-            outline: 2px solid #222;
-            outline-offset: 2px;
-        }
+.section-title p {
+    margin: 0;
+    color: #666;
+    font-size: 17px;
+}
 
-        .filter-button {
-            border: none;
-            background: white;
-            color: #333;
-            padding: 10px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 14px;
-            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
-        }
+/* FILTERS */
 
-        .filter-button.active {
-            background: #222;
-            color: white;
-        }
+.filters {
+    margin-bottom: 30px;
+}
 
-        .stories {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
 
-        .story-card {
-            background: white;
-            border-radius: 14px;
-            padding: 22px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-        }
+.episode-select {
+    border: none;
+    background: white;
+    color: #333;
+    padding: 11px 42px 11px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+    appearance: auto;
+}
 
-        .story-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-            gap: 10px;
-        }
+.episode-select:focus {
+    outline: 2px solid #222;
+    outline-offset: 2px;
+}
 
-        .episode {
-            font-size: 13px;
-            font-weight: bold;
-            color: #666;
-        }
+.filter-button {
+    border: none;
+    background: white;
+    color: #333;
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+}
 
-        .category {
-            font-size: 12px;
-            background: #eee;
-            padding: 5px 9px;
-            border-radius: 12px;
-        }
+.filter-button.active {
+    background: #222;
+    color: white;
+}
 
-        .story-card h3 {
-            font-size: 19px;
-            line-height: 1.35;
-            margin: 0 0 18px;
-        }
+/* STORY CARDS */
 
-        .story-card a {
-            margin-top: auto;
-            display: inline-block;
-            text-decoration: none;
-            font-weight: bold;
-            color: #222;
-        }
+.stories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
 
-        .story-card a:hover {
-            text-decoration: underline;
-        }
+.story-card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
 
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #777;
-            font-size: 14px;
-        }
+.story-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 10px;
+}
 
-        @media (max-width: 900px) {
-            .stories {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+.episode {
+    font-size: 13px;
+    font-weight: bold;
+    color: #666;
+}
 
-        @media (max-width: 650px) {
-            header h1 {
-                font-size: 30px;
-            }
+.category {
+    font-size: 12px;
+    background: #eee;
+    padding: 5px 9px;
+    border-radius: 12px;
+}
 
-            header p {
-                font-size: 16px;
-            }
+.story-card h3 {
+    font-size: 19px;
+    line-height: 1.35;
+    margin: 0 0 18px;
+}
 
-            .listen-box {
-                flex-direction: column;
-                gap: 22px;
-                text-align: center;
-            }
+.story-card a {
+    margin-top: auto;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    color: #222;
+}
 
-            .listen-content {
-                text-align: center;
-            }
+.story-card a:hover {
+    text-decoration: underline;
+}
 
-            .platforms {
-                justify-content: center;
-            }
+/* FOOTER */
 
-            .podcast-cover {
-                width: 170px;
-                height: 170px;
-            }
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #777;
+    font-size: 14px;
+}
 
-            .stories {
-                grid-template-columns: 1fr;
-            }
+/* TABLET */
 
-            .episode-select {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-    </style>
+@media (max-width: 900px) {
+    .stories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    .listen-box {
+        flex-direction: column;
+        gap: 22px;
+        text-align: center;
+    }
+
+    .listen-content {
+        text-align: center;
+    }
+
+    .platforms {
+        justify-content: center;
+    }
+
+    .podcast-cover {
+        width: 170px;
+        height: 170px;
+    }
+
+    .stories {
+        grid-template-columns: 1fr;
+    }
+
+    .episode-select {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -288,7 +307,6 @@
     <h1>Mit Verlaub – Best of Reddit</h1>
     <p>Die wildesten Reddit Storys aus dem Podcast.</p>
 </header>
-
 
 <section class="listen-section">
 
@@ -319,7 +337,6 @@
                     <span>Spotify</span>
                 </a>
 
-
                 <a
                     class="platform"
                     href="https://podcasts.apple.com/us/podcast/mit-verlaub-best-of-reddit/id1725187632"
@@ -333,7 +350,6 @@
                     <span>Apple Podcasts</span>
                 </a>
 
-
                 <a
                     class="platform"
                     href="https://plus.rtl.de/mit-verlaub-p_18073"
@@ -345,7 +361,6 @@
                         class="rtl-icon"
                     >
                 </a>
-
 
                 <a
                     class="platform"
@@ -361,45 +376,28 @@
                 </a>
 
             </div>
-
         </div>
-
     </div>
 
 </section>
 
-
 <main>
 
     <div class="section-title">
-
         <h2>Reddit Storys</h2>
-
-        <p>
-            Die wildesten Geschichten aus den bisherigen Folgen
-        </p>
-
+        <p>Die wildesten Geschichten aus den bisherigen Folgen</p>
     </div>
-
 
     <div class="filters">
 
-        <!-- Folgen-Filter -->
         <div class="filter-row" id="episode-filters">
 
-            <select
-                id="episode-select"
-                class="episode-select"
-            >
-                <option value="all">
-                    Alle Folgen
-                </option>
+            <select id="episode-select" class="episode-select">
+                <option value="all">Alle Folgen</option>
             </select>
 
         </div>
 
-
-        <!-- Kategorie-Filter -->
         <div class="filter-row" id="category-filters">
 
             <button
@@ -441,25 +439,18 @@
 
     </div>
 
-
     <div class="stories">
+
+        <!-- FOLGE 83 -->
 
         <article
             class="story-card"
             data-episode="83"
             data-category="AITA"
         >
-
             <div class="story-meta">
-
-                <span class="episode">
-                    Folge 83
-                </span>
-
-                <span class="category">
-                    AITA
-                </span>
-
+                <span class="episode">Folge 83</span>
+                <span class="category">Bin ich das Arschloch?</span>
             </div>
 
             <h3>
@@ -473,7 +464,6 @@
             >
                 Reddit Story lesen →
             </a>
-
         </article>
 
 
@@ -482,17 +472,9 @@
             data-episode="83"
             data-category="Beichtstuhl"
         >
-
             <div class="story-meta">
-
-                <span class="episode">
-                    Folge 83
-                </span>
-
-                <span class="category">
-                    Beichtstuhl
-                </span>
-
+                <span class="episode">Folge 83</span>
+                <span class="category">Beichtstuhl</span>
             </div>
 
             <h3>
@@ -505,26 +487,19 @@
             >
                 Reddit Story lesen →
             </a>
-
         </article>
 
+
+        <!-- FOLGE 82 -->
 
         <article
             class="story-card"
             data-episode="82"
             data-category="Beziehungen"
         >
-
             <div class="story-meta">
-
-                <span class="episode">
-                    Folge 82
-                </span>
-
-                <span class="category">
-                    Beziehungen
-                </span>
-
+                <span class="episode">Folge 82</span>
+                <span class="category">Beziehungen</span>
             </div>
 
             <h3>
@@ -537,7 +512,6 @@
             >
                 Reddit Story lesen →
             </a>
-
         </article>
 
 
@@ -546,17 +520,9 @@
             data-episode="82"
             data-category="Beziehungen"
         >
-
             <div class="story-meta">
-
-                <span class="episode">
-                    Folge 82
-                </span>
-
-                <span class="category">
-                    Beziehungen
-                </span>
-
+                <span class="episode">Folge 82</span>
+                <span class="category">Beziehungen</span>
             </div>
 
             <h3>
@@ -569,26 +535,19 @@
             >
                 Reddit Story lesen →
             </a>
-
         </article>
 
+
+        <!-- FOLGE 81 -->
 
         <article
             class="story-card"
             data-episode="81"
             data-category="Kurioses"
         >
-
             <div class="story-meta">
-
-                <span class="episode">
-                    Folge 81
-                </span>
-
-                <span class="category">
-                    Kurioses
-                </span>
-
+                <span class="episode">Folge 81</span>
+                <span class="category">Kurioses</span>
             </div>
 
             <h3>
@@ -601,7 +560,6 @@
             >
                 Reddit Story lesen →
             </a>
-
         </article>
 
 
@@ -610,17 +568,9 @@
             data-episode="81"
             data-category="Kurioses"
         >
-
             <div class="story-meta">
-
-                <span class="episode">
-                    Folge 81
-                </span>
-
-                <span class="category">
-                    Kurioses
-                </span>
-
+                <span class="episode">Folge 81</span>
+                <span class="category">Kurioses</span>
             </div>
 
             <h3>
@@ -633,26 +583,19 @@
             >
                 Reddit Story lesen →
             </a>
-
         </article>
 
+
+        <!-- FOLGE 80 -->
 
         <article
             class="story-card"
             data-episode="80"
             data-category="Beziehungen"
         >
-
             <div class="story-meta">
-
-                <span class="episode">
-                    Folge 80
-                </span>
-
-                <span class="category">
-                    Beziehungen
-                </span>
-
+                <span class="episode">Folge 80</span>
+                <span class="category">Beziehungen</span>
             </div>
 
             <h3>
@@ -665,7 +608,6 @@
             >
                 Reddit Story lesen →
             </a>
-
         </article>
 
 
@@ -674,17 +616,9 @@
             data-episode="80"
             data-category="AITA"
         >
-
             <div class="story-meta">
-
-                <span class="episode">
-                    Folge 80
-                </span>
-
-                <span class="category">
-                    AITA
-                </span>
-
+                <span class="episode">Folge 80</span>
+                <span class="category">Bin ich das Arschloch?</span>
             </div>
 
             <h3>
@@ -697,26 +631,19 @@
             >
                 Reddit Story lesen →
             </a>
-
         </article>
 
+
+        <!-- FOLGE 79 -->
 
         <article
             class="story-card"
             data-episode="79"
             data-category="Beichtstuhl"
         >
-
             <div class="story-meta">
-
-                <span class="episode">
-                    Folge 79
-                </span>
-
-                <span class="category">
-                    Beichtstuhl
-                </span>
-
+                <span class="episode">Folge 79</span>
+                <span class="category">Beichtstuhl</span>
             </div>
 
             <h3>
@@ -729,13 +656,11 @@
             >
                 Reddit Story lesen →
             </a>
-
         </article>
 
     </div>
 
 </main>
-
 
 <footer>
     Mit Verlaub – Best of Reddit
@@ -744,199 +669,186 @@
 
 <script>
 
-    let selectedEpisode = "all";
-    let selectedCategory = "all";
+let selectedEpisode = "all";
+let selectedCategory = "all";
+
+const episodeFilters =
+    document.getElementById("episode-filters");
+
+const categoryFilters =
+    document.getElementById("category-filters");
+
+const episodeSelect =
+    document.getElementById("episode-select");
+
+const categoryButtons =
+    document.querySelectorAll(
+        "#category-filters .filter-button"
+    );
+
+const stories =
+    document.querySelectorAll(".story-card");
 
 
-    const episodeFilters =
-        document.getElementById("episode-filters");
+/* EPISODEN AUTOMATISCH AUS DEN STORYS ERMITTELN */
 
-    const categoryFilters =
-        document.getElementById("category-filters");
+const episodes = new Set();
 
-    const episodeSelect =
-        document.getElementById("episode-select");
+stories.forEach(story => {
 
-    const categoryButtons =
-        document.querySelectorAll(
-            "#category-filters .filter-button"
-        );
+    const episode = story.dataset.episode;
 
-    const stories =
-        document.querySelectorAll(".story-card");
+    if (episode) {
+        episodes.add(episode);
+    }
+
+});
 
 
-    /*
-        ==========================================
-        AUTOMATISCHE FOLGEN ERMITTELN
-        ==========================================
-
-        Die Website schaut sich alle Story-Karten an
-        und sucht deren data-episode.
-
-        Beispiel:
-
-        data-episode="83"
-        data-episode="82"
-        data-episode="84"
-
-        Daraus werden automatisch die Folgen
-        84, 83, 82 usw. im Dropdown erzeugt.
-    */
+const sortedEpisodes =
+    Array.from(episodes).sort(
+        (a, b) => Number(b) - Number(a)
+    );
 
 
-    const episodes = new Set();
+sortedEpisodes.forEach(episode => {
 
+    const option =
+        document.createElement("option");
+
+    option.value = episode;
+
+    option.textContent =
+        "Folge " + episode;
+
+    episodeSelect.appendChild(option);
+
+});
+
+
+/* STORYS FILTERN */
+
+function updateStories() {
 
     stories.forEach(story => {
 
-        const episode =
-            story.dataset.episode;
+        const episodeMatch =
+            selectedEpisode === "all" ||
+            story.dataset.episode === selectedEpisode;
 
-        if (episode) {
-            episodes.add(episode);
-        }
+        const categoryMatch =
+            selectedCategory === "all" ||
+            story.dataset.category === selectedCategory;
+
+        story.style.display =
+            episodeMatch && categoryMatch
+                ? "flex"
+                : "none";
 
     });
 
+}
 
-    /*
-        Folgen sortieren:
-        höchste Nummer zuerst
-    */
 
-    const sortedEpisodes =
-        Array.from(episodes).sort(
-            (a, b) => Number(b) - Number(a)
+/* FILTER ANZEIGEN */
+
+function showEpisodeFilter() {
+
+    episodeFilters.style.display = "flex";
+    categoryFilters.style.display = "none";
+
+}
+
+
+function showCategoryFilter() {
+
+    episodeFilters.style.display = "none";
+    categoryFilters.style.display = "flex";
+
+}
+
+
+function showBothFilters() {
+
+    episodeFilters.style.display = "flex";
+    categoryFilters.style.display = "flex";
+
+}
+
+
+/* EPISODEN-FILTER */
+
+episodeSelect.addEventListener(
+    "change",
+    () => {
+
+        selectedEpisode =
+            episodeSelect.value;
+
+        selectedCategory = "all";
+
+
+        categoryButtons.forEach(
+            button =>
+                button.classList.remove("active")
         );
 
 
-    /*
-        Dropdown mit den Folgen füllen
-    */
-
-    sortedEpisodes.forEach(episode => {
-
-        const option =
-            document.createElement("option");
-
-        option.value = episode;
-
-        option.textContent =
-            "Folge " + episode;
-
-        episodeSelect.appendChild(option);
-
-    });
+        categoryButtons[0]
+            .classList.add("active");
 
 
-    /*
-        ==========================================
-        STORYS FILTERN
-        ==========================================
-    */
+        if (selectedEpisode === "all") {
 
-    function updateStories() {
+            showBothFilters();
 
-        stories.forEach(story => {
+        } else {
 
-            const episodeMatch =
-                selectedEpisode === "all" ||
-                story.dataset.episode === selectedEpisode;
+            showEpisodeFilter();
 
-            const categoryMatch =
-                selectedCategory === "all" ||
-                story.dataset.category === selectedCategory;
+        }
 
-            story.style.display =
-                episodeMatch && categoryMatch
-                    ? "flex"
-                    : "none";
 
-        });
+        updateStories();
 
     }
+);
 
 
-    /*
-        ==========================================
-        FILTER SICHTBARKEIT
-        ==========================================
-    */
+/* KATEGORIE-FILTER */
 
-    function showEpisodeFilter() {
+categoryButtons.forEach(button => {
 
-        episodeFilters.style.display = "flex";
-
-        categoryFilters.style.display = "none";
-
-    }
-
-
-    function showCategoryFilter() {
-
-        episodeFilters.style.display = "none";
-
-        categoryFilters.style.display = "flex";
-
-    }
-
-
-    function showBothFilters() {
-
-        episodeFilters.style.display = "flex";
-
-        categoryFilters.style.display = "flex";
-
-    }
-
-
-    /*
-        ==========================================
-        FOLGEN-DROPDOWN
-        ==========================================
-    */
-
-    episodeSelect.addEventListener(
-        "change",
+    button.addEventListener(
+        "click",
         () => {
 
-            selectedEpisode =
-                episodeSelect.value;
-
-            selectedCategory = "all";
-
-
-            /*
-                Kategorie zurücksetzen
-            */
-
-            categoryButtons.forEach(button => {
-
-                button.classList.remove("active");
-
-            });
+            categoryButtons.forEach(
+                btn =>
+                    btn.classList.remove("active")
+            );
 
 
-            categoryButtons[0]
-                .classList.add("active");
+            button.classList.add("active");
 
 
-            /*
-                Wenn "Alle Folgen":
-                beide Filter zeigen.
+            selectedCategory =
+                button.dataset.category;
 
-                Bei einer bestimmten Folge:
-                nur Folgenfilter zeigen.
-            */
 
-            if (selectedEpisode === "all") {
+            selectedEpisode = "all";
+
+
+            episodeSelect.value = "all";
+
+
+            if (selectedCategory === "all") {
 
                 showBothFilters();
 
             } else {
 
-                showEpisodeFilter();
+                showCategoryFilter();
 
             }
 
@@ -946,81 +858,17 @@
         }
     );
 
-
-    /*
-        ==========================================
-        KATEGORIE-FILTER
-        ==========================================
-    */
-
-    categoryButtons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                categoryButtons.forEach(btn => {
-
-                    btn.classList.remove("active");
-
-                });
+});
 
 
-                button.classList.add("active");
+/* STARTZUSTAND */
 
+showBothFilters();
 
-                selectedCategory =
-                    button.dataset.category;
-
-
-                selectedEpisode = "all";
-
-
-                /*
-                    Folgen-Dropdown zurücksetzen
-                */
-
-                episodeSelect.value = "all";
-
-
-                /*
-                    Wenn "Alle":
-                    beide Filter zeigen.
-
-                    Bei einer bestimmten Kategorie:
-                    nur Kategorien zeigen.
-                */
-
-                if (selectedCategory === "all") {
-
-                    showBothFilters();
-
-                } else {
-
-                    showCategoryFilter();
-
-                }
-
-
-                updateStories();
-
-            }
-        );
-
-    });
-
-
-    /*
-        ==========================================
-        STARTZUSTAND
-        ==========================================
-    */
-
-    showBothFilters();
-
-    updateStories();
+updateStories();
 
 </script>
 
 </body>
 </html>
+```
