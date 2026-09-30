@@ -139,6 +139,26 @@
             margin-bottom: 12px;
         }
 
+        /* Folgen-Dropdown */
+
+        .episode-select {
+            border: none;
+            background: white;
+            color: #333;
+            padding: 11px 42px 11px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+            appearance: auto;
+        }
+
+        .episode-select:focus {
+            outline: 2px solid #222;
+            outline-offset: 2px;
+        }
+
         .filter-button {
             border: none;
             background: white;
@@ -253,6 +273,11 @@
             .stories {
                 grid-template-columns: 1fr;
             }
+
+            .episode-select {
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -264,7 +289,9 @@
     <p>Die wildesten Reddit Storys aus dem Podcast.</p>
 </header>
 
+
 <section class="listen-section">
+
     <div class="listen-box">
 
         <img
@@ -274,6 +301,7 @@
         >
 
         <div class="listen-content">
+
             <h2>Hier findet Ihr alle Folgen:</h2>
 
             <div class="platforms">
@@ -291,18 +319,20 @@
                     <span>Spotify</span>
                 </a>
 
-               <a
-    class="platform"
-    href="https://podcasts.apple.com/us/podcast/mit-verlaub-best-of-reddit/id1725187632"
-    target="_blank"
->
-    <img
-        src="icons/apple-icon.svg"
-        alt="Apple Podcasts"
-        class="platform-icon"
-    >
-    <span>Apple Podcasts</span>
-</a>
+
+                <a
+                    class="platform"
+                    href="https://podcasts.apple.com/us/podcast/mit-verlaub-best-of-reddit/id1725187632"
+                    target="_blank"
+                >
+                    <img
+                        src="icons/apple-icon.svg"
+                        alt="Apple Podcasts"
+                        class="platform-icon"
+                    >
+                    <span>Apple Podcasts</span>
+                </a>
+
 
                 <a
                     class="platform"
@@ -315,6 +345,7 @@
                         class="rtl-icon"
                     >
                 </a>
+
 
                 <a
                     class="platform"
@@ -330,46 +361,40 @@
                 </a>
 
             </div>
+
         </div>
 
     </div>
+
 </section>
+
 
 <main>
 
     <div class="section-title">
+
         <h2>Reddit Storys</h2>
-        <p>Die wildesten Geschichten aus den Folgen 79–83</p>
+
+        <p>
+            Die wildesten Geschichten aus den bisherigen Folgen
+        </p>
+
     </div>
+
 
     <div class="filters">
 
         <!-- Folgen-Filter -->
         <div class="filter-row" id="episode-filters">
 
-            <button class="filter-button active" data-episode="all">
-                Alle Folgen
-            </button>
-
-            <button class="filter-button" data-episode="83">
-                Folge 83
-            </button>
-
-            <button class="filter-button" data-episode="82">
-                Folge 82
-            </button>
-
-            <button class="filter-button" data-episode="81">
-                Folge 81
-            </button>
-
-            <button class="filter-button" data-episode="80">
-                Folge 80
-            </button>
-
-            <button class="filter-button" data-episode="79">
-                Folge 79
-            </button>
+            <select
+                id="episode-select"
+                class="episode-select"
+            >
+                <option value="all">
+                    Alle Folgen
+                </option>
+            </select>
 
         </div>
 
@@ -377,23 +402,38 @@
         <!-- Kategorie-Filter -->
         <div class="filter-row" id="category-filters">
 
-            <button class="filter-button active" data-category="all">
+            <button
+                class="filter-button active"
+                data-category="all"
+            >
                 Alle
             </button>
 
-            <button class="filter-button" data-category="AITA">
+            <button
+                class="filter-button"
+                data-category="AITA"
+            >
                 Bin ich das Arschloch?
             </button>
 
-            <button class="filter-button" data-category="Beichtstuhl">
+            <button
+                class="filter-button"
+                data-category="Beichtstuhl"
+            >
                 Beichtstuhl
             </button>
 
-            <button class="filter-button" data-category="Beziehungen">
+            <button
+                class="filter-button"
+                data-category="Beziehungen"
+            >
                 Beziehungen
             </button>
 
-            <button class="filter-button" data-category="Kurioses">
+            <button
+                class="filter-button"
+                data-category="Kurioses"
+            >
                 Kurioses
             </button>
 
@@ -404,11 +444,22 @@
 
     <div class="stories">
 
-        <article class="story-card" data-episode="83" data-category="AITA">
+        <article
+            class="story-card"
+            data-episode="83"
+            data-category="AITA"
+        >
 
             <div class="story-meta">
-                <span class="episode">Folge 83</span>
-                <span class="category">AITA</span>
+
+                <span class="episode">
+                    Folge 83
+                </span>
+
+                <span class="category">
+                    AITA
+                </span>
+
             </div>
 
             <h3>
@@ -426,11 +477,22 @@
         </article>
 
 
-        <article class="story-card" data-episode="83" data-category="Beichtstuhl">
+        <article
+            class="story-card"
+            data-episode="83"
+            data-category="Beichtstuhl"
+        >
 
             <div class="story-meta">
-                <span class="episode">Folge 83</span>
-                <span class="category">Beichtstuhl</span>
+
+                <span class="episode">
+                    Folge 83
+                </span>
+
+                <span class="category">
+                    Beichtstuhl
+                </span>
+
             </div>
 
             <h3>
@@ -447,11 +509,22 @@
         </article>
 
 
-        <article class="story-card" data-episode="82" data-category="Beziehungen">
+        <article
+            class="story-card"
+            data-episode="82"
+            data-category="Beziehungen"
+        >
 
             <div class="story-meta">
-                <span class="episode">Folge 82</span>
-                <span class="category">Beziehungen</span>
+
+                <span class="episode">
+                    Folge 82
+                </span>
+
+                <span class="category">
+                    Beziehungen
+                </span>
+
             </div>
 
             <h3>
@@ -468,11 +541,22 @@
         </article>
 
 
-        <article class="story-card" data-episode="82" data-category="Beziehungen">
+        <article
+            class="story-card"
+            data-episode="82"
+            data-category="Beziehungen"
+        >
 
             <div class="story-meta">
-                <span class="episode">Folge 82</span>
-                <span class="category">Beziehungen</span>
+
+                <span class="episode">
+                    Folge 82
+                </span>
+
+                <span class="category">
+                    Beziehungen
+                </span>
+
             </div>
 
             <h3>
@@ -489,11 +573,22 @@
         </article>
 
 
-        <article class="story-card" data-episode="81" data-category="Kurioses">
+        <article
+            class="story-card"
+            data-episode="81"
+            data-category="Kurioses"
+        >
 
             <div class="story-meta">
-                <span class="episode">Folge 81</span>
-                <span class="category">Kurioses</span>
+
+                <span class="episode">
+                    Folge 81
+                </span>
+
+                <span class="category">
+                    Kurioses
+                </span>
+
             </div>
 
             <h3>
@@ -510,11 +605,22 @@
         </article>
 
 
-        <article class="story-card" data-episode="81" data-category="Kurioses">
+        <article
+            class="story-card"
+            data-episode="81"
+            data-category="Kurioses"
+        >
 
             <div class="story-meta">
-                <span class="episode">Folge 81</span>
-                <span class="category">Kurioses</span>
+
+                <span class="episode">
+                    Folge 81
+                </span>
+
+                <span class="category">
+                    Kurioses
+                </span>
+
             </div>
 
             <h3>
@@ -531,11 +637,22 @@
         </article>
 
 
-        <article class="story-card" data-episode="80" data-category="Beziehungen">
+        <article
+            class="story-card"
+            data-episode="80"
+            data-category="Beziehungen"
+        >
 
             <div class="story-meta">
-                <span class="episode">Folge 80</span>
-                <span class="category">Beziehungen</span>
+
+                <span class="episode">
+                    Folge 80
+                </span>
+
+                <span class="category">
+                    Beziehungen
+                </span>
+
             </div>
 
             <h3>
@@ -552,11 +669,22 @@
         </article>
 
 
-        <article class="story-card" data-episode="80" data-category="AITA">
+        <article
+            class="story-card"
+            data-episode="80"
+            data-category="AITA"
+        >
 
             <div class="story-meta">
-                <span class="episode">Folge 80</span>
-                <span class="category">AITA</span>
+
+                <span class="episode">
+                    Folge 80
+                </span>
+
+                <span class="category">
+                    AITA
+                </span>
+
             </div>
 
             <h3>
@@ -573,11 +701,22 @@
         </article>
 
 
-        <article class="story-card" data-episode="79" data-category="Beichtstuhl">
+        <article
+            class="story-card"
+            data-episode="79"
+            data-category="Beichtstuhl"
+        >
 
             <div class="story-meta">
-                <span class="episode">Folge 79</span>
-                <span class="category">Beichtstuhl</span>
+
+                <span class="episode">
+                    Folge 79
+                </span>
+
+                <span class="category">
+                    Beichtstuhl
+                </span>
+
             </div>
 
             <h3>
@@ -608,21 +747,94 @@
     let selectedEpisode = "all";
     let selectedCategory = "all";
 
+
     const episodeFilters =
         document.getElementById("episode-filters");
 
     const categoryFilters =
         document.getElementById("category-filters");
 
-    const episodeButtons =
-        document.querySelectorAll("#episode-filters .filter-button");
+    const episodeSelect =
+        document.getElementById("episode-select");
 
     const categoryButtons =
-        document.querySelectorAll("#category-filters .filter-button");
+        document.querySelectorAll(
+            "#category-filters .filter-button"
+        );
 
     const stories =
         document.querySelectorAll(".story-card");
 
+
+    /*
+        ==========================================
+        AUTOMATISCHE FOLGEN ERMITTELN
+        ==========================================
+
+        Die Website schaut sich alle Story-Karten an
+        und sucht deren data-episode.
+
+        Beispiel:
+
+        data-episode="83"
+        data-episode="82"
+        data-episode="84"
+
+        Daraus werden automatisch die Folgen
+        84, 83, 82 usw. im Dropdown erzeugt.
+    */
+
+
+    const episodes = new Set();
+
+
+    stories.forEach(story => {
+
+        const episode =
+            story.dataset.episode;
+
+        if (episode) {
+            episodes.add(episode);
+        }
+
+    });
+
+
+    /*
+        Folgen sortieren:
+        höchste Nummer zuerst
+    */
+
+    const sortedEpisodes =
+        Array.from(episodes).sort(
+            (a, b) => Number(b) - Number(a)
+        );
+
+
+    /*
+        Dropdown mit den Folgen füllen
+    */
+
+    sortedEpisodes.forEach(episode => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = episode;
+
+        option.textContent =
+            "Folge " + episode;
+
+        episodeSelect.appendChild(option);
+
+    });
+
+
+    /*
+        ==========================================
+        STORYS FILTERN
+        ==========================================
+    */
 
     function updateStories() {
 
@@ -646,9 +858,16 @@
     }
 
 
+    /*
+        ==========================================
+        FILTER SICHTBARKEIT
+        ==========================================
+    */
+
     function showEpisodeFilter() {
 
         episodeFilters.style.display = "flex";
+
         categoryFilters.style.display = "none";
 
     }
@@ -657,6 +876,7 @@
     function showCategoryFilter() {
 
         episodeFilters.style.display = "none";
+
         categoryFilters.style.display = "flex";
 
     }
@@ -665,31 +885,50 @@
     function showBothFilters() {
 
         episodeFilters.style.display = "flex";
+
         categoryFilters.style.display = "flex";
 
     }
 
 
-    episodeButtons.forEach(button => {
+    /*
+        ==========================================
+        FOLGEN-DROPDOWN
+        ==========================================
+    */
 
-        button.addEventListener("click", () => {
+    episodeSelect.addEventListener(
+        "change",
+        () => {
 
-            episodeButtons.forEach(btn =>
-                btn.classList.remove("active")
-            );
-
-            button.classList.add("active");
-
-            selectedEpisode = button.dataset.episode;
+            selectedEpisode =
+                episodeSelect.value;
 
             selectedCategory = "all";
 
-            categoryButtons.forEach(btn =>
-                btn.classList.remove("active")
-            );
 
-            categoryButtons[0].classList.add("active");
+            /*
+                Kategorie zurücksetzen
+            */
 
+            categoryButtons.forEach(button => {
+
+                button.classList.remove("active");
+
+            });
+
+
+            categoryButtons[0]
+                .classList.add("active");
+
+
+            /*
+                Wenn "Alle Folgen":
+                beide Filter zeigen.
+
+                Bei einer bestimmten Folge:
+                nur Folgenfilter zeigen.
+            */
 
             if (selectedEpisode === "all") {
 
@@ -701,52 +940,82 @@
 
             }
 
+
             updateStories();
 
-        });
+        }
+    );
 
-    });
 
+    /*
+        ==========================================
+        KATEGORIE-FILTER
+        ==========================================
+    */
 
     categoryButtons.forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+            "click",
+            () => {
 
-            categoryButtons.forEach(btn =>
-                btn.classList.remove("active")
-            );
+                categoryButtons.forEach(btn => {
 
-            button.classList.add("active");
+                    btn.classList.remove("active");
 
-            selectedCategory = button.dataset.category;
-
-            selectedEpisode = "all";
-
-            episodeButtons.forEach(btn =>
-                btn.classList.remove("active")
-            );
-
-            episodeButtons[0].classList.add("active");
+                });
 
 
-            if (selectedCategory === "all") {
+                button.classList.add("active");
 
-                showBothFilters();
 
-            } else {
+                selectedCategory =
+                    button.dataset.category;
 
-                showCategoryFilter();
+
+                selectedEpisode = "all";
+
+
+                /*
+                    Folgen-Dropdown zurücksetzen
+                */
+
+                episodeSelect.value = "all";
+
+
+                /*
+                    Wenn "Alle":
+                    beide Filter zeigen.
+
+                    Bei einer bestimmten Kategorie:
+                    nur Kategorien zeigen.
+                */
+
+                if (selectedCategory === "all") {
+
+                    showBothFilters();
+
+                } else {
+
+                    showCategoryFilter();
+
+                }
+
+
+                updateStories();
 
             }
-
-            updateStories();
-
-        });
+        );
 
     });
 
 
-    // Beim Start beide Filter anzeigen
+    /*
+        ==========================================
+        STARTZUSTAND
+        ==========================================
+    */
+
     showBothFilters();
 
     updateStories();
