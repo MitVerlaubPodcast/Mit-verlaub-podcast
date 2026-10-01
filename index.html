@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -136,6 +136,33 @@
             height: 38px;
             object-fit: contain;
             transform: scale(1.15);
+        }
+
+        /* =========================
+           KONTAKT BUTTON
+           ========================= */
+
+        .contact-button-wrapper {
+            text-align: center;
+            margin: 0 0 55px;
+        }
+
+        .contact-button {
+            display: inline-block;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 16px rgba(0,0,0,0.18);
         }
 
         /* =========================
@@ -371,13 +398,22 @@
 
 <body>
 
+
 <header>
-    <h1>Mit Verlaub – Best of Reddit</h1>
-    <p>Die wildesten Reddit Storys aus dem Podcast</p>
+
+    <h1>
+        Mit Verlaub – Best of Reddit
+    </h1>
+
+    <p>
+        Die wildesten Reddit Storys aus dem Podcast
+    </p>
+
 </header>
 
 
 <main>
+
 
     <!-- =========================
          NEUESTE FOLGE
@@ -386,6 +422,7 @@
     <section class="listen-section">
 
         <div class="listen-box">
+
 
             <!-- COVER -->
 
@@ -396,7 +433,7 @@
             >
 
 
-            <!-- NEUE FOLGE + BUTTONS -->
+            <!-- NEUE FOLGE -->
 
             <div
                 class="latest-episode hidden"
@@ -412,7 +449,12 @@
                 </h2>
 
 
+                <!-- PLATTFORMEN -->
+
                 <div class="platforms">
+
+
+                    <!-- SPOTIFY -->
 
                     <a
                         class="platform"
@@ -420,14 +462,19 @@
                         target="_blank"
                         rel="noopener"
                     >
+
                         <img
                             src="icons/Spotify_Primary_Logo_RGB_Green.png"
                             alt="Spotify"
                             class="platform-icon"
                         >
+
                         Spotify
+
                     </a>
 
+
+                    <!-- APPLE PODCASTS -->
 
                     <a
                         class="platform"
@@ -435,14 +482,19 @@
                         target="_blank"
                         rel="noopener"
                     >
+
                         <img
                             src="icons/apple-icon.svg"
                             alt="Apple Podcasts"
                             class="platform-icon"
                         >
+
                         Apple Podcasts
+
                     </a>
 
+
+                    <!-- RTL+ -->
 
                     <a
                         class="platform"
@@ -450,13 +502,17 @@
                         target="_blank"
                         rel="noopener"
                     >
+
                         <img
                             src="icons/rtl-logo-png_seeklogo-446003.png"
                             alt="RTL+"
                             class="rtl-icon"
                         >
+
                     </a>
 
+
+                    <!-- DEEZER -->
 
                     <a
                         class="platform"
@@ -464,13 +520,17 @@
                         target="_blank"
                         rel="noopener"
                     >
+
                         <img
                             src="icons/icons8-deezer-100.png"
                             alt="Deezer"
                             class="platform-icon"
                         >
+
                         Deezer
+
                     </a>
+
 
                 </div>
 
@@ -482,12 +542,30 @@
 
 
     <!-- =========================
+         KONTAKT
+         ========================= -->
+
+    <div class="contact-button-wrapper">
+
+        <a
+            href="kontakt.html"
+            class="contact-button"
+        >
+            💬 Reddit Story schicken / Kontakt
+        </a>
+
+    </div>
+
+
+    <!-- =========================
          REDDIT STORYS
          ========================= -->
 
     <section class="stories-section">
 
-        <h2>Reddit Storys</h2>
+        <h2>
+            Reddit Storys
+        </h2>
 
         <p class="stories-subtitle">
             Die wildesten Geschichten aus den bisherigen Folgen
@@ -498,15 +576,22 @@
 
         <div class="filters">
 
+
+            <!-- FOLGEN -->
+
             <select
                 id="episode-select"
                 class="episode-select"
             >
+
                 <option value="all">
                     Alle Folgen
                 </option>
+
             </select>
 
+
+            <!-- KATEGORIEN -->
 
             <div
                 class="category-filters"
@@ -560,6 +645,8 @@
         <div class="stories-grid">
 
 
+            <!-- STORY 1 -->
+
             <article
                 class="story-card"
                 data-episode="83"
@@ -593,6 +680,8 @@
 
             </article>
 
+
+            <!-- STORY 2 -->
 
             <article
                 class="story-card"
@@ -628,6 +717,8 @@
             </article>
 
 
+            <!-- STORY 3 -->
+
             <article
                 class="story-card"
                 data-episode="82"
@@ -661,6 +752,8 @@
 
             </article>
 
+
+            <!-- STORY 4 -->
 
             <article
                 class="story-card"
@@ -696,6 +789,8 @@
             </article>
 
 
+            <!-- STORY 5 -->
+
             <article
                 class="story-card"
                 data-episode="81"
@@ -729,6 +824,8 @@
 
             </article>
 
+
+            <!-- STORY 6 -->
 
             <article
                 class="story-card"
@@ -764,6 +861,8 @@
             </article>
 
 
+            <!-- STORY 7 -->
+
             <article
                 class="story-card"
                 data-episode="80"
@@ -797,6 +896,8 @@
 
             </article>
 
+
+            <!-- STORY 8 -->
 
             <article
                 class="story-card"
@@ -832,6 +933,8 @@
             </article>
 
 
+            <!-- STORY 9 -->
+
             <article
                 class="story-card"
                 data-episode="79"
@@ -865,6 +968,7 @@
 
             </article>
 
+
         </div>
 
     </section>
@@ -886,8 +990,10 @@
     const RSS_URL =
         "https://anchor.fm/s/1018d4e2c/podcast/rss";
 
+
     const latestEpisodeBox =
         document.getElementById("latest-episode");
+
 
     const latestEpisodeTitle =
         document.getElementById("latest-title");
@@ -900,17 +1006,23 @@
             const response =
                 await fetch(RSS_URL);
 
+
             if (!response.ok) {
+
                 throw new Error(
                     "RSS konnte nicht geladen werden."
                 );
+
             }
+
 
             const rssText =
                 await response.text();
 
+
             const parser =
                 new DOMParser();
+
 
             const xml =
                 parser.parseFromString(
@@ -918,23 +1030,32 @@
                     "text/xml"
                 );
 
+
             const firstItem =
                 xml.querySelector("item");
 
+
             if (!firstItem) {
+
                 throw new Error(
                     "Keine Episode gefunden."
                 );
+
             }
+
 
             const titleElement =
                 firstItem.querySelector("title");
 
+
             if (!titleElement) {
+
                 throw new Error(
                     "Kein Titel gefunden."
                 );
+
             }
+
 
             const title =
                 titleElement.textContent.trim();
@@ -944,6 +1065,7 @@
 
                 latestEpisodeTitle.textContent =
                     title;
+
 
                 latestEpisodeBox.classList.remove(
                     "hidden"
@@ -973,11 +1095,14 @@
     const stories =
         document.querySelectorAll(".story-card");
 
+
     const episodeSelect =
         document.getElementById("episode-select");
 
+
     const categoryFilters =
         document.getElementById("category-filters");
+
 
     const categoryButtons =
         document.querySelectorAll(".category-button");
@@ -992,25 +1117,38 @@
         const episode =
             story.dataset.episode;
 
+
         if (episode) {
+
             episodes.add(episode);
+
         }
 
     });
 
 
+    /*
+     * Folgen absteigend sortieren:
+     * 83, 82, 81, 80 ...
+     */
+
     [...episodes]
-        .sort((a, b) => Number(b) - Number(a))
+        .sort(
+            (a, b) => Number(b) - Number(a)
+        )
         .forEach(episode => {
 
             const option =
                 document.createElement("option");
 
+
             option.value =
                 episode;
 
+
             option.textContent =
                 "Folge " + episode;
+
 
             episodeSelect.appendChild(
                 option
@@ -1020,6 +1158,7 @@
 
 
     let selectedEpisode = "all";
+
     let selectedCategory = "all";
 
 
@@ -1031,12 +1170,16 @@
                 selectedEpisode === "all" ||
                 story.dataset.episode === selectedEpisode;
 
+
             const categoryMatch =
                 selectedCategory === "all" ||
                 story.dataset.category === selectedCategory;
 
 
-            if (episodeMatch && categoryMatch) {
+            if (
+                episodeMatch &&
+                categoryMatch
+            ) {
 
                 story.classList.remove(
                     "hidden"
@@ -1053,7 +1196,14 @@
         });
 
 
-        if (selectedEpisode !== "all") {
+        /*
+         * Bei einer bestimmten Folge
+         * Kategorien ausblenden.
+         */
+
+        if (
+            selectedEpisode !== "all"
+        ) {
 
             categoryFilters.style.display =
                 "none";
@@ -1066,7 +1216,14 @@
         }
 
 
-        if (selectedCategory !== "all") {
+        /*
+         * Bei einer bestimmten Kategorie
+         * Folgenfilter ausblenden.
+         */
+
+        if (
+            selectedCategory !== "all"
+        ) {
 
             episodeSelect.style.display =
                 "none";
@@ -1088,27 +1245,31 @@
             selectedEpisode =
                 this.value;
 
+
             selectedCategory =
                 "all";
 
 
-            categoryButtons.forEach(button => {
+            categoryButtons.forEach(
+                button => {
 
-                button.classList.remove(
-                    "active"
-                );
-
-                if (
-                    button.dataset.category === "all"
-                ) {
-
-                    button.classList.add(
+                    button.classList.remove(
                         "active"
                     );
 
-                }
 
-            });
+                    if (
+                        button.dataset.category === "all"
+                    ) {
+
+                        button.classList.add(
+                            "active"
+                        );
+
+                    }
+
+                }
+            );
 
 
             updateStories();
@@ -1117,42 +1278,48 @@
     );
 
 
-    categoryButtons.forEach(button => {
+    categoryButtons.forEach(
+        button => {
 
-        button.addEventListener(
-            "click",
-            function () {
+            button.addEventListener(
+                "click",
+                function () {
 
-                selectedCategory =
-                    this.dataset.category;
-
-                selectedEpisode =
-                    "all";
-
-                episodeSelect.value =
-                    "all";
+                    selectedCategory =
+                        this.dataset.category;
 
 
-                categoryButtons.forEach(btn => {
+                    selectedEpisode =
+                        "all";
 
-                    btn.classList.remove(
+
+                    episodeSelect.value =
+                        "all";
+
+
+                    categoryButtons.forEach(
+                        btn => {
+
+                            btn.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    this.classList.add(
                         "active"
                     );
 
-                });
 
+                    updateStories();
 
-                this.classList.add(
-                    "active"
-                );
+                }
+            );
 
-
-                updateStories();
-
-            }
-        );
-
-    });
+        }
+    );
 
 
     updateStories();
