@@ -645,15 +645,19 @@
         </div>
 
 
-        <!-- STORY GRID -->
+        <!-- =========================
+             STORYS
+             ========================= -->
 
-        <div class="story-grid" id="story-grid">
+        <div
+            class="story-grid"
+            id="story-grid"
+        >
 
 
             <!-- =========================
                  FOLGE 79
                  ========================= -->
-
 
             <article
                 class="story-card"
@@ -800,7 +804,6 @@
                  FOLGE 80
                  ========================= -->
 
-
             <article
                 class="story-card"
                 data-episode="80"
@@ -875,7 +878,7 @@
                 </span>
 
                 <h3>
-                    Ich habe eine Sexparty veranstaltet
+                    Versehentlicher Sexpartyprank :(
                 </h3>
 
                 <p>
@@ -993,7 +996,6 @@
             <!-- =========================
                  FOLGE 81
                  ========================= -->
-
 
             <article
                 class="story-card"
@@ -1116,7 +1118,7 @@
                 </span>
 
                 <h3>
-                    Ich habe den Notruf aus Sorge um die Nachbarn gewählt
+                    Ich habe den Notruf gewählt und mache es nie wieder!
                 </h3>
 
                 <p>
@@ -1139,7 +1141,6 @@
             <!-- =========================
                  FOLGE 82
                  ========================= -->
-
 
             <article
                 class="story-card"
@@ -1168,12 +1169,12 @@
                 </span>
 
                 <h3>
-                    Meine Mitbewohnerin hat mir in den Garten ...
+                    Meine Mitbewohnerin hat in den Garten geschissen.
                 </h3>
 
                 <p>
-                    Eine ungewöhnliche Situation mit der eigenen
-                    Mitbewohnerin sorgt für ordentlich Gesprächsstoff.
+                    Eine ziemlich unerwartete Situation mit der eigenen
+                    Mitbewohnerin sorgt für eine bizarre Geschichte.
                 </p>
 
                 <a
@@ -1215,12 +1216,12 @@
                 </span>
 
                 <h3>
-                    War ich das Arschloch, nachdem ich meine Freundin angefahren habe?
+                    BIDA: Meine Freundin faket eine Therapie.
                 </h3>
 
                 <p>
-                    Nach einer Situation mit seiner Freundin platzt jemandem
-                    der Kragen – doch war diese Reaktion wirklich gerechtfertigt?
+                    Eine Beziehung gerät wegen einer ungewöhnlichen
+                    Situation rund um eine Therapie in Konflikt.
                 </p>
 
                 <a
@@ -1238,7 +1239,6 @@
             <!-- =========================
                  FOLGE 83
                  ========================= -->
-
 
             <article
                 class="story-card"
@@ -1459,7 +1459,34 @@
         document.querySelectorAll(".category-button");
 
 
-    /* Folgen automatisch aus den Storys erstellen */
+    /* =========================
+       STORYS NACH FOLGE SORTIEREN
+       ========================= */
+
+    const storyGrid =
+        document.getElementById("story-grid");
+
+    const sortedStories =
+        Array.from(stories).sort(function(a, b) {
+
+            return (
+                Number(b.dataset.episode) -
+                Number(a.dataset.episode)
+            );
+
+        });
+
+
+    sortedStories.forEach(function(story) {
+
+        storyGrid.appendChild(story);
+
+    });
+
+
+    /* =========================
+       FOLGEN AUTOMATISCH ERSTELLEN
+       ========================= */
 
     const episodes =
         new Set();
@@ -1537,7 +1564,9 @@
     }
 
 
-    /* Folgen auswählen */
+    /* =========================
+       FOLGE AUSWÄHLEN
+       ========================= */
 
     episodeSelect.addEventListener(
         "change",
@@ -1593,7 +1622,9 @@
     );
 
 
-    /* Kategorien auswählen */
+    /* =========================
+       KATEGORIE AUSWÄHLEN
+       ========================= */
 
     categoryButtons.forEach(
         function(button) {
