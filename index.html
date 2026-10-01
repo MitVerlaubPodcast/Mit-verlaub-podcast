@@ -43,17 +43,11 @@
         }
 
         /* =========================
-           PODCAST / HÖREN
+           NEUE FOLGE
            ========================= */
 
         .listen-section {
-            text-align: center;
             margin-bottom: 55px;
-        }
-
-        .listen-section h2 {
-            margin-bottom: 30px;
-            font-size: 28px;
         }
 
         .listen-box {
@@ -72,11 +66,42 @@
             flex-shrink: 0;
         }
 
+        .latest-episode {
+            flex: 1;
+            max-width: 650px;
+            text-align: left;
+        }
+
+        .latest-badge {
+            display: inline-block;
+            background: #111;
+            color: white;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+        }
+
+        .latest-episode h2 {
+            margin: 0 0 20px;
+            font-size: 25px;
+            line-height: 1.35;
+        }
+
+        .latest-episode.hidden {
+            display: none;
+        }
+
+        /* =========================
+           PLATTFORM BUTTONS
+           ========================= */
+
         .platforms {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
-            min-width: 250px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .platform {
@@ -111,48 +136,6 @@
             height: 38px;
             object-fit: contain;
             transform: scale(1.15);
-        }
-
-        /* =========================
-           NEUE FOLGE
-           ========================= */
-
-        .latest-episode {
-            margin: 35px auto 0;
-            max-width: 700px;
-            padding: 25px 30px;
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.10);
-            text-align: center;
-        }
-
-        .latest-badge {
-            display: inline-block;
-            background: #111;
-            color: white;
-            padding: 7px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            margin-bottom: 14px;
-        }
-
-        .latest-episode h3 {
-            margin: 0 0 12px;
-            font-size: 22px;
-            line-height: 1.35;
-        }
-
-        .latest-episode p {
-            margin: 0;
-            font-size: 17px;
-            font-weight: bold;
-        }
-
-        .latest-episode.hidden {
-            display: none;
         }
 
         /* =========================
@@ -303,9 +286,11 @@
            ========================= */
 
         @media (max-width: 900px) {
+
             .stories-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
         }
 
         /* =========================
@@ -333,7 +318,6 @@
             .listen-box {
                 flex-direction: column;
                 gap: 22px;
-                text-align: center;
             }
 
             .podcast-cover {
@@ -341,17 +325,26 @@
                 height: 170px;
             }
 
-            .platforms {
-                width: 100%;
-                max-width: 300px;
-            }
-
             .latest-episode {
-                padding: 22px 18px;
+                width: 100%;
+                max-width: 400px;
+                text-align: center;
             }
 
-            .latest-episode h3 {
-                font-size: 19px;
+            .latest-episode h2 {
+                font-size: 21px;
+            }
+
+            .platforms {
+                justify-content: center;
+                flex-direction: column;
+                align-items: stretch;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .platform {
+                width: 100%;
             }
 
             .episode-select {
@@ -371,6 +364,7 @@
             .stories-grid {
                 grid-template-columns: 1fr;
             }
+
         }
     </style>
 </head>
@@ -382,17 +376,18 @@
     <p>Die wildesten Reddit Storys aus dem Podcast</p>
 </header>
 
+
 <main>
 
     <!-- =========================
-         PODCAST
+         NEUESTE FOLGE
          ========================= -->
 
     <section class="listen-section">
 
-        <h2>Hier findet Ihr alle Folgen:</h2>
-
         <div class="listen-box">
+
+            <!-- COVER -->
 
             <img
                 src="icons/cover-1-2.png"
@@ -400,84 +395,86 @@
                 class="podcast-cover"
             >
 
-            <div class="platforms">
 
-                <a
-                    class="platform"
-                    href="https://open.spotify.com/show/1vw3NAgj6bdS60r13hYVzk"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <img
-                        src="icons/Spotify_Primary_Logo_RGB_Green.png"
-                        alt="Spotify"
-                        class="platform-icon"
-                    >
-                    Spotify
-                </a>
+            <!-- NEUE FOLGE + BUTTONS -->
 
-                <a
-                    class="platform"
-                    href="https://podcasts.apple.com/us/podcast/mit-verlaub-best-of-reddit/id1725187632"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <img
-                        src="icons/apple-icon.svg"
-                        alt="Apple Podcasts"
-                        class="platform-icon"
-                    >
-                    Apple Podcasts
-                </a>
+            <div
+                class="latest-episode hidden"
+                id="latest-episode"
+            >
 
-                <a
-                    class="platform"
-                    href="https://plus.rtl.de/mit-verlaub-p_18073"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <img
-                        src="icons/rtl-logo-png_seeklogo-446003.png"
-                        alt="RTL+"
-                        class="rtl-icon"
-                    >
-                </a>
+                <div class="latest-badge">
+                    🎙️ NEUE FOLGE IST DRAUẞEN!
+                </div>
 
-                <a
-                    class="platform"
-                    href="https://www.deezer.com/de/show/1000171545"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <img
-                        src="icons/icons8-deezer-100.png"
-                        alt="Deezer"
-                        class="platform-icon"
+                <h2 id="latest-title">
+                    Neue Folge
+                </h2>
+
+
+                <div class="platforms">
+
+                    <a
+                        class="platform"
+                        href="https://open.spotify.com/show/1vw3NAgj6bdS60r13hYVzk"
+                        target="_blank"
+                        rel="noopener"
                     >
-                    Deezer
-                </a>
+                        <img
+                            src="icons/Spotify_Primary_Logo_RGB_Green.png"
+                            alt="Spotify"
+                            class="platform-icon"
+                        >
+                        Spotify
+                    </a>
+
+
+                    <a
+                        class="platform"
+                        href="https://podcasts.apple.com/us/podcast/mit-verlaub-best-of-reddit/id1725187632"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <img
+                            src="icons/apple-icon.svg"
+                            alt="Apple Podcasts"
+                            class="platform-icon"
+                        >
+                        Apple Podcasts
+                    </a>
+
+
+                    <a
+                        class="platform"
+                        href="https://plus.rtl.de/mit-verlaub-p_18073"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <img
+                            src="icons/rtl-logo-png_seeklogo-446003.png"
+                            alt="RTL+"
+                            class="rtl-icon"
+                        >
+                    </a>
+
+
+                    <a
+                        class="platform"
+                        href="https://www.deezer.com/de/show/1000171545"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <img
+                            src="icons/icons8-deezer-100.png"
+                            alt="Deezer"
+                            class="platform-icon"
+                        >
+                        Deezer
+                    </a>
+
+                </div>
 
             </div>
-        </div>
-
-
-        <!-- =========================
-             AUTOMATISCHE NEUE FOLGE
-             ========================= -->
-
-        <div class="latest-episode hidden" id="latest-episode">
-
-            <div class="latest-badge">
-                🎙️ NEUE FOLGE IST DRAUẞEN!
-            </div>
-
-            <h3 id="latest-title">
-                Neue Folge
-            </h3>
-
-            <p>
-                👉 Hier reinhören!
-            </p>
 
         </div>
 
@@ -511,7 +508,10 @@
             </select>
 
 
-            <div class="category-filters" id="category-filters">
+            <div
+                class="category-filters"
+                id="category-filters"
+            >
 
                 <button
                     class="category-button active"
@@ -560,14 +560,14 @@
         <div class="stories-grid">
 
 
-            <!-- TESTSTORYS -->
-
             <article
                 class="story-card"
                 data-episode="83"
                 data-category="AITA"
             >
+
                 <div class="story-meta">
+
                     <span class="story-tag">
                         Folge 83
                     </span>
@@ -575,6 +575,7 @@
                     <span class="story-tag">
                         Bin ich das Arschloch?
                     </span>
+
                 </div>
 
                 <h3>
@@ -589,6 +590,7 @@
                 >
                     Reddit-Story lesen →
                 </a>
+
             </article>
 
 
@@ -597,7 +599,9 @@
                 data-episode="83"
                 data-category="Beichtstuhl"
             >
+
                 <div class="story-meta">
+
                     <span class="story-tag">
                         Folge 83
                     </span>
@@ -605,6 +609,7 @@
                     <span class="story-tag">
                         Beichtstuhl
                     </span>
+
                 </div>
 
                 <h3>
@@ -619,6 +624,7 @@
                 >
                     Reddit-Story lesen →
                 </a>
+
             </article>
 
 
@@ -627,7 +633,9 @@
                 data-episode="82"
                 data-category="Beziehungen"
             >
+
                 <div class="story-meta">
+
                     <span class="story-tag">
                         Folge 82
                     </span>
@@ -635,6 +643,7 @@
                     <span class="story-tag">
                         Beziehungen
                     </span>
+
                 </div>
 
                 <h3>
@@ -649,6 +658,7 @@
                 >
                     Reddit-Story lesen →
                 </a>
+
             </article>
 
 
@@ -657,7 +667,9 @@
                 data-episode="82"
                 data-category="Beziehungen"
             >
+
                 <div class="story-meta">
+
                     <span class="story-tag">
                         Folge 82
                     </span>
@@ -665,6 +677,7 @@
                     <span class="story-tag">
                         Beziehungen
                     </span>
+
                 </div>
 
                 <h3>
@@ -679,6 +692,7 @@
                 >
                     Reddit-Story lesen →
                 </a>
+
             </article>
 
 
@@ -687,7 +701,9 @@
                 data-episode="81"
                 data-category="Kurioses"
             >
+
                 <div class="story-meta">
+
                     <span class="story-tag">
                         Folge 81
                     </span>
@@ -695,6 +711,7 @@
                     <span class="story-tag">
                         Kurioses
                     </span>
+
                 </div>
 
                 <h3>
@@ -709,6 +726,7 @@
                 >
                     Reddit-Story lesen →
                 </a>
+
             </article>
 
 
@@ -717,7 +735,9 @@
                 data-episode="81"
                 data-category="Kurioses"
             >
+
                 <div class="story-meta">
+
                     <span class="story-tag">
                         Folge 81
                     </span>
@@ -725,6 +745,7 @@
                     <span class="story-tag">
                         Kurioses
                     </span>
+
                 </div>
 
                 <h3>
@@ -739,6 +760,7 @@
                 >
                     Reddit-Story lesen →
                 </a>
+
             </article>
 
 
@@ -747,7 +769,9 @@
                 data-episode="80"
                 data-category="Beziehungen"
             >
+
                 <div class="story-meta">
+
                     <span class="story-tag">
                         Folge 80
                     </span>
@@ -755,6 +779,7 @@
                     <span class="story-tag">
                         Beziehungen
                     </span>
+
                 </div>
 
                 <h3>
@@ -769,6 +794,7 @@
                 >
                     Reddit-Story lesen →
                 </a>
+
             </article>
 
 
@@ -777,7 +803,9 @@
                 data-episode="80"
                 data-category="AITA"
             >
+
                 <div class="story-meta">
+
                     <span class="story-tag">
                         Folge 80
                     </span>
@@ -785,6 +813,7 @@
                     <span class="story-tag">
                         Bin ich das Arschloch?
                     </span>
+
                 </div>
 
                 <h3>
@@ -799,6 +828,7 @@
                 >
                     Reddit-Story lesen →
                 </a>
+
             </article>
 
 
@@ -807,7 +837,9 @@
                 data-episode="79"
                 data-category="Beichtstuhl"
             >
+
                 <div class="story-meta">
+
                     <span class="story-tag">
                         Folge 79
                     </span>
@@ -815,6 +847,7 @@
                     <span class="story-tag">
                         Beichtstuhl
                     </span>
+
                 </div>
 
                 <h3>
@@ -829,6 +862,7 @@
                 >
                     Reddit-Story lesen →
                 </a>
+
             </article>
 
         </div>
@@ -863,19 +897,20 @@
 
         try {
 
-            /*
-             * RSS direkt laden.
-             */
-
-            const response = await fetch(RSS_URL);
+            const response =
+                await fetch(RSS_URL);
 
             if (!response.ok) {
-                throw new Error("RSS konnte nicht geladen werden.");
+                throw new Error(
+                    "RSS konnte nicht geladen werden."
+                );
             }
 
-            const rssText = await response.text();
+            const rssText =
+                await response.text();
 
-            const parser = new DOMParser();
+            const parser =
+                new DOMParser();
 
             const xml =
                 parser.parseFromString(
@@ -883,29 +918,23 @@
                     "text/xml"
                 );
 
-
-            /*
-             * Der erste <item> ist normalerweise
-             * die neueste Podcast-Folge.
-             */
-
             const firstItem =
                 xml.querySelector("item");
 
-
             if (!firstItem) {
-                throw new Error("Keine Episode gefunden.");
+                throw new Error(
+                    "Keine Episode gefunden."
+                );
             }
-
 
             const titleElement =
                 firstItem.querySelector("title");
 
-
             if (!titleElement) {
-                throw new Error("Kein Titel gefunden.");
+                throw new Error(
+                    "Kein Titel gefunden."
+                );
             }
-
 
             const title =
                 titleElement.textContent.trim();
@@ -924,12 +953,6 @@
 
         } catch (error) {
 
-            /*
-             * Falls der RSS-Feed nicht direkt
-             * aus dem Browser geladen werden darf,
-             * bleibt der Hinweis einfach verborgen.
-             */
-
             console.log(
                 "RSS-Feed konnte nicht geladen werden:",
                 error
@@ -944,7 +967,7 @@
 
 
     /* ==========================================
-       EPISODEN-FILTER DYNAMISCH ERSTELLEN
+       EPISODEN-FILTER
        ========================================== */
 
     const stories =
@@ -976,11 +999,6 @@
     });
 
 
-    /*
-     * Folgen absteigend sortieren:
-     * 83, 82, 81, 80 ...
-     */
-
     [...episodes]
         .sort((a, b) => Number(b) - Number(a))
         .forEach(episode => {
@@ -988,12 +1006,15 @@
             const option =
                 document.createElement("option");
 
-            option.value = episode;
+            option.value =
+                episode;
 
             option.textContent =
                 "Folge " + episode;
 
-            episodeSelect.appendChild(option);
+            episodeSelect.appendChild(
+                option
+            );
 
         });
 
@@ -1017,45 +1038,43 @@
 
             if (episodeMatch && categoryMatch) {
 
-                story.classList.remove("hidden");
+                story.classList.remove(
+                    "hidden"
+                );
 
             } else {
 
-                story.classList.add("hidden");
+                story.classList.add(
+                    "hidden"
+                );
 
             }
 
         });
 
 
-        /*
-         * Wenn eine bestimmte Folge ausgewählt wird,
-         * verschwinden die Kategorien.
-         */
-
         if (selectedEpisode !== "all") {
 
-            categoryFilters.style.display = "none";
+            categoryFilters.style.display =
+                "none";
 
         } else {
 
-            categoryFilters.style.display = "flex";
+            categoryFilters.style.display =
+                "flex";
 
         }
 
 
-        /*
-         * Wenn eine Kategorie ausgewählt wird,
-         * verschwindet der Folgenfilter.
-         */
-
         if (selectedCategory !== "all") {
 
-            episodeSelect.style.display = "none";
+            episodeSelect.style.display =
+                "none";
 
         } else {
 
-            episodeSelect.style.display = "block";
+            episodeSelect.style.display =
+                "block";
 
         }
 
@@ -1075,12 +1094,18 @@
 
             categoryButtons.forEach(button => {
 
-                button.classList.remove("active");
+                button.classList.remove(
+                    "active"
+                );
 
                 if (
                     button.dataset.category === "all"
                 ) {
-                    button.classList.add("active");
+
+                    button.classList.add(
+                        "active"
+                    );
+
                 }
 
             });
@@ -1104,19 +1129,22 @@
                 selectedEpisode =
                     "all";
 
-
                 episodeSelect.value =
                     "all";
 
 
                 categoryButtons.forEach(btn => {
 
-                    btn.classList.remove("active");
+                    btn.classList.remove(
+                        "active"
+                    );
 
                 });
 
 
-                this.classList.add("active");
+                this.classList.add(
+                    "active"
+                );
 
 
                 updateStories();
