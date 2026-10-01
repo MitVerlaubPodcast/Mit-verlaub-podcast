@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kontakt – Mit Verlaub</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        header {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 45px 20px 40px;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 38px;
+        }
+
+        header p {
+            margin: 0;
+            color: #ccc;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           HAUPTBEREICH
+           ========================= */
+
+        main {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+
+        /* =========================
+           ZURÜCK BUTTON
+           ========================= */
+
+        .back-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .back-button {
+            display: inline-block;
+            color: #222;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           EINLEITUNG
+           ========================= */
+
+        .intro {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+
+        .intro h2 {
+            margin: 0 0 12px;
+            font-size: 27px;
+        }
+
+        .intro p {
+            margin: 0;
+            color: #666;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           FORMULAR
+           ========================= */
+
+        .contact-form {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        }
+
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+
+        .required {
+            color: #777;
+            font-weight: normal;
+            font-size: 13px;
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 15px;
+
+            background: #fafafa;
+
+            color: #222;
+
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            outline: none;
+
+            border-color: #222;
+
+            background: white;
+
+        }
+
+
+        textarea {
+
+            min-height: 220px;
+
+            resize: vertical;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =========================
+           HINWEIS REDDIT LINK
+           ========================= */
+
+        .field-hint {
+
+            margin-top: 7px;
+
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.4;
+
+        }
+
+
+        /* =========================
+           ABSENDEN
+           ========================= */
+
+        .submit-button {
+
+            width: 100%;
+
+            border: none;
+
+            background: #111;
+
+            color: white;
+
+            padding: 15px 20px;
+
+            border-radius: 12px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.15s ease,
+                box-shadow 0.15s ease;
+
+        }
+
+
+        .submit-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 6px 15px rgba(0,0,0,0.18);
+
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px 20px;
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 650px) {
+
+            header {
+
+                padding: 38px 20px 35px;
+
+            }
+
+
+            header h1 {
+
+                font-size: 30px;
+
+            }
+
+
+            header p {
+
+                font-size: 15px;
+
+            }
+
+
+            main {
+
+                padding:
+                    25px 15px 50px;
+
+            }
+
+
+            .intro,
+            .contact-form {
+
+                padding: 22px;
+
+            }
+
+
+            .intro h2 {
+
+                font-size: 23px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        Reddit Story schicken / Kontakt
+    </h1>
+
+    <p>
+        Ihr habt eine Geschichte oder eine Frage an uns?
+    </p>
+
+</header>
+
+
+<main>
+
+
+    <!-- =========================
+         ZURÜCK
+         ========================= -->
+
+    <div class="back-wrapper">
+
+        <a
+            href="index.html"
+            class="back-button"
+        >
+            ← Zurück zu den Reddit Storys
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         EINLEITUNG
+         ========================= -->
+
+    <section class="intro">
+
+        <h2>
+            Schreibt uns!
+        </h2>
+
+        <p>
+            Ihr kennt eine Reddit Story, die unbedingt in
+            den Podcast gehört? Oder ihr habt eine Frage
+            an Rahel und Patrick?
+            Dann schickt sie uns hier.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FORMULAR
+         ========================= -->
+
+    <form
+        class="contact-form"
+        id="contact-form"
+    >
+
+
+        <!-- ART DER NACHRICHT -->
+
+        <div class="form-group">
+
+            <label for="type">
+                Worum geht es?
+            </label>
+
+            <select
+                id="type"
+                name="type"
+            >
+
+                <option value="Reddit Story">
+                    Reddit Story
+                </option>
+
+                <option value="Frage">
+                    Frage an uns
+                </option>
+
+                <option value="Sonstiges">
+                    Sonstiges
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- NAME -->
+
+        <div class="form-group">
+
+            <label for="name">
+                Name / Nutzername
+                <span class="required">
+                    (optional)
+                </span>
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="z. B. RedditUser123"
+            >
+
+        </div>
+
+
+        <!-- E-MAIL -->
+
+        <div class="form-group">
+
+            <label for="email">
+                E-Mail
+                <span class="required">
+                    (optional)
+                </span>
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="deine@email.de"
+            >
+
+            <div class="field-hint">
+                Nur angeben, wenn wir euch bei Rückfragen
+                erreichen können sollen.
+            </div>
+
+        </div>
+
+
+        <!-- REDDIT LINK -->
+
+        <div class="form-group">
+
+            <label for="reddit-link">
+                Reddit-Link
+                <span class="required">
+                    (optional)
+                </span>
+            </label>
+
+            <input
+                type="url"
+                id="reddit-link"
+                name="reddit-link"
+                placeholder="https://www.reddit.com/..."
+            >
+
+            <div class="field-hint">
+                Wenn ihr uns eine bestimmte Reddit Story
+                schicken möchtet, könnt ihr hier den Link
+                einfügen.
+            </div>
+
+        </div>
+
+
+        <!-- NACHRICHT -->
+
+        <div class="form-group">
+
+            <label for="message">
+                Eure Nachricht
+            </label>
+
+            <textarea
+                id="message"
+                name="message"
+                placeholder="Erzählt uns von der Story oder schreibt uns eure Frage ..."
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- ABSENDEN -->
+
+        <button
+            type="submit"
+            class="submit-button"
+        >
+            Nachricht senden
+        </button>
+
+
+    </form>
+
+</main>
+
+
+<footer>
+
+    Mit Verlaub – Best of Reddit
+
+</footer>
+
+
+<script>
+
+    /*
+     * Das Formular ist momentan nur optisch vorbereitet.
+     *
+     * Im nächsten Schritt verbinden wir es mit einem
+     * Formular-Dienst, damit die Nachrichten tatsächlich
+     * bei euch ankommen.
+     */
+
+    document
+        .getElementById("contact-form")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                alert(
+                    "Das Kontaktformular ist noch nicht verbunden."
+                );
+
+            }
+        );
+
+</script>
+
+
+</body>
+</html>
