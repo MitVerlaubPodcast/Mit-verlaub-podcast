@@ -1,327 +1,404 @@
-```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mit Verlaub – Best of Reddit</title>
+    <title>Mit Verlaub – Best of Reddit</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f5;
-    color: #222;
-}
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
 
-/* HEADER */
+        header {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 55px 20px 45px;
+        }
 
-header {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 45px 20px 40px;
-}
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 42px;
+        }
 
-header h1 {
-    margin: 0 0 10px;
-    font-size: 38px;
-}
+        header p {
+            margin: 0;
+            font-size: 18px;
+            color: #ccc;
+        }
 
-header p {
-    margin: 0;
-    font-size: 18px;
-    color: #ccc;
-}
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
 
-/* PODCAST / LISTEN */
+        /* =========================
+           PODCAST / HÖREN
+           ========================= */
 
-.listen-section {
-    max-width: 900px;
-    margin: 35px auto 45px;
-    padding: 0 20px;
-}
+        .listen-section {
+            text-align: center;
+            margin-bottom: 55px;
+        }
 
-.listen-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 35px;
-}
+        .listen-section h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
 
-.podcast-cover {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 18px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    flex-shrink: 0;
-}
+        .listen-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 35px;
+        }
 
-.listen-content {
-    text-align: left;
-}
+        .podcast-cover {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+        }
 
-.listen-content h2 {
-    margin: 0 0 18px;
-    font-size: 24px;
-}
+        .platforms {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-width: 250px;
+        }
 
-.platforms {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
+        .platform {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 48px;
+            padding: 10px 16px;
+            background: white;
+            color: #222;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
 
-.platform {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-height: 48px;
-    padding: 10px 16px;
-    background: white;
-    color: #222;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
+        .platform:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 14px rgba(0,0,0,0.14);
+        }
 
-.platform:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 14px rgba(0,0,0,0.15);
-}
+        .platform-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
 
-.platform-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-}
+        .rtl-icon {
+            width: 120px;
+            height: 38px;
+            object-fit: contain;
+            transform: scale(1.15);
+        }
 
-/* RTL+ LOGO */
+        /* =========================
+           NEUE FOLGE
+           ========================= */
 
-.rtl-icon {
-    width: 120px;
-    height: 38px;
-    object-fit: contain;
-    transform: scale(1.15);
-}
+        .latest-episode {
+            margin: 35px auto 0;
+            max-width: 700px;
+            padding: 25px 30px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.10);
+            text-align: center;
+        }
 
-/* MAIN */
+        .latest-badge {
+            display: inline-block;
+            background: #111;
+            color: white;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+        }
 
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px 50px;
-}
+        .latest-episode h3 {
+            margin: 0 0 12px;
+            font-size: 22px;
+            line-height: 1.35;
+        }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 30px;
-}
+        .latest-episode p {
+            margin: 0;
+            font-size: 17px;
+            font-weight: bold;
+        }
 
-.section-title h2 {
-    margin: 0 0 8px;
-    font-size: 32px;
-}
+        .latest-episode.hidden {
+            display: none;
+        }
 
-.section-title p {
-    margin: 0;
-    color: #666;
-    font-size: 17px;
-}
+        /* =========================
+           REDDIT STORYS
+           ========================= */
 
-/* FILTERS */
+        .stories-section h2 {
+            text-align: center;
+            margin: 0 0 10px;
+            font-size: 32px;
+        }
 
-.filters {
-    margin-bottom: 30px;
-}
+        .stories-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
 
-.filter-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 12px;
-}
+        /* =========================
+           FILTER
+           ========================= */
 
-.episode-select {
-    border: none;
-    background: white;
-    color: #333;
-    padding: 11px 42px 11px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    box-shadow: 0 2px 7px rgba(0,0,0,0.08);
-    appearance: auto;
-}
+        .filters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
 
-.episode-select:focus {
-    outline: 2px solid #222;
-    outline-offset: 2px;
-}
+        .episode-select {
+            border: none;
+            background: white;
+            color: #333;
+            padding: 11px 42px 11px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+            appearance: auto;
+        }
 
-.filter-button {
-    border: none;
-    background: white;
-    color: #333;
-    padding: 10px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    box-shadow: 0 2px 7px rgba(0,0,0,0.08);
-}
+        .episode-select:focus {
+            outline: 2px solid #222;
+        }
 
-.filter-button.active {
-    background: #222;
-    color: white;
-}
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
 
-/* STORY CARDS */
+        .category-button {
+            border: none;
+            background: white;
+            color: #333;
+            padding: 11px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+        }
 
-.stories {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
+        .category-button:hover {
+            background: #eee;
+        }
 
-.story-card {
-    background: white;
-    border-radius: 14px;
-    padding: 22px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-}
+        .category-button.active {
+            background: #111;
+            color: white;
+        }
 
-.story-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-    gap: 10px;
-}
+        /* =========================
+           STORY CARDS
+           ========================= */
 
-.episode {
-    font-size: 13px;
-    font-weight: bold;
-    color: #666;
-}
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
 
-.category {
-    font-size: 12px;
-    background: #eee;
-    padding: 5px 9px;
-    border-radius: 12px;
-}
+        .story-card {
+            background: white;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+        }
 
-.story-card h3 {
-    font-size: 19px;
-    line-height: 1.35;
-    margin: 0 0 18px;
-}
+        .story-card.hidden {
+            display: none;
+        }
 
-.story-card a {
-    margin-top: auto;
-    display: inline-block;
-    text-decoration: none;
-    font-weight: bold;
-    color: #222;
-}
+        .story-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
 
-.story-card a:hover {
-    text-decoration: underline;
-}
+        .story-tag {
+            display: inline-block;
+            background: #eee;
+            color: #555;
+            padding: 5px 9px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
 
-/* FOOTER */
+        .story-card h3 {
+            margin: 0 0 18px;
+            font-size: 19px;
+            line-height: 1.35;
+        }
 
-footer {
-    text-align: center;
-    padding: 30px 20px;
-    color: #777;
-    font-size: 14px;
-}
+        .story-link {
+            margin-top: auto;
+            color: #111;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-/* TABLET */
+        .story-link:hover {
+            text-decoration: underline;
+        }
 
-@media (max-width: 900px) {
-    .stories {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+        /* =========================
+           FOOTER
+           ========================= */
 
-/* MOBILE */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #777;
+            font-size: 14px;
+        }
 
-@media (max-width: 650px) {
+        /* =========================
+           TABLET
+           ========================= */
 
-    header h1 {
-        font-size: 30px;
-    }
+        @media (max-width: 900px) {
+            .stories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-    header p {
-        font-size: 16px;
-    }
+        /* =========================
+           MOBILE
+           ========================= */
 
-    .listen-box {
-        flex-direction: column;
-        gap: 22px;
-        text-align: center;
-    }
+        @media (max-width: 650px) {
 
-    .listen-content {
-        text-align: center;
-    }
+            header {
+                padding: 40px 20px 35px;
+            }
 
-    .platforms {
-        justify-content: center;
-    }
+            header h1 {
+                font-size: 32px;
+            }
 
-    .podcast-cover {
-        width: 170px;
-        height: 170px;
-    }
+            header p {
+                font-size: 16px;
+            }
 
-    .stories {
-        grid-template-columns: 1fr;
-    }
+            main {
+                padding: 30px 15px 50px;
+            }
 
-    .episode-select {
-        width: 100%;
-        max-width: 300px;
-    }
-}
-</style>
+            .listen-box {
+                flex-direction: column;
+                gap: 22px;
+                text-align: center;
+            }
+
+            .podcast-cover {
+                width: 170px;
+                height: 170px;
+            }
+
+            .platforms {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .latest-episode {
+                padding: 22px 18px;
+            }
+
+            .latest-episode h3 {
+                font-size: 19px;
+            }
+
+            .episode-select {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .category-filters {
+                width: 100%;
+            }
+
+            .category-button {
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header>
     <h1>Mit Verlaub – Best of Reddit</h1>
-    <p>Die wildesten Reddit Storys aus dem Podcast.</p>
+    <p>Die wildesten Reddit Storys aus dem Podcast</p>
 </header>
 
-<section class="listen-section">
+<main>
 
-    <div class="listen-box">
+    <!-- =========================
+         PODCAST
+         ========================= -->
 
-        <img
-            src="icons/cover-1-2.png"
-            alt="Mit Verlaub – Best of Reddit"
-            class="podcast-cover"
-        >
+    <section class="listen-section">
 
-        <div class="listen-content">
+        <h2>Hier findet Ihr alle Folgen:</h2>
 
-            <h2>Hier findet Ihr alle Folgen:</h2>
+        <div class="listen-box">
+
+            <img
+                src="icons/cover-1-2.png"
+                alt="Mit Verlaub – Best of Reddit"
+                class="podcast-cover"
+            >
 
             <div class="platforms">
 
@@ -329,32 +406,35 @@ footer {
                     class="platform"
                     href="https://open.spotify.com/show/1vw3NAgj6bdS60r13hYVzk"
                     target="_blank"
+                    rel="noopener"
                 >
                     <img
                         src="icons/Spotify_Primary_Logo_RGB_Green.png"
                         alt="Spotify"
                         class="platform-icon"
                     >
-                    <span>Spotify</span>
+                    Spotify
                 </a>
 
                 <a
                     class="platform"
                     href="https://podcasts.apple.com/us/podcast/mit-verlaub-best-of-reddit/id1725187632"
                     target="_blank"
+                    rel="noopener"
                 >
                     <img
                         src="icons/apple-icon.svg"
                         alt="Apple Podcasts"
                         class="platform-icon"
                     >
-                    <span>Apple Podcasts</span>
+                    Apple Podcasts
                 </a>
 
                 <a
                     class="platform"
                     href="https://plus.rtl.de/mit-verlaub-p_18073"
                     target="_blank"
+                    rel="noopener"
                 >
                     <img
                         src="icons/rtl-logo-png_seeklogo-446003.png"
@@ -367,301 +447,396 @@ footer {
                     class="platform"
                     href="https://www.deezer.com/de/show/1000171545"
                     target="_blank"
+                    rel="noopener"
                 >
                     <img
                         src="icons/icons8-deezer-100.png"
                         alt="Deezer"
                         class="platform-icon"
                     >
-                    <span>Deezer</span>
+                    Deezer
                 </a>
 
             </div>
         </div>
-    </div>
 
-</section>
 
-<main>
+        <!-- =========================
+             AUTOMATISCHE NEUE FOLGE
+             ========================= -->
 
-    <div class="section-title">
+        <div class="latest-episode hidden" id="latest-episode">
+
+            <div class="latest-badge">
+                🎙️ NEUE FOLGE IST DRAUẞEN!
+            </div>
+
+            <h3 id="latest-title">
+                Neue Folge
+            </h3>
+
+            <p>
+                👉 Hier reinhören!
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         REDDIT STORYS
+         ========================= -->
+
+    <section class="stories-section">
+
         <h2>Reddit Storys</h2>
-        <p>Die wildesten Geschichten aus den bisherigen Folgen</p>
-    </div>
 
-    <div class="filters">
+        <p class="stories-subtitle">
+            Die wildesten Geschichten aus den bisherigen Folgen
+        </p>
 
-        <div class="filter-row" id="episode-filters">
 
-            <select id="episode-select" class="episode-select">
-                <option value="all">Alle Folgen</option>
+        <!-- FILTER -->
+
+        <div class="filters">
+
+            <select
+                id="episode-select"
+                class="episode-select"
+            >
+                <option value="all">
+                    Alle Folgen
+                </option>
             </select>
 
+
+            <div class="category-filters" id="category-filters">
+
+                <button
+                    class="category-button active"
+                    data-category="all"
+                >
+                    Alle
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="AITA"
+                >
+                    Bin ich das Arschloch?
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="Beichtstuhl"
+                >
+                    Beichtstuhl
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="Beziehungen"
+                >
+                    Beziehungen
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="Kurioses"
+                >
+                    Kurioses
+                </button>
+
+            </div>
+
         </div>
 
-        <div class="filter-row" id="category-filters">
 
-            <button
-                class="filter-button active"
-                data-category="all"
-            >
-                Alle
-            </button>
+        <!-- =========================
+             STORYS
+             ========================= -->
 
-            <button
-                class="filter-button"
+        <div class="stories-grid">
+
+
+            <!-- TESTSTORYS -->
+
+            <article
+                class="story-card"
+                data-episode="83"
                 data-category="AITA"
             >
-                Bin ich das Arschloch?
-            </button>
+                <div class="story-meta">
+                    <span class="story-tag">
+                        Folge 83
+                    </span>
 
-            <button
-                class="filter-button"
+                    <span class="story-tag">
+                        Bin ich das Arschloch?
+                    </span>
+                </div>
+
+                <h3>
+                    Bin ich das Arschloch, weil ich meinem Freund verboten habe, in meinem Auto zu essen?
+                </h3>
+
+                <a
+                    class="story-link"
+                    href="https://www.reddit.com/r/AmItheAsshole/comments/1712lrl/aita_for_forbidding_my_boyfriend_from_eating_in/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Reddit-Story lesen →
+                </a>
+            </article>
+
+
+            <article
+                class="story-card"
+                data-episode="83"
                 data-category="Beichtstuhl"
             >
-                Beichtstuhl
-            </button>
+                <div class="story-meta">
+                    <span class="story-tag">
+                        Folge 83
+                    </span>
 
-            <button
-                class="filter-button"
+                    <span class="story-tag">
+                        Beichtstuhl
+                    </span>
+                </div>
+
+                <h3>
+                    Ich habe mir mit einem Handy-Ladegerät eine Gehirnerschütterung zugezogen
+                </h3>
+
+                <a
+                    class="story-link"
+                    href="https://www.reddit.com/r/TrueOffMyChest/comments/1u3k3ti/i_gave_myself_a_concussion_with_a_phone_charger/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Reddit-Story lesen →
+                </a>
+            </article>
+
+
+            <article
+                class="story-card"
+                data-episode="82"
                 data-category="Beziehungen"
             >
-                Beziehungen
-            </button>
+                <div class="story-meta">
+                    <span class="story-tag">
+                        Folge 82
+                    </span>
 
-            <button
-                class="filter-button"
+                    <span class="story-tag">
+                        Beziehungen
+                    </span>
+                </div>
+
+                <h3>
+                    Mein Vater möchte, dass ich eine Beziehung zu meiner Halb-Schwester aufbaue
+                </h3>
+
+                <a
+                    class="story-link"
+                    href="https://www.reddit.com/r/relationship_advice/comments/1t8bgq9/my_dad_44m_wants_me_19m_to_have_a_relationship/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Reddit-Story lesen →
+                </a>
+            </article>
+
+
+            <article
+                class="story-card"
+                data-episode="82"
+                data-category="Beziehungen"
+            >
+                <div class="story-meta">
+                    <span class="story-tag">
+                        Folge 82
+                    </span>
+
+                    <span class="story-tag">
+                        Beziehungen
+                    </span>
+                </div>
+
+                <h3>
+                    Ich möchte keinen Kontakt zu meiner Halb-Schwester
+                </h3>
+
+                <a
+                    class="story-link"
+                    href="https://www.reddit.com/r/relationship_advice/comments/v2kk84/i_dont_want_a_relationship_with_my_half_sister_but/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Reddit-Story lesen →
+                </a>
+            </article>
+
+
+            <article
+                class="story-card"
+                data-episode="81"
                 data-category="Kurioses"
             >
-                Kurioses
-            </button>
+                <div class="story-meta">
+                    <span class="story-tag">
+                        Folge 81
+                    </span>
+
+                    <span class="story-tag">
+                        Kurioses
+                    </span>
+                </div>
+
+                <h3>
+                    Mein Ladegerät hat mein Handy zerstört
+                </h3>
+
+                <a
+                    class="story-link"
+                    href="https://www.reddit.com/r/FASCAmazon/comments/cv8n1r/so_a_phone_charger_in_the_breakroom_fried_my_phone/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Reddit-Story lesen →
+                </a>
+            </article>
+
+
+            <article
+                class="story-card"
+                data-episode="81"
+                data-category="Kurioses"
+            >
+                <div class="story-meta">
+                    <span class="story-tag">
+                        Folge 81
+                    </span>
+
+                    <span class="story-tag">
+                        Kurioses
+                    </span>
+                </div>
+
+                <h3>
+                    Meine Katzen haben mein Handy-Ladegerät zerstört
+                </h3>
+
+                <a
+                    class="story-link"
+                    href="https://www.reddit.com/r/mildlyinfuriating/comments/uxvbqy"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Reddit-Story lesen →
+                </a>
+            </article>
+
+
+            <article
+                class="story-card"
+                data-episode="80"
+                data-category="Beziehungen"
+            >
+                <div class="story-meta">
+                    <span class="story-tag">
+                        Folge 80
+                    </span>
+
+                    <span class="story-tag">
+                        Beziehungen
+                    </span>
+                </div>
+
+                <h3>
+                    Ich fühle mich unter Druck gesetzt, Kontakt mit meiner Halb-Schwester zu haben
+                </h3>
+
+                <a
+                    class="story-link"
+                    href="https://www.reddit.com/r/relationship_advice/comments/1vg78l0/i_19f_feel_pressured_to_have_contact_with_my_half/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Reddit-Story lesen →
+                </a>
+            </article>
+
+
+            <article
+                class="story-card"
+                data-episode="80"
+                data-category="AITA"
+            >
+                <div class="story-meta">
+                    <span class="story-tag">
+                        Folge 80
+                    </span>
+
+                    <span class="story-tag">
+                        Bin ich das Arschloch?
+                    </span>
+                </div>
+
+                <h3>
+                    Bin ich das Arschloch, weil ich die Nutzung meines Ladegeräts verboten habe?
+                </h3>
+
+                <a
+                    class="story-link"
+                    href="https://www.reddit.com/r/AmItheDevil/comments/1wjbio7/its_the_tone/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Reddit-Story lesen →
+                </a>
+            </article>
+
+
+            <article
+                class="story-card"
+                data-episode="79"
+                data-category="Beichtstuhl"
+            >
+                <div class="story-meta">
+                    <span class="story-tag">
+                        Folge 79
+                    </span>
+
+                    <span class="story-tag">
+                        Beichtstuhl
+                    </span>
+                </div>
+
+                <h3>
+                    Die wildesten anonymen Geständnisse aus Reddit
+                </h3>
+
+                <a
+                    class="story-link"
+                    href="https://www.reddit.com/r/TrueOffMyChest/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Reddit-Story lesen →
+                </a>
+            </article>
 
         </div>
 
-    </div>
-
-    <div class="stories">
-
-        <!-- FOLGE 83 -->
-
-        <article
-            class="story-card"
-            data-episode="83"
-            data-category="AITA"
-        >
-            <div class="story-meta">
-                <span class="episode">Folge 83</span>
-                <span class="category">Bin ich das Arschloch?</span>
-            </div>
-
-            <h3>
-                Bin ich das Arschloch, weil ich meinem Freund verboten habe,
-                in meinem Auto zu essen?
-            </h3>
-
-            <a
-                href="https://www.reddit.com/r/AmItheAsshole/comments/1712lrl/aita_for_forbidding_my_boyfriend_from_eating_in/"
-                target="_blank"
-            >
-                Reddit Story lesen →
-            </a>
-        </article>
-
-
-        <article
-            class="story-card"
-            data-episode="83"
-            data-category="Beichtstuhl"
-        >
-            <div class="story-meta">
-                <span class="episode">Folge 83</span>
-                <span class="category">Beichtstuhl</span>
-            </div>
-
-            <h3>
-                Ich habe mir mit einem Handy-Ladegerät eine Gehirnerschütterung zugezogen
-            </h3>
-
-            <a
-                href="https://www.reddit.com/r/TrueOffMyChest/comments/1u3k3ti/i_gave_myself_a_concussion_with_a_phone_charger/"
-                target="_blank"
-            >
-                Reddit Story lesen →
-            </a>
-        </article>
-
-
-        <!-- FOLGE 82 -->
-
-        <article
-            class="story-card"
-            data-episode="82"
-            data-category="Beziehungen"
-        >
-            <div class="story-meta">
-                <span class="episode">Folge 82</span>
-                <span class="category">Beziehungen</span>
-            </div>
-
-            <h3>
-                Mein Vater möchte, dass ich eine Beziehung zu meiner Halb-Schwester aufbaue
-            </h3>
-
-            <a
-                href="https://www.reddit.com/r/relationship_advice/comments/1t8bgq9/my_dad_44m_wants_me_19m_to_have_a_relationship/"
-                target="_blank"
-            >
-                Reddit Story lesen →
-            </a>
-        </article>
-
-
-        <article
-            class="story-card"
-            data-episode="82"
-            data-category="Beziehungen"
-        >
-            <div class="story-meta">
-                <span class="episode">Folge 82</span>
-                <span class="category">Beziehungen</span>
-            </div>
-
-            <h3>
-                Ich möchte keinen Kontakt zu meiner Halb-Schwester
-            </h3>
-
-            <a
-                href="https://www.reddit.com/r/relationship_advice/comments/v2kk84/i_dont_want_a_relationship_with_my_half_sister_but/"
-                target="_blank"
-            >
-                Reddit Story lesen →
-            </a>
-        </article>
-
-
-        <!-- FOLGE 81 -->
-
-        <article
-            class="story-card"
-            data-episode="81"
-            data-category="Kurioses"
-        >
-            <div class="story-meta">
-                <span class="episode">Folge 81</span>
-                <span class="category">Kurioses</span>
-            </div>
-
-            <h3>
-                Mein Ladegerät hat mein Handy zerstört
-            </h3>
-
-            <a
-                href="https://www.reddit.com/r/FASCAmazon/comments/cv8n1r/so_a_phone_charger_in_the_breakroom_fried_my_phone/"
-                target="_blank"
-            >
-                Reddit Story lesen →
-            </a>
-        </article>
-
-
-        <article
-            class="story-card"
-            data-episode="81"
-            data-category="Kurioses"
-        >
-            <div class="story-meta">
-                <span class="episode">Folge 81</span>
-                <span class="category">Kurioses</span>
-            </div>
-
-            <h3>
-                Meine Katzen haben mein Handy-Ladegerät zerstört
-            </h3>
-
-            <a
-                href="https://www.reddit.com/r/mildlyinfuriating/comments/uxvbqy"
-                target="_blank"
-            >
-                Reddit Story lesen →
-            </a>
-        </article>
-
-
-        <!-- FOLGE 80 -->
-
-        <article
-            class="story-card"
-            data-episode="80"
-            data-category="Beziehungen"
-        >
-            <div class="story-meta">
-                <span class="episode">Folge 80</span>
-                <span class="category">Beziehungen</span>
-            </div>
-
-            <h3>
-                Ich fühle mich unter Druck gesetzt, Kontakt mit meiner Halb-Schwester zu haben
-            </h3>
-
-            <a
-                href="https://www.reddit.com/r/relationship_advice/comments/1vg78l0/i_19f_feel_pressured_to_have_contact_with_my_half/"
-                target="_blank"
-            >
-                Reddit Story lesen →
-            </a>
-        </article>
-
-
-        <article
-            class="story-card"
-            data-episode="80"
-            data-category="AITA"
-        >
-            <div class="story-meta">
-                <span class="episode">Folge 80</span>
-                <span class="category">Bin ich das Arschloch?</span>
-            </div>
-
-            <h3>
-                Bin ich das Arschloch, weil ich die Nutzung meines Ladegeräts verboten habe?
-            </h3>
-
-            <a
-                href="https://www.reddit.com/r/AmItheDevil/comments/1wjbio7/its_the_tone/"
-                target="_blank"
-            >
-                Reddit Story lesen →
-            </a>
-        </article>
-
-
-        <!-- FOLGE 79 -->
-
-        <article
-            class="story-card"
-            data-episode="79"
-            data-category="Beichtstuhl"
-        >
-            <div class="story-meta">
-                <span class="episode">Folge 79</span>
-                <span class="category">Beichtstuhl</span>
-            </div>
-
-            <h3>
-                Die wildesten anonymen Geständnisse aus Reddit
-            </h3>
-
-            <a
-                href="https://www.reddit.com/r/TrueOffMyChest/"
-                target="_blank"
-            >
-                Reddit Story lesen →
-            </a>
-        </article>
-
-    </div>
+    </section>
 
 </main>
+
 
 <footer>
     Mit Verlaub – Best of Reddit
@@ -670,188 +845,245 @@ footer {
 
 <script>
 
-let selectedEpisode = "all";
-let selectedCategory = "all";
+    /* ==========================================
+       RSS-FEED – NEUESTE FOLGE
+       ========================================== */
 
-const episodeFilters =
-    document.getElementById("episode-filters");
+    const RSS_URL =
+        "https://anchor.fm/s/1018d4e2c/podcast/rss";
 
-const categoryFilters =
-    document.getElementById("category-filters");
+    const latestEpisodeBox =
+        document.getElementById("latest-episode");
 
-const episodeSelect =
-    document.getElementById("episode-select");
-
-const categoryButtons =
-    document.querySelectorAll(
-        "#category-filters .filter-button"
-    );
-
-const stories =
-    document.querySelectorAll(".story-card");
+    const latestEpisodeTitle =
+        document.getElementById("latest-title");
 
 
-/* EPISODEN AUTOMATISCH AUS DEN STORYS ERMITTELN */
+    async function loadLatestEpisode() {
 
-const episodes = new Set();
+        try {
 
-stories.forEach(story => {
+            /*
+             * RSS direkt laden.
+             */
 
-    const episode = story.dataset.episode;
+            const response = await fetch(RSS_URL);
 
-    if (episode) {
-        episodes.add(episode);
+            if (!response.ok) {
+                throw new Error("RSS konnte nicht geladen werden.");
+            }
+
+            const rssText = await response.text();
+
+            const parser = new DOMParser();
+
+            const xml =
+                parser.parseFromString(
+                    rssText,
+                    "text/xml"
+                );
+
+
+            /*
+             * Der erste <item> ist normalerweise
+             * die neueste Podcast-Folge.
+             */
+
+            const firstItem =
+                xml.querySelector("item");
+
+
+            if (!firstItem) {
+                throw new Error("Keine Episode gefunden.");
+            }
+
+
+            const titleElement =
+                firstItem.querySelector("title");
+
+
+            if (!titleElement) {
+                throw new Error("Kein Titel gefunden.");
+            }
+
+
+            const title =
+                titleElement.textContent.trim();
+
+
+            if (title) {
+
+                latestEpisodeTitle.textContent =
+                    title;
+
+                latestEpisodeBox.classList.remove(
+                    "hidden"
+                );
+
+            }
+
+        } catch (error) {
+
+            /*
+             * Falls der RSS-Feed nicht direkt
+             * aus dem Browser geladen werden darf,
+             * bleibt der Hinweis einfach verborgen.
+             */
+
+            console.log(
+                "RSS-Feed konnte nicht geladen werden:",
+                error
+            );
+
+        }
+
     }
 
-});
+
+    loadLatestEpisode();
 
 
-const sortedEpisodes =
-    Array.from(episodes).sort(
-        (a, b) => Number(b) - Number(a)
-    );
+    /* ==========================================
+       EPISODEN-FILTER DYNAMISCH ERSTELLEN
+       ========================================== */
+
+    const stories =
+        document.querySelectorAll(".story-card");
+
+    const episodeSelect =
+        document.getElementById("episode-select");
+
+    const categoryFilters =
+        document.getElementById("category-filters");
+
+    const categoryButtons =
+        document.querySelectorAll(".category-button");
 
 
-sortedEpisodes.forEach(episode => {
+    const episodes =
+        new Set();
 
-    const option =
-        document.createElement("option");
-
-    option.value = episode;
-
-    option.textContent =
-        "Folge " + episode;
-
-    episodeSelect.appendChild(option);
-
-});
-
-
-/* STORYS FILTERN */
-
-function updateStories() {
 
     stories.forEach(story => {
 
-        const episodeMatch =
-            selectedEpisode === "all" ||
-            story.dataset.episode === selectedEpisode;
+        const episode =
+            story.dataset.episode;
 
-        const categoryMatch =
-            selectedCategory === "all" ||
-            story.dataset.category === selectedCategory;
-
-        story.style.display =
-            episodeMatch && categoryMatch
-                ? "flex"
-                : "none";
+        if (episode) {
+            episodes.add(episode);
+        }
 
     });
 
-}
+
+    /*
+     * Folgen absteigend sortieren:
+     * 83, 82, 81, 80 ...
+     */
+
+    [...episodes]
+        .sort((a, b) => Number(b) - Number(a))
+        .forEach(episode => {
+
+            const option =
+                document.createElement("option");
+
+            option.value = episode;
+
+            option.textContent =
+                "Folge " + episode;
+
+            episodeSelect.appendChild(option);
+
+        });
 
 
-/* FILTER ANZEIGEN */
-
-function showEpisodeFilter() {
-
-    episodeFilters.style.display = "flex";
-    categoryFilters.style.display = "none";
-
-}
+    let selectedEpisode = "all";
+    let selectedCategory = "all";
 
 
-function showCategoryFilter() {
+    function updateStories() {
 
-    episodeFilters.style.display = "none";
-    categoryFilters.style.display = "flex";
+        stories.forEach(story => {
 
-}
+            const episodeMatch =
+                selectedEpisode === "all" ||
+                story.dataset.episode === selectedEpisode;
 
-
-function showBothFilters() {
-
-    episodeFilters.style.display = "flex";
-    categoryFilters.style.display = "flex";
-
-}
+            const categoryMatch =
+                selectedCategory === "all" ||
+                story.dataset.category === selectedCategory;
 
 
-/* EPISODEN-FILTER */
+            if (episodeMatch && categoryMatch) {
 
-episodeSelect.addEventListener(
-    "change",
-    () => {
+                story.classList.remove("hidden");
 
-        selectedEpisode =
-            episodeSelect.value;
+            } else {
 
-        selectedCategory = "all";
+                story.classList.add("hidden");
 
+            }
 
-        categoryButtons.forEach(
-            button =>
-                button.classList.remove("active")
-        );
+        });
 
 
-        categoryButtons[0]
-            .classList.add("active");
+        /*
+         * Wenn eine bestimmte Folge ausgewählt wird,
+         * verschwinden die Kategorien.
+         */
 
+        if (selectedEpisode !== "all") {
 
-        if (selectedEpisode === "all") {
-
-            showBothFilters();
+            categoryFilters.style.display = "none";
 
         } else {
 
-            showEpisodeFilter();
+            categoryFilters.style.display = "flex";
 
         }
 
 
-        updateStories();
+        /*
+         * Wenn eine Kategorie ausgewählt wird,
+         * verschwindet der Folgenfilter.
+         */
+
+        if (selectedCategory !== "all") {
+
+            episodeSelect.style.display = "none";
+
+        } else {
+
+            episodeSelect.style.display = "block";
+
+        }
 
     }
-);
 
 
-/* KATEGORIE-FILTER */
+    episodeSelect.addEventListener(
+        "change",
+        function () {
 
-categoryButtons.forEach(button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            categoryButtons.forEach(
-                btn =>
-                    btn.classList.remove("active")
-            );
-
-
-            button.classList.add("active");
-
+            selectedEpisode =
+                this.value;
 
             selectedCategory =
-                button.dataset.category;
+                "all";
 
 
-            selectedEpisode = "all";
+            categoryButtons.forEach(button => {
 
+                button.classList.remove("active");
 
-            episodeSelect.value = "all";
+                if (
+                    button.dataset.category === "all"
+                ) {
+                    button.classList.add("active");
+                }
 
-
-            if (selectedCategory === "all") {
-
-                showBothFilters();
-
-            } else {
-
-                showCategoryFilter();
-
-            }
+            });
 
 
             updateStories();
@@ -859,17 +1091,45 @@ categoryButtons.forEach(button => {
         }
     );
 
-});
+
+    categoryButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                selectedCategory =
+                    this.dataset.category;
+
+                selectedEpisode =
+                    "all";
 
 
-/* STARTZUSTAND */
+                episodeSelect.value =
+                    "all";
 
-showBothFilters();
 
-updateStories();
+                categoryButtons.forEach(btn => {
+
+                    btn.classList.remove("active");
+
+                });
+
+
+                this.classList.add("active");
+
+
+                updateStories();
+
+            }
+        );
+
+    });
+
+
+    updateStories();
 
 </script>
 
 </body>
 </html>
-```
