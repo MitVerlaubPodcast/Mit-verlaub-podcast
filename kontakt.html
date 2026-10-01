@@ -372,7 +372,29 @@
     <form
         class="contact-form"
         id="contact-form"
+        action="https://api.web3forms.com/submit"
+        method="POST"
     >
+
+        <!-- WEB3FORMS -->
+
+        <input
+            type="hidden"
+            name="access_key"
+            value="8132e09f-596e-4554-8e1a-03d98a1391a0"
+        >
+
+        <input
+            type="hidden"
+            name="subject"
+            value="Neue Nachricht über Mit Verlaub"
+        >
+
+        <input
+            type="hidden"
+            name="from_name"
+            value="Mit Verlaub – Best of Reddit"
+        >
 
 
         <!-- ART DER NACHRICHT -->
@@ -410,7 +432,7 @@
         <div class="form-group">
 
             <label for="name">
-                Name 
+                Name
                 <span class="required">
                     (optional)
                 </span>
@@ -420,7 +442,7 @@
                 type="text"
                 id="name"
                 name="name"
-                placeholder="z. B. RedditUser123"
+                placeholder="z. B. Patrick"
             >
 
         </div>
@@ -517,34 +539,6 @@
     Mit Verlaub – Best of Reddit
 
 </footer>
-
-
-<script>
-
-    /*
-     * Das Formular ist momentan nur optisch vorbereitet.
-     *
-     * Im nächsten Schritt verbinden wir es mit einem
-     * Formular-Dienst, damit die Nachrichten tatsächlich
-     * bei euch ankommen.
-     */
-
-    document
-        .getElementById("contact-form")
-        .addEventListener(
-            "submit",
-            function(event) {
-
-                event.preventDefault();
-
-                alert(
-                    "Das Kontaktformular ist noch nicht verbunden."
-                );
-
-            }
-        );
-
-</script>
 
 
 </body>
