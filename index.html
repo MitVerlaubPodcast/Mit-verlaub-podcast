@@ -672,9 +672,9 @@
 
         addTextElement(card, "span", "story-category", story.category || "Sonstiges");
         addTextElement(card, "h3", "", story.title || "Ohne Titel");
-        addTextElement(card, "p", "", story.episode_number == null
+        addTextElement(card, "p", "", story.description || (story.episode_number == null
             ? "Eine Story aus dem Podcast Mit Verlaub – Best of Reddit."
-            : "Eine Story aus Folge " + story.episode_number + " von Mit Verlaub – Best of Reddit.");
+            : "Eine Story aus Folge " + story.episode_number + " von Mit Verlaub – Best of Reddit."));
 
         const link = document.createElement("a");
         link.className = "story-link";
@@ -761,7 +761,7 @@
         try {
             const { data, error } = await db
                 .from("website_stories")
-                .select("id,title,reddit_url,category,language,episode_number,published_at")
+                .select("id,title,description,reddit_url,category,language,episode_number,published_at")
                 .order("episode_number", { ascending: false, nullsFirst: false })
                 .order("published_at", { ascending: false });
 
