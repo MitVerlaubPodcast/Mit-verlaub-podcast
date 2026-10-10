@@ -695,17 +695,27 @@
             button.className = "category-button" + (selectedCategory === category ? " active" : "");
             button.dataset.category = category;
             button.textContent = category === "all" ? "Alle" : category;
-            button.addEventListener("click", () => {
-                selectedCategory = category;
-                selectedEpisode = "all";
-                episodeSelect.value = "all";
-                categoryFilters.style.display = "flex";
-                renderCategoryButtons();
-                updateStories();
-            });
             categoryFilters.appendChild(button);
         });
+        categoryFilters.style.display = "flex";
     }
+
+    // Event-Delegation: Kategorie-Buttons bleiben sichtbar und werden nicht beim Klick ersetzt.
+    categoryFilters.addEventListener("click", event => {
+        const button = event.target.closest(".category-button");
+        if (!button) return;
+
+        selectedCategory = button.dataset.category;
+        selectedEpisode = "all";
+        episodeSelect.value = "all";
+        categoryFilters.style.display = "flex";
+
+        categoryFilters.querySelectorAll(".category-button").forEach(item => {
+            item.classList.toggle("active", item.dataset.category === selectedCategory);
+        });
+
+        updateStories();
+    });
 
     function renderEpisodeOptions() {
         episodeSelect.replaceChildren();
