@@ -470,7 +470,7 @@
             >
 
             <div
-                class="latest-episode hidden"
+                class="latest-episode"
                 id="latest-episode"
             >
 
@@ -777,6 +777,29 @@
         }
     }
 
+    async function loadLatestEpisode() {
+        const titleElement = document.getElementById("latest-title");
+        const latestEpisode = document.getElementById("latest-episode");
+        // Die Plattform-Links bleiben sichtbar, auch falls der RSS-Titel nicht geladen werden kann.
+        latestEpisode.classList.remove("hidden");
+        titleElement.textContent = "Die neueste Folge von Mit Verlaub – Best of Reddit";
+
+        try {
+            const rssUrl = "https://anchor.fm/s/1018d4e2c/podcast/rss";
+            const apiUrl = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rssUrl);
+            const response = await fetch(apiUrl);
+            if (!response.ok) throw new Error("RSS-Dienst antwortet nicht");
+            const feed = await response.json();
+            const latest = feed && feed.items && feed.items[0];
+            if (feed.status === "ok" && latest && latest.title) {
+                titleElement.textContent = latest.title;
+            }
+        } catch (error) {
+            console.warn("Titel der neuesten Folge konnte nicht geladen werden:", error);
+        }
+    }
+
+    loadLatestEpisode();
     loadStories();
 </script>
 
