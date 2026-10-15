@@ -25,20 +25,17 @@
 
         header {
             background: #111;
-            color: white;
             text-align: center;
-            padding: 50px 20px 45px;
+            padding: 22px 20px;
         }
 
-        header h1 {
-            margin: 0 0 10px;
-            font-size: 40px;
-        }
-
-        header p {
-            margin: 0;
-            color: #ccc;
-            font-size: 17px;
+        .header-logo {
+            display: block;
+            width: min(520px, 82vw);
+            max-height: 155px;
+            height: auto;
+            object-fit: contain;
+            margin: 0 auto;
         }
 
         /* =========================
@@ -440,15 +437,11 @@
 
 
 <header>
-
-    <h1>
-        Mit Verlaub – Best of Reddit
-    </h1>
-
-    <p>
-        Die wildesten Reddit Storys aus dem Podcast
-    </p>
-
+    <img
+        src="icons/best%20of%20reddit%20stories.png"
+        alt="Best of Reddit Stories"
+        class="header-logo"
+    >
 </header>
 
 
