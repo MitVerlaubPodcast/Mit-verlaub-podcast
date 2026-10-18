@@ -67,7 +67,7 @@ async function sendMessage(text){
   const data=await response.json();
   if(!response.ok)throw new Error(data.error||'Bitte versuch es gleich nochmal.');
   pending.textContent=data.reply;
- }catch(e){pending.textContent='Ich bin kurz gedanklich durchs offene Fenster gefallen. Versuch es bitte nochmal.'}
+ }catch(e){pending.textContent=e instanceof Error&&e.message?e.message:'Die Anfrage ist fehlgeschlagen. Bitte versuch es nochmal.'}
  finally{sendButton.disabled=false;sendButton.textContent='Senden';promptBox.focus();messages.scrollTop=messages.scrollHeight}
 }
 form.addEventListener('submit',e=>{e.preventDefault();sendMessage(promptBox.value)});
