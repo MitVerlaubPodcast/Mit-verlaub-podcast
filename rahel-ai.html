@@ -35,32 +35,23 @@ footer{text-align:center;color:#777;font-size:13px;padding:0 16px 30px}
 </style>
 </head>
 <body>
-<header><a href="index.html">MIT VERLAUB – BEST OF REDDIT</a></header>
+<header><a href="index.html">Rahel AI</a></header>
 <main>
 <section class="intro">
-<div style="font-size:42px" aria-hidden="true">💨🤖</div>
-<h1>Rahel AI</h1>
-<p>Stell Rahel eine Frage. Sie antwortet garantiert – nur leider verwandelt sie jede Frage in eine Metapher darüber, dass Rahel nach Pupsen riecht.</p>
-<div class="disclaimer">Satire-Chatbot: Das ist eine KI-Parodie und nicht die echte Rahel.</div>
+<h1>Stelle Rahel eine Frage.</h1>
 </section>
 <section class="chat" aria-label="Chat mit Rahel AI">
-<div class="chat-head"><strong>💨 Rahel AI ist online</strong><small>Empfindliche Nase, grenzenlose Metaphern.</small></div>
+<div class="chat-head"><strong>Rahel AI</strong></div>
 <div class="messages" id="messages" aria-live="polite">
-<div class="message bot">Na endlich. Frag mich was. Ich bin bereit wie ein Raumduft, der gerade seinen Job gekündigt hat. 💨</div>
-</div>
-<div class="suggestions">
-<button type="button">Was soll ich heute essen?</button>
-<button type="button">Wie werde ich reich?</button>
-<button type="button">Was ist Liebe?</button>
+<div class="message bot">Na, was liegt dir auf dem Herzen?</div>
 </div>
 <form class="composer" id="chat-form">
-<textarea id="prompt" maxlength="1000" placeholder="Frag Rahel AI etwas …" aria-label="Deine Frage" required></textarea>
+<textarea id="prompt" maxlength="1000" placeholder="Deine Nachricht …" aria-label="Deine Frage" required></textarea>
 <button class="send" id="send" type="submit">Senden</button>
 </form>
 </section>
-<div class="back"><a href="index.html">← Zurück zu Mit Verlaub</a></div>
+<div class="back"><a href="index.html">← Zurück</a></div>
 </main>
-<footer>Mit Verlaub – Best of Reddit · Rahel AI, nicht ganz ernst gemeint.</footer>
 <script>
 const messages=document.getElementById('messages');
 const form=document.getElementById('chat-form');
@@ -69,18 +60,17 @@ const sendButton=document.getElementById('send');
 function addMessage(text,who){const el=document.createElement('div');el.className='message '+who;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;return el}
 async function sendMessage(text){
  const question=(text||'').trim();if(!question||sendButton.disabled)return;
- addMessage(question,'user');promptBox.value='';sendButton.disabled=true;sendButton.textContent='Rahelt …';
- const pending=addMessage('Rahel sucht eine passende Duftmetapher …','bot');
+ addMessage(question,'user');promptBox.value='';sendButton.disabled=true;sendButton.textContent='Senden …';
+ const pending=addMessage('Rahel tippt …','bot');
  try{
   const response=await fetch('https://aabwjvqfelqjclfqxhhs.supabase.co/functions/v1/rahel-ai',{method:'POST',headers:{'Content-Type':'application/json','apikey':'sb_publishable_gQfgbLPNQimxEX4pGDRicQ_f_8MCcrq'},body:JSON.stringify({message:question})});
   const data=await response.json();
-  if(!response.ok)throw new Error(data.error||'Die Duftwolke hat gerade Funkloch.');
+  if(!response.ok)throw new Error(data.error||'Bitte versuch es gleich nochmal.');
   pending.textContent=data.reply;
- }catch(e){pending.textContent='Uff, sogar meine Metaphern haben gerade einen Kurzschluss im Lüftungsschacht. Versuch es bitte gleich nochmal. ('+e.message+')'}
+ }catch(e){pending.textContent='Ich bin kurz gedanklich durchs offene Fenster gefallen. Versuch es bitte nochmal.'}
  finally{sendButton.disabled=false;sendButton.textContent='Senden';promptBox.focus();messages.scrollTop=messages.scrollHeight}
 }
 form.addEventListener('submit',e=>{e.preventDefault();sendMessage(promptBox.value)});
-document.querySelectorAll('.suggestions button').forEach(b=>b.addEventListener('click',()=>sendMessage(b.textContent)));
 promptBox.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();form.requestSubmit()}});
 </script>
 </body>
