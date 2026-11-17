@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100b1d">
+<title>Mit Verlaub – Neue Website (Entwurf)</title>
+<style>
+:root{--bg:#100b1d;--panel:#1b1430;--panel2:#241a3b;--line:#3a2a55;--text:#fff;--muted:#c2b5d8;--pink:#f02f91;--purple:#8b35f5;--green:#1ed760}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#351052 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}a{color:inherit;text-decoration:none}.topbar{position:sticky;top:0;z-index:5;background:#100b1deF;border-bottom:1px solid #302143;backdrop-filter:blur(14px)}.nav{max-width:1240px;margin:auto;min-height:70px;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:900;font-size:25px;line-height:.85;font-style:italic;letter-spacing:-1.5px}.brand span{display:block;color:#f35aa9}.navlinks{display:flex;gap:26px;color:#e5d9f5;font-size:14px}.navlinks a:hover{color:#f35aa9}.navcta{background:linear-gradient(110deg,var(--purple),var(--pink));padding:11px 17px;border-radius:22px;font-weight:700;font-size:13px}.wrap{max-width:1240px;margin:auto;padding:28px 24px 70px}.hero{min-height:320px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:20px;padding:36px 28px 44px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:#8b35f533;filter:blur(20px);right:9%;top:-80px}.eyebrow{color:#f58ac2;font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:12px}.hero h1{font-size:clamp(44px,6vw,76px);line-height:.98;margin:14px 0 12px;letter-spacing:-3px}.hero h1 em{font-style:normal;color:#f348a0}.hero p{color:var(--muted);font-size:17px;line-height:1.6;max-width:530px}.hero-art{position:relative;z-index:1;text-align:center}.hero-art img{max-width:100%;max-height:290px;object-fit:contain;filter:drop-shadow(0 18px 40px #0008)}.reddit-orb{position:absolute;right:12%;top:4%;font-size:84px;opacity:.22}.section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:26px 0 16px}.section-title h2{font-size:24px;margin:0;letter-spacing:-.6px}.section-title p{margin:5px 0 0;color:var(--muted);font-size:13px}.grid-feature{display:grid;grid-template-columns:1.35fr 1fr;gap:18px}.panel{background:linear-gradient(145deg,#211833,#171126);border:1px solid var(--line);border-radius:20px;padding:23px;box-shadow:0 15px 35px #0002}.latest{display:grid;grid-template-columns:145px 1fr;gap:20px;align-items:center}.cover{width:145px;height:145px;object-fit:cover;border-radius:16px;box-shadow:0 8px 25px #0007}.pill{display:inline-block;background:#7025d6;color:white;padding:7px 12px;border-radius:30px;font-size:11px;font-weight:800;letter-spacing:.5px}.latest h3{font-size:22px;line-height:1.25;margin:12px 0 8px}.latest p{color:var(--muted);font-size:13px;line-height:1.5;margin:0 0 15px}.play{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(100deg,var(--purple),var(--pink));padding:11px 18px;border-radius:30px;font-size:13px;font-weight:800}.vote h3{margin:3px 0 9px;font-size:19px}.vote p{color:var(--muted);font-size:13px}.vote-options{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}.vote-options button{background:#302344;border:1px solid #594276;color:white;border-radius:30px;padding:10px 15px;cursor:pointer}.vote-options button:hover{background:#58328a}.vote small{color:#a994c5}.quicklinks{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:18px 0 30px}.quick{display:flex;align-items:center;gap:13px;background:linear-gradient(140deg,#271d3d,#1a1329);border:1px solid var(--line);border-radius:16px;padding:17px;min-height:82px;transition:.2s}.quick:hover{transform:translateY(-3px);border-color:#a64cf5}.quick b{display:block;font-size:13px}.quick span{font-size:25px}.quick small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.episodes-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:30px 0 15px}.episodes-head h2{margin:0;font-size:24px}.count{color:var(--muted);font-size:12px}.episode-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.episode-tools input,.episode-tools select{background:#1d1630;color:white;border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:14px}.episode-tools input{flex:1;min-width:200px}.episode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.episode{background:linear-gradient(145deg,#211833,#171126);border:1px solid var(--line);border-radius:16px;padding:17px;min-width:0}.episode-top{display:flex;justify-content:space-between;gap:12px;color:#bba8d4;font-size:11px}.episode h3{font-size:16px;line-height:1.35;margin:13px 0 9px}.episode p{font-size:12px;line-height:1.55;color:var(--muted);margin:0 0 15px}.episode a{display:inline-block;color:#f18bc2;font-weight:700;font-size:12px}.loading,.error{color:var(--muted);padding:20px}.newsletter{margin:32px 0;background:linear-gradient(100deg,#8126bf,#45168a 70%,#a82072);border-radius:19px;padding:25px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}.newsletter h2{margin:0 0 6px;font-size:21px}.newsletter p{margin:0;color:#f0dff9;font-size:12px}.newsletter a{background:white;color:#42166f;padding:12px 17px;border-radius:30px;font-size:12px;font-weight:800;white-space:nowrap}.footer{border-top:1px solid #302143;padding:26px 10px;color:#a997bf;display:flex;justify-content:space-between;gap:20px;font-size:12px}.notice{font-size:11px;color:#9e8bb7;text-align:center;margin:10px 0 0}
+@media(max-width:850px){.navlinks{gap:13px}.grid-feature{grid-template-columns:1fr}.quicklinks{grid-template-columns:repeat(2,1fr)}.episode-grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero-art{display:none}}
+@media(max-width:580px){.nav{padding:12px 16px}.navlinks{display:none}.wrap{padding:18px 14px 45px}.hero{padding:34px 8px 28px;min-height:auto}.hero h1{font-size:49px}.latest{grid-template-columns:82px 1fr;gap:13px}.cover{width:82px;height:82px}.latest h3{font-size:17px}.panel{padding:16px}.quicklinks{gap:9px}.quick{padding:12px;min-height:74px}.quick span{font-size:21px}.episode-grid{grid-template-columns:1fr}.newsletter{align-items:flex-start;flex-direction:column}.footer{flex-direction:column}.episodes-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topbar"><nav class="nav"><a class="brand" href="v2.html">Mit<br>Verlaub<span>— Best of Reddit</span></a><div class="navlinks"><a href="#start">Startseite</a><a href="#folgen">Folgen</a><a href="index.html">Storys</a><a href="rahel-ai.html">Rahel AI</a><a href="kontakt.html">Kontakt</a></div><a class="navcta" href="#folgen">Folgen entdecken</a></nav></div>
+<main class="wrap" id="start">
+<section class="hero"><div><div class="eyebrow">Der Podcast für wilde Geschichten</div><h1>Mit Verlaub.<br><em>Best of Reddit.</em></h1><p>Die absurdesten, ehrlichsten und unglaublichsten Reddit-Storys – besprochen mit einer ordentlichen Portion Meinung.</p><a class="play" href="https://open.spotify.com/show/1vw3NAgj6bdS60r13hYVzk" target="_blank" rel="noopener">▶ Jetzt Podcast hören</a></div><div class="hero-art"><div class="reddit-orb">👾</div><img src="icons/Unbenannt%20-%2018.%20Oktober%202026%20um%2014.33.11.jpeg" alt="Mit Verlaub Podcast"></div></section>
+<div class="section-title"><div><h2>Frisch auf die Ohren</h2><p>Die neueste Folge – direkt zum Reinhören.</p></div></div>
+<section class="grid-feature"><article class="panel latest"><img class="cover" src="icons/cover-1-2.png" alt="Podcast-Cover"><div><span class="pill">🎙 NEUESTE FOLGE</span><h3 id="latest-title">Neueste Folge wird geladen …</h3><p id="latest-date">Mit Verlaub – Best of Reddit</p><a class="play" id="latest-link" href="https://open.spotify.com/show/1vw3NAgj6bdS60r13hYVzk" target="_blank" rel="noopener">▶ Auf Spotify hören</a></div></article>
+<aside class="panel vote"><h3>💬 Wer ist das Arschloch?</h3><p>Du hast eine Meinung? Dann entscheide mit!</p><div class="vote-options"><button type="button" title="Voting wird später ergänzt">OP</button><button type="button" title="Voting wird später ergänzt">Partner</button><button type="button" title="Voting wird später ergänzt">Beide</button><button type="button" title="Voting wird später ergänzt">Niemand</button></div><small>Community-Voting – kommt als nächster Ausbauschritt.</small></aside></section>
+<section class="quicklinks"><a class="quick" href="#folgen"><span>🎲</span><div><b>Überrascht mich!</b><small>Eine Folge zufällig entdecken</small></div></a><a class="quick" href="#folgen"><span>🏆</span><div><b>Reddit-Urteil-Quiz</b><small>Wie würdest du entscheiden?</small></div></a><a class="quick" href="kontakt.html"><span>💌</span><div><b>Eigene Story einreichen</b><small>Erzähl uns deine Geschichte</small></div></a><a class="quick" href="rahel-ai.html"><span>🤖</span><div><b>Frag Rahel!</b><small>Deine Podcast-Begleiterin</small></div></a></section>
+<section id="folgen"><div class="episodes-head"><div><h2>Alle Folgen</h2><div class="count" id="episode-count">Episoden werden geladen …</div></div><span class="pill">AUS DEM RSS-FEED</span></div><div class="episode-tools"><input id="episode-search" type="search" placeholder="Folge oder Thema suchen …" aria-label="Folgen durchsuchen"><select id="episode-sort" aria-label="Sortierung"><option value="newest">Neueste zuerst</option><option value="oldest">Älteste zuerst</option></select></div><div class="episode-grid" id="episode-grid"><p class="loading">Podcast-Folgen werden geladen …</p></div></section>
+<section class="newsletter"><div><h2>Keine Folge mehr verpassen!</h2><p>Folge uns auf deinen liebsten Podcast-Plattformen und bleib auf dem Laufenden.</p></div><a href="https://open.spotify.com/show/1vw3NAgj6bdS60r13hYVzk" target="_blank" rel="noopener">Podcast abonnieren ↗</a></section>
+<footer class="footer"><strong>Mit Verlaub – Best of Reddit</strong><div><a href="kontakt.html">Kontakt</a> · <a href="index.html">Bisherige Website</a> · <a href="rahel-ai.html">Rahel AI</a></div></footer>
+<p class="notice">Vorschau / Entwicklungsseite – die bisherige Startseite bleibt unverändert.</p>
+</main>
+<script>
+const RSS_URL = "https://anchor.fm/s/1018d4e2c/podcast/rss";
+const RSS_PROXY = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(RSS_URL);
+let episodes = [];
+const grid = document.getElementById("episode-grid");
+function cleanText(value=""){const el=document.createElement("div");el.innerHTML=value;return (el.textContent||el.innerText||"").replace(/\s+/g," ").trim();}
+function renderEpisodes(){
+ const query=document.getElementById("episode-search").value.trim().toLocaleLowerCase("de");
+ const direction=document.getElementById("episode-sort").value;
+ const filtered=episodes.filter(ep=>(ep.title+" "+ep.description).toLocaleLowerCase("de").includes(query));
+ filtered.sort((a,b)=>direction==="newest"?new Date(b.pubDate)-new Date(a.pubDate):new Date(a.pubDate)-new Date(b.pubDate));
+ grid.replaceChildren();
+ document.getElementById("episode-count").textContent=filtered.length+" von "+episodes.length+" Folgen";
+ if(!filtered.length){const p=document.createElement("p");p.className="loading";p.textContent="Keine passenden Folgen gefunden.";grid.append(p);return;}
+ filtered.forEach(ep=>{
+  const card=document.createElement("article");card.className="episode";
+  const top=document.createElement("div");top.className="episode-top";
+  const date=document.createElement("span");date.textContent=new Date(ep.pubDate).toLocaleDateString("de-DE",{day:"2-digit",month:"long",year:"numeric"});
+  const duration=document.createElement("span");duration.textContent=ep.duration||"Podcastfolge";top.append(date,duration);
+  const title=document.createElement("h3");title.textContent=ep.title;
+  const desc=document.createElement("p");desc.textContent=cleanText(ep.description).slice(0,190)+(cleanText(ep.description).length>190?" …":"");
+  const link=document.createElement("a");link.href=ep.link||"https://open.spotify.com/show/1vw3NAgj6bdS60r13hYVzk";link.target="_blank";link.rel="noopener";link.textContent="Folge anhören ↗";
+  card.append(top,title,desc,link);grid.append(card);
+ });
+}
+async function loadFeed(){
+ try{
+  const response=await fetch(RSS_PROXY);if(!response.ok)throw new Error("Feed nicht erreichbar");
+  const data=await response.json();if(data.status!=="ok"||!Array.isArray(data.items))throw new Error("RSS-Daten fehlen");
+  episodes=data.items;
+  if(episodes.length){
+   document.getElementById("latest-title").textContent=episodes[0].title;
+   document.getElementById("latest-date").textContent="Veröffentlicht am "+new Date(episodes[0].pubDate).toLocaleDateString("de-DE");
+   document.getElementById("latest-link").href=episodes[0].link||"https://open.spotify.com/show/1vw3NAgj6bdS60r13hYVzk";
+  }
+  renderEpisodes();
+ }catch(error){grid.innerHTML='<p class="error">Der Folgenfeed konnte gerade nicht geladen werden. Du kannst den Podcast direkt auf Spotify öffnen.</p>';document.getElementById("episode-count").textContent="RSS-Feed momentan nicht verfügbar";}
+}
+document.getElementById("episode-search").addEventListener("input",renderEpisodes);
+document.getElementById("episode-sort").addEventListener("change",renderEpisodes);
+loadFeed();
+</script>
+</body>
+</html>
