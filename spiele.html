@@ -40,7 +40,7 @@ const names=['DAS PODCASTSTUDIO','DIE REDDIT-WELT','PRINCESS CHARMING VILLA'];
 const descriptions=[
 'Spring über Mikrofone, Mischpulte und Kabel. Am Ende wartet der Computer!',
 'Vorsicht vor heißen Takes! Nutze „Bin ich das Arschloch?“-Posts und Upvotes als Plattformen.',
-'Geschafft bis zur Villa! Spring über Pool, Liegen und Blumenbeete bis zum großen Finale.'
+'Willkommen in der PRINCESS CHARMING VILLA! Spring über Pool, Liegen und Blumenbeete – am Ende wartet dein Kuss.'
 ];
 const palettes=[
 {sky:'#30234c',top:'#f3b6d7',far:'#51406e',ground:'#332443',accent:'#f35aa9'},
@@ -88,9 +88,16 @@ function drawHazards(){world.hazards.forEach(h=>{const x=h[0]-camera;if(x+h[2]<0
 function drawItems(){world.items.forEach((it,i)=>{if(it[2])return;const x=it[0]-camera;if(x<-20||x>W+20)return;ctx.save();ctx.translate(x,it[1]+Math.sin(performance.now()/220+i)*4);ctx.fillStyle='#ffe36e';ctx.beginPath();ctx.arc(0,0,12,0,Math.PI*2);ctx.fill();text('★',-8,6,16,'#9b5a22');ctx.restore();});}
 function drawPlayer(){const x=player.x-camera,y=player.y;ctx.save();ctx.translate(x,y);
 ctx.fillStyle='#0004';ctx.beginPath();ctx.ellipse(18,54,20,5,0,0,Math.PI*2);ctx.fill();
-round(5,20,27,30,9,chosen==='Patrick'?'#356fba':'#a83d8a');round(7,0,24,25,10,'#f1c5a4');round(4,-4,30,12,7,chosen==='Patrick'?'#3d2b24':'#5b3152');round(2,7,32,8,4,chosen==='Patrick'?'#3d2b24':'#5b3152');
+round(5,20,27,30,9,chosen==='Patrick'?'#356fba':'#a83d8a');round(7,0,24,25,10,'#f1c5a4');
+if(chosen==='Patrick'){
+// Braunes Haar mit sichtbarem Mittelscheitel
+round(5,-5,26,12,7,'#493024');ctx.fillStyle='#493024';ctx.beginPath();ctx.moveTo(17,-3);ctx.lineTo(19,8);ctx.lineTo(21,-3);ctx.fill();round(3,5,7,8,4,'#493024');round(28,5,7,8,4,'#493024');round(12,16,15,6,3,'#68412e');
+}else{
+// Blonde Haare und längere Strähnen an den Seiten
+round(4,-7,29,15,8,'#e5c15e');round(3,3,8,25,5,'#e5c15e');round(29,3,8,25,5,'#e5c15e');round(8,-2,24,7,5,'#f0d27a');
+}
 ctx.fillStyle='#21182a';ctx.beginPath();ctx.arc(15,11,2,0,Math.PI*2);ctx.arc(25,11,2,0,Math.PI*2);ctx.fill();
-if(chosen==='Patrick'){round(12,16,15,6,3,'#68412e');}else{ctx.strokeStyle='#40243d';ctx.lineWidth=2;ctx.beginPath();ctx.arc(20,16,5,.2,2.8);ctx.stroke();}
+if(chosen==='Rahel'){ctx.strokeStyle='#40243d';ctx.lineWidth=2;ctx.beginPath();ctx.arc(20,16,5,.2,2.8);ctx.stroke();}
 round(4,47,13,8,4,'#f5d5b5');round(22,47,13,8,4,'#f5d5b5');
 ctx.restore();}
 function drawHUD(){round(20,18,230,47,12,'#160e25bb');text(names[level],35,48,16,'#fff');}
@@ -104,10 +111,17 @@ for(const h of world.hazards){if(hit({x:player.x+5,y:player.y+7,w:player.w-10,h:
 world.items.forEach((it,i)=>{if(!it[2]&&hit({x:player.x,y:player.y,w:player.w,h:player.h},{x:it[0]-10,y:it[1]-10,w:20,h:20})){it[2]=true;score+=10;scoreLabel.textContent='★ '+score;}});
 if(player.y>H+100){resetPlayer();score=Math.max(0,score-1);scoreLabel.textContent='★ '+score;}
 camera=Math.max(0,Math.min(world.length-W,player.x-W*.32));
-if(player.x>=goal){running=false;if(level===2){finished=true;showMessage('ABENTEUER GESCHAFFT!','Du hast es durch alle drei Welten geschafft. Mit Verlaub – was für ein Finale!','Nochmal spielen');}else{showMessage('LEVEL GESCHAFFT!',descriptions[level+1],'Weiter zum nächsten Level');}}
+if(player.x>=goal){running=false;if(level===2){finished=true;showMessage('PRINCESS CHARMING – DAS FINALE!','Du hast die Princess erreicht und ihr einen Kuss gegeben! Drei Level voller Abenteuer – Mit Verlaub, das war ein würdiges Finale.','Nochmal spielen');}else{showMessage('LEVEL GESCHAFFT!',descriptions[level+1],'Weiter zum nächsten Level');}}
 }
 function showMessage(k,t,b){document.getElementById('message-kicker').textContent=k;document.getElementById('message-title').textContent=t;document.getElementById('message-text').textContent=b;document.getElementById('message-button').textContent=finished?'Nochmal spielen':'Weiter';messageOverlay.hidden=false;}
-function draw(){drawBackground();world.platforms.forEach(drawPlatform);drawHazards();drawItems();drawPlayer();drawHUD();const gx=goal-camera;if(gx>-30&&gx<W+50){round(gx,315,80,150,12,level===0?'#30213f':level===1?'#ff7139':'#d84e98');if(level===0){round(gx+13,335,54,70,7,'#111');text('PC',gx+25,426,18,'#fff');}else if(level===1){text('→',gx+23,395,43,'#fff');text('VILLA',gx+9,450,13,'#fff');}else{text('🏆',gx+15,385,37,'#fff');text('FINALE',gx+7,450,13,'#fff');}}}
+function draw(){drawBackground();world.platforms.forEach(drawPlatform);drawHazards();drawItems();drawPlayer();drawHUD();const gx=goal-camera;if(gx>-30&&gx<W+50){round(gx,315,80,150,12,level===0?'#30213f':level===1?'#ff7139':'#d84e98');if(level===0){round(gx+13,335,54,70,7,'#111');text('PC',gx+25,426,18,'#fff');}else if(level===1){text('→',gx+23,395,43,'#fff');text('VILLA',gx+9,450,13,'#fff');}else{
+// Princess Charming: Die Princess ist das Ziel des letzten Levels
+round(gx-25,270,132,27,8,'#fff0f7');text('PRINCESS CHARMING',gx-20,289,13,'#8f2867');
+ctx.fillStyle='#f1c5a4';ctx.beginPath();ctx.arc(gx+38,335,17,0,Math.PI*2);ctx.fill();
+round(gx+20,319,36,13,7,'#e7b85d');round(gx+21,338,34,34,9,'#d94d91');round(gx+19,320,7,38,4,'#e7b85d');round(gx+48,320,7,38,4,'#e7b85d');
+ctx.fillStyle='#f5d56b';ctx.beginPath();ctx.moveTo(gx+24,318);ctx.lineTo(gx+28,302);ctx.lineTo(gx+37,313);ctx.lineTo(gx+45,301);ctx.lineTo(gx+51,318);ctx.closePath();ctx.fill();
+text('💋',gx+24,391,25,'#fff');text('KUSS = ZIEL',gx+1,450,13,'#fff');
+}}}
 function loop(now){if(!running)return;const dt=Math.min((now-last)/1000,.035);last=now;update(dt);draw();if(running)requestAnimationFrame(loop);}
 drawBackground();text('MIT VERLAUB RUN!',350,250,38,'#fff');
 })();
