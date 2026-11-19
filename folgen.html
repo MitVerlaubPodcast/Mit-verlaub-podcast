@@ -27,13 +27,30 @@ const APPLE="https://podcasts.apple.com/us/podcast/mit-verlaub-best-of-reddit/id
 const RTL="https://plus.rtl.de/mit-verlaub-p_18073";
 const DEEZER="https://www.deezer.com/de/show/1000171545";
 const grid=document.getElementById("episodes"),count=document.getElementById("count"),search=document.getElementById("search");
-let episodes=[];
+let episodes=[];let feedImage="";
 function safeUrl(value){try{const u=new URL(value);return ["http:","https:"].includes(u.protocol)?u.href:"#"}catch{return "#"}}
+function episodeImage(item){
+ const candidates=[
+  item.thumbnail,
+  item.image,
+  item.itunes&&item.itunes.image,
+  item["itunes:image"]&&item["itunes:image"].href,
+  item["media:thumbnail"]&&item["media:thumbnail"].url,
+  item.enclosure&&item.enclosure.type&&item.enclosure.type.startsWith("image/")?item.enclosure.link:"",
+  item.enclosure&&item.enclosure.type&&item.enclosure.type.startsWith("image/")?item.enclosure.url:"",
+ ];
+ for(const value of candidates){const url=typeof value==="string"?value:(value&& (value.href||value.url));if(url&&safeUrl(url)!=="#")return safeUrl(url)}
+ const html=item.content||item.description||"";
+ const doc=new DOMParser().parseFromString(html,"text/html");
+ const embedded=doc.querySelector("img")?.getAttribute("src");
+ return safeUrl(embedded||feedImage||"");
+}
 function makeEpisode(item,index){
  const card=document.createElement("article");card.className="episode";
  const image=document.createElement("img");image.className="art";image.loading="lazy";image.alt="Cover: "+(item.title||"Mit Verlaub");
- image.src=safeUrl(item.thumbnail||(item.enclosure&&item.enclosure.link)||"");
- image.onerror=()=>{image.style.display="none"};
+ const cover=episodeImage(item);
+ if(cover!=="#"){image.src=cover;image.onerror=()=>{if(feedImage&&image.src!==feedImage)image.src=feedImage;else image.style.display="none"}}
+ else image.style.display="none";
  card.appendChild(image);
  const body=document.createElement("div");body.className="body";
  const date=item.pubDate?new Date(item.pubDate):null;
@@ -61,7 +78,7 @@ async function load(){
   const url="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(RSS);
   const response=await fetch(url);if(!response.ok)throw new Error("RSS-Anfrage fehlgeschlagen");
   const feed=await response.json();if(feed.status!=="ok"||!Array.isArray(feed.items))throw new Error(feed.message||"RSS-Feed nicht lesbar");
-  episodes=feed.items;render();
+  episodes=feed.items;feedImage=(feed.image&&(feed.image.url||feed.image))||"";render();
  }catch(error){console.error(error);count.textContent="";grid.innerHTML='<div class="error">Die Folgen konnten gerade nicht geladen werden. Bitte versuche es später erneut.</div>'}
 }
 load();
