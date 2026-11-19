@@ -45,7 +45,9 @@ function episodeImage(item){
  const embedded=doc.querySelector("img")?.getAttribute("src");
  return safeUrl(embedded||feedImage||"");
 }
-function episodeNumber(item,index){const explicit=Number(item.itunes_episode||item.episode||item.episode_number);if(Number.isFinite(explicit)&&explicit>0)return explicit;const title=item.title||"";const match=title.match(/(?:folge|episode|ep)\s*#?\s*(\d+)/i);return match?Number(match[1]):episodes.length-index;}\nfunction episodeType(item,index){return episodeNumber(item,index)>=REDDIT_START_EPISODE?"reddit":"classic";}\nfunction makeEpisode(item,index){
+function episodeNumber(item,index){const explicit=Number(item.itunes_episode||item.episode||item.episode_number);if(Number.isFinite(explicit)&&explicit>0)return explicit;const title=item.title||"";const match=title.match(/(?:folge|episode|ep)\s*#?\s*(\d+)/i);return match?Number(match[1]):episodes.length-index;}
+function episodeType(item,index){return episodeNumber(item,index)>=REDDIT_START_EPISODE?"reddit":"classic";}
+function makeEpisode(item,index){
  const card=document.createElement("article");card.className="episode";
  const image=document.createElement("img");image.className="art";image.loading="lazy";image.alt="Cover: "+(item.title||"Mit Verlaub");
  const cover=episodeImage(item);
@@ -72,7 +74,8 @@ function render(){
  grid.replaceChildren();if(!rows.length){const p=document.createElement("div");p.className="error";p.textContent="Keine passende Folge gefunden.";grid.appendChild(p);return}
  rows.forEach((item)=>grid.appendChild(makeEpisode(item,episodes.indexOf(item))));
 }
-search.addEventListener("input",render);\ndocument.querySelectorAll(".filter-btn").forEach(button=>button.addEventListener("click",()=>{activeFilter=button.dataset.filter;document.querySelectorAll(".filter-btn").forEach(b=>b.classList.toggle("active",b===button));render();}));
+search.addEventListener("input",render);
+document.querySelectorAll(".filter-btn").forEach(button=>button.addEventListener("click",()=>{activeFilter=button.dataset.filter;document.querySelectorAll(".filter-btn").forEach(b=>b.classList.toggle("active",b===button));render();}));
 async function load(){
  try{
   const url="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(RSS)+"&count=100";
