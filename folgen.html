@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100b1d">
+<title>Alle Folgen – Mit Verlaub</title>
+<style>
+:root{--bg:#100b1d;--panel:#1b1430;--line:#3a2a55;--text:#fff;--muted:#c2b5d8;--pink:#f02f91;--purple:#8b35f5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#351052 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}a{color:inherit;text-decoration:none}.topbar{position:sticky;top:0;z-index:5;background:rgba(9,5,17,.88);border-bottom:1px solid #302143;backdrop-filter:blur(14px)}.nav{max-width:1240px;margin:auto;min-height:70px;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:900;font-size:25px;line-height:.85;font-style:italic;letter-spacing:-1.5px}.brand span{display:block;color:#f35aa9}.navlinks{display:flex;gap:26px;color:#e5d9f5;font-size:14px}.navlinks a:hover,.navlinks a.active{color:#f35aa9}.navcta{background:linear-gradient(110deg,var(--purple),var(--pink));padding:11px 17px;border-radius:22px;font-weight:700;font-size:13px}.wrap{max-width:1240px;margin:auto;padding:48px 24px 70px}.intro{text-align:center;margin:10px auto 32px;max-width:700px}.eyebrow{color:#f58ac2;font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:12px}.intro h1{font-size:clamp(38px,6vw,64px);letter-spacing:-2px;margin:12px 0}.intro h1 em{font-style:normal;color:#f348a0}.intro p{color:var(--muted);line-height:1.6}.tools{display:flex;justify-content:space-between;align-items:center;gap:15px;margin:25px 0 18px;color:var(--muted);font-size:13px}.tools input{width:min(360px,100%);background:#1d1630;color:white;border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:14px}.episode-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.episode{overflow:hidden;background:linear-gradient(145deg,#211833,#171126);border:1px solid var(--line);border-radius:18px;display:flex;flex-direction:column;min-width:0;box-shadow:0 12px 30px #0002}.art{width:100%;aspect-ratio:1/1;object-fit:cover;background:#281d3b}.body{padding:17px;display:flex;flex-direction:column;flex:1}.meta{color:#c4afd9;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}.episode h2{font-size:17px;line-height:1.35;margin:10px 0}.desc{color:var(--muted);font-size:12px;line-height:1.55;margin:0 0 16px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;flex:1}.listen{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}.listen a{display:inline-flex;align-items:center;justify-content:center;padding:9px 11px;border-radius:9px;background:#302344;border:1px solid #503967;font-size:11px;font-weight:800;transition:.2s}.listen a:hover{border-color:#d65aa8;background:#47265c}.listen a.primary{background:linear-gradient(100deg,var(--purple),var(--pink));border:0}.loading,.error{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted);background:#1b1430;border:1px solid var(--line);border-radius:15px}.footer{border-top:1px solid #302143;padding:26px 10px;color:#a997bf;display:flex;justify-content:space-between;gap:20px;font-size:12px;margin-top:42px}
+@media(max-width:850px){.episode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.navlinks{gap:13px}}
+@media(max-width:580px){.nav{padding:12px 16px}.navlinks{display:none}.wrap{padding:34px 14px 45px}.episode-grid{grid-template-columns:1fr}.tools{align-items:stretch;flex-direction:column}.tools input{width:100%}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topbar"><nav class="nav"><a class="brand" href="v2.html">Mit<br>Verlaub<span>— Best of Reddit</span></a><div class="navlinks"><a href="v2.html">Startseite</a><a class="active" href="folgen.html">Folgen</a><a href="index.html">Storys</a><a href="rahel-ai.html">Rahel AI</a><a href="kontakt.html">Kontakt</a></div><a class="navcta" href="v2.html">Zur Startseite</a></nav></div>
+<main class="wrap">
+<header class="intro"><div class="eyebrow">Mit Verlaub – Best of Reddit</div><h1>Alle <em>Folgen.</em></h1><p>Hier findest du alle Episoden unseres Podcasts – mit Cover, Titel und Links zu deinen liebsten Podcast-Plattformen.</p></header>
+<div class="tools"><span id="count">Folgen werden geladen …</span><input id="search" type="search" placeholder="Folge oder Titel suchen …" aria-label="Folgen durchsuchen"></div>
+<section class="episode-grid" id="episodes" aria-live="polite"><div class="loading">Der RSS-Feed wird geladen …</div></section>
+<footer class="footer"><strong>Mit Verlaub – Best of Reddit</strong><div><a href="v2.html">Startseite</a> · <a href="kontakt.html">Kontakt</a> · <a href="rahel-ai.html">Rahel AI</a></div></footer>
+</main>
+<script>
+const RSS="https://anchor.fm/s/1018d4e2c/podcast/rss";
+const SPOTIFY="https://open.spotify.com/show/1vw3NAgj6bdS60r13hYVzk";
+const APPLE="https://podcasts.apple.com/us/podcast/mit-verlaub-best-of-reddit/id1725187632";
+const RTL="https://plus.rtl.de/mit-verlaub-p_18073";
+const DEEZER="https://www.deezer.com/de/show/1000171545";
+const grid=document.getElementById("episodes"),count=document.getElementById("count"),search=document.getElementById("search");
+let episodes=[];
+function safeUrl(value){try{const u=new URL(value);return ["http:","https:"].includes(u.protocol)?u.href:"#"}catch{return "#"}}
+function makeEpisode(item,index){
+ const card=document.createElement("article");card.className="episode";
+ const image=document.createElement("img");image.className="art";image.loading="lazy";image.alt="Cover: "+(item.title||"Mit Verlaub");
+ image.src=safeUrl(item.thumbnail||(item.enclosure&&item.enclosure.link)||"");
+ image.onerror=()=>{image.style.display="none"};
+ card.appendChild(image);
+ const body=document.createElement("div");body.className="body";
+ const date=item.pubDate?new Date(item.pubDate):null;
+ const dateText=date&&!Number.isNaN(date.getTime())?date.toLocaleDateString("de-DE",{day:"2-digit",month:"long",year:"numeric"}):"";
+ const meta=document.createElement("div");meta.className="meta";meta.textContent=(episodes.length-index)+". Folge"+(dateText?" · "+dateText:"");body.appendChild(meta);
+ const title=document.createElement("h2");title.textContent=item.title||"Mit Verlaub – Folge";body.appendChild(title);
+ const desc=document.createElement("p");desc.className="desc";const raw=item.description||item.content||"";desc.innerHTML=raw;desc.textContent=desc.textContent.replace(/\s+/g," ").trim();body.appendChild(desc);
+ const links=document.createElement("div");links.className="listen";
+ const add=(label,url,primary=false)=>{const a=document.createElement("a");a.href=safeUrl(url);a.target="_blank";a.rel="noopener noreferrer";a.textContent=label;if(primary)a.className="primary";links.appendChild(a)};
+ add("Spotify",SPOTIFY);
+ add("Apple Podcasts",APPLE);
+ add("RTL+",RTL);
+ add("Deezer",DEEZER);
+ body.appendChild(links);card.appendChild(body);return card;
+}
+function render(){
+ const term=search.value.trim().toLocaleLowerCase("de");const rows=episodes.filter(e=>(e.title||"").toLocaleLowerCase("de").includes(term)||(e.description||"").toLocaleLowerCase("de").includes(term));
+ count.textContent=rows.length+" von "+episodes.length+" Folgen";
+ grid.replaceChildren();if(!rows.length){const p=document.createElement("div");p.className="error";p.textContent="Keine passende Folge gefunden.";grid.appendChild(p);return}
+ rows.forEach((item)=>grid.appendChild(makeEpisode(item,episodes.indexOf(item))));
+}
+search.addEventListener("input",render);
+async function load(){
+ try{
+  const url="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(RSS);
+  const response=await fetch(url);if(!response.ok)throw new Error("RSS-Anfrage fehlgeschlagen");
+  const feed=await response.json();if(feed.status!=="ok"||!Array.isArray(feed.items))throw new Error(feed.message||"RSS-Feed nicht lesbar");
+  episodes=feed.items;render();
+ }catch(error){console.error(error);count.textContent="";grid.innerHTML='<div class="error">Die Folgen konnten gerade nicht geladen werden. Bitte versuche es später erneut.</div>'}
+}
+load();
+</script>
+</body>
+</html>
