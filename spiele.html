@@ -35,12 +35,12 @@
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),W=960,H=540;
 const startOverlay=document.getElementById('start-overlay'),messageOverlay=document.getElementById('message-overlay');
 const levelLabel=document.getElementById('level-label'),scoreLabel=document.getElementById('score-label');
-let chosen='Patrick',level=0,score=0,camera=0,running=false,finished=false,keys={},player,world=[],decor=[],goal=0,last=0;
+let chosen='Patrick',level=0,score=0,camera=0,running=false,finished=false,keys={},player,world=[],decor=[],goal=0,last=0,kissMouths=[];
 const names=['DAS PODCASTSTUDIO','DIE REDDIT-WELT','PRINCESS CHARMING VILLA'];
 const descriptions=[
 'Spring über Mikrofone, Mischpulte und Kabel. Am Ende wartet der Computer!',
 'Vorsicht vor heißen Takes! Nutze „Bin ich das Arschloch?“-Posts und Upvotes als Plattformen.',
-'Willkommen in der PRINCESS CHARMING VILLA! Spring über Pool, Liegen und Blumenbeete – am Ende wartet dein Kuss.'
+'WICHTIGE REGEL: In diesem Level darfst du ausschließlich die Princess küssen – keine andere Person! Riesige Kussmünder mit flatternden Zungen verfolgen dich. Weiche ihnen aus und erreiche die Princess.'
 ];
 const palettes=[
 {sky:'#30234c',top:'#f3b6d7',far:'#51406e',ground:'#332443',accent:'#f35aa9'},
@@ -52,7 +52,7 @@ const levels=[
 {length:4700,platforms:[[0,465,480,75,'floor'],[540,405,320,86,'story','Bin ich das Arschloch, weil ich meine Toilette nie spüle?'],[930,350,190,22,'up'],[1190,390,350,86,'story','Hilfe! Meine Freundin liebt Pfefferminz mehr als ihren Bruder?!?!'],[1610,325,180,22,'comment'],[1850,385,370,86,'story','Mein Vater ist ein Pferd. Ich mag aber kein Heu – was frühstücken wir jetzt??'],[2290,315,190,22,'up'],[2540,375,410,92,'story','Bin ich das Arschloch, weil ich meiner besten Freundin nicht sagen kann, dass ich verstehe, dass niemand sie mag und ich auch nur aus finanziellen Gründen so tue, als wären wir Freunde?'],[3020,335,190,22,'comment'],[3290,395,190,22,'up'],[3570,330,190,22,'comment'],[3860,405,180,22,'up'],[4140,445,560,95,'floor']],hazards:[[480,488,50,18],[880,488,45,18],[1150,488,38,18],[1570,488,42,18],[1810,488,38,18],[2250,488,42,18],[2500,488,38,18],[2980,488,42,18],[3250,488,38,18],[3530,488,42,18],[3820,488,38,18]],items:[[600,350],[990,295],[1250,335],[1680,270],[1910,330],[2340,260],[2600,320],[3070,280],[3340,340],[3620,275],[3910,350]]},
 {length:4500,platforms:[[0,465,520,75,'floor'],[590,420,180,22,'flower'],[860,365,180,22,'lounger'],[1140,420,180,22,'flower'],[1430,350,180,22,'lounger'],[1730,300,190,22,'flower'],[2030,410,190,22,'lounger'],[2330,350,180,22,'flower'],[2630,290,180,22,'lounger'],[2930,400,190,22,'flower'],[3230,340,180,22,'lounger'],[3520,290,190,22,'flower'],[3820,410,190,22,'lounger'],[4120,445,380,95,'floor']],hazards:[[520,488,48,18],[800,488,45,18],[1360,488,45,18],[1960,488,48,18],[2560,488,45,18],[3160,488,45,18],[3760,488,45,18]],items:[[650,365],[920,310],[1490,295],[1790,245],[2390,295],[2690,235],[3290,285],[3590,235]]}
 ];
-function setupLevel(n){level=n;camera=0;world=levels[n];world.items.forEach(it=>{it[2]=false;});goal=world.length-210;player={x:55,y:365,vx:0,vy:0,w:36,h:54,onGround:false,dead:false};running=true;finished=false;levelLabel.textContent='LEVEL '+(n+1)+' / 3';scoreLabel.textContent='★ '+score;messageOverlay.hidden=true;}
+function setupLevel(n){level=n;camera=0;world=levels[n];world.items.forEach(it=>{it[2]=false;});goal=world.length-210;player={x:55,y:365,vx:0,vy:0,w:36,h:54,onGround:false,dead:false};kissMouths=n===2?[{x:620,y:350,speed:105,phase:0},{x:1480,y:285,speed:125,phase:2.1},{x:2580,y:365,speed:145,phase:4.2}]:[];running=true;finished=false;levelLabel.textContent='LEVEL '+(n+1)+' / 3';scoreLabel.textContent='★ '+score;messageOverlay.hidden=true;}
 function start(){score=0;setupLevel(0);startOverlay.hidden=true;last=performance.now();requestAnimationFrame(loop);}
 document.querySelectorAll('.character').forEach(b=>b.addEventListener('click',()=>{chosen=b.dataset.character;document.querySelectorAll('.character').forEach(x=>x.classList.toggle('selected',x===b));}));
 document.getElementById('start-button').addEventListener('click',start);
@@ -86,6 +86,7 @@ if(type==='flower'){text('🌸',X+w/2-11,y+17,18,'#fff');}
 if(type==='lounger'){round(X+20,y-12,w-40,12,5,'#f8d5e7');rect(X+30,y-1,5,13,'#77506f');rect(X+w-35,y-1,5,13,'#77506f');}
 }
 function drawHazards(){world.hazards.forEach(h=>{const x=h[0]-camera;if(x+h[2]<0||x>W)return;ctx.fillStyle='#e94c79';ctx.beginPath();ctx.moveTo(x,h[1]+h[3]);ctx.lineTo(x+h[2]/2,h[1]-8);ctx.lineTo(x+h[2],h[1]+h[3]);ctx.closePath();ctx.fill();});}
+function drawKissMouths(){kissMouths.forEach((m,i)=>{const x=m.x-camera,y=m.y+Math.sin(performance.now()/170+m.phase)*10;if(x<-100||x>W+100)return;ctx.save();ctx.translate(x,y);ctx.shadowColor='#7b164b';ctx.shadowBlur=18;ctx.fillStyle='#ef4c83';ctx.beginPath();ctx.ellipse(0,0,48,34,0,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;ctx.fillStyle='#5b102f';ctx.beginPath();ctx.ellipse(0,1,34,23,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff';ctx.fillRect(-24,-13,48,7);ctx.fillRect(-20,8,40,6);ctx.fillStyle='#f45b91';ctx.beginPath();ctx.moveTo(-10,14);ctx.bezierCurveTo(-18,38+Math.sin(performance.now()/100+m.phase)*8,18,42+Math.cos(performance.now()/130+m.phase)*9,12,17);ctx.quadraticCurveTo(3,8,-10,14);ctx.fill();ctx.fillStyle='#ff9dbb';ctx.beginPath();ctx.ellipse(1,32+Math.sin(performance.now()/100+m.phase)*7,8,4,0,0,Math.PI*2);ctx.fill();ctx.restore();});}
 function drawItems(){world.items.forEach((it,i)=>{if(it[2])return;const x=it[0]-camera;if(x<-20||x>W+20)return;ctx.save();ctx.translate(x,it[1]+Math.sin(performance.now()/220+i)*4);ctx.fillStyle='#ffe36e';ctx.beginPath();ctx.arc(0,0,12,0,Math.PI*2);ctx.fill();text('★',-8,6,16,'#9b5a22');ctx.restore();});}
 function drawPlayer(){const x=player.x-camera,y=player.y;ctx.save();ctx.translate(x,y);
 ctx.fillStyle='#0004';ctx.beginPath();ctx.ellipse(18,54,20,5,0,0,Math.PI*2);ctx.fill();
@@ -102,20 +103,21 @@ if(chosen==='Rahel'){ctx.strokeStyle='#40243d';ctx.lineWidth=2;ctx.beginPath();c
 round(4,47,13,8,4,'#f5d5b5');round(22,47,13,8,4,'#f5d5b5');
 ctx.restore();}
 function drawHUD(){round(20,18,230,47,12,'#160e25bb');text(names[level],35,48,16,'#fff');}
-function resetPlayer(){player.x=55;player.y=365;player.vx=0;player.vy=0;camera=0;}
+function resetPlayer(){player.x=55;player.y=365;player.vx=0;player.vy=0;camera=0;if(level===2)kissMouths.forEach((m,i)=>{m.x=[620,1480,2580][i];});}
 function hit(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;}
 function update(dt){if(!running)return;const speed=270,prevY=player.y;player.vx=0;if(keys.arrowleft||keys.a)player.vx=-speed;if(keys.arrowright||keys.d)player.vx=speed;
 if((keys.jump||keys.arrowup||keys.w)&&player.onGround){player.vy=-650;player.onGround=false;}
 player.x+=player.vx*dt;player.x=Math.max(0,Math.min(world.length-player.w,player.x));player.vy+=1500*dt;player.y+=player.vy*dt;player.onGround=false;
 for(const p of world.platforms){const [x,y,w,h]=p;if(player.x+player.w>x&&player.x<x+w&&prevY+player.h<=y+8&&player.y+player.h>=y&&player.vy>=0){player.y=y-player.h;player.vy=0;player.onGround=true;}}
 for(const h of world.hazards){if(hit({x:player.x+5,y:player.y+7,w:player.w-10,h:player.h-8},{x:h[0],y:h[1]-5,w:h[2],h:h[3]+5})){resetPlayer();score=Math.max(0,score-1);}}
+for(const m of kissMouths){const targetX=player.x+105;const dx=targetX-m.x;m.x+=Math.sign(dx)*Math.min(Math.abs(dx),m.speed*dt);m.y+=(player.y+12-m.y)*Math.min(1,dt*.7);if(hit({x:player.x+3,y:player.y+5,w:player.w-6,h:player.h-7},{x:m.x-39,y:m.y-27,w:78,h:65})){resetPlayer();score=Math.max(0,score-1);scoreLabel.textContent='★ '+score;break;}}
 world.items.forEach((it,i)=>{if(!it[2]&&hit({x:player.x,y:player.y,w:player.w,h:player.h},{x:it[0]-10,y:it[1]-10,w:20,h:20})){it[2]=true;score+=10;scoreLabel.textContent='★ '+score;}});
 if(player.y>H+100){resetPlayer();score=Math.max(0,score-1);scoreLabel.textContent='★ '+score;}
 camera=Math.max(0,Math.min(world.length-W,player.x-W*.32));
 if(player.x>=goal){running=false;if(level===2){finished=true;showMessage('PRINCESS CHARMING – DAS FINALE!','Du hast die Princess erreicht und ihr einen Kuss gegeben! Drei Level voller Abenteuer – Mit Verlaub, das war ein würdiges Finale.','Nochmal spielen');}else{showMessage('LEVEL GESCHAFFT!',descriptions[level+1],'Weiter zum nächsten Level');}}
 }
 function showMessage(k,t,b){document.getElementById('message-kicker').textContent=k;document.getElementById('message-title').textContent=t;document.getElementById('message-text').textContent=b;document.getElementById('message-button').textContent=finished?'Nochmal spielen':'Weiter';messageOverlay.hidden=false;}
-function draw(){drawBackground();world.platforms.forEach(drawPlatform);drawHazards();drawItems();drawPlayer();drawHUD();const gx=goal-camera;if(gx>-30&&gx<W+50){round(gx,315,80,150,12,level===0?'#30213f':level===1?'#ff7139':'#d84e98');if(level===0){round(gx+13,335,54,70,7,'#111');text('PC',gx+25,426,18,'#fff');}else if(level===1){text('→',gx+23,395,43,'#fff');text('VILLA',gx+9,450,13,'#fff');}else{
+function draw(){drawBackground();world.platforms.forEach(drawPlatform);drawHazards();drawKissMouths();drawItems();drawPlayer();drawHUD();const gx=goal-camera;if(gx>-30&&gx<W+50){round(gx,315,80,150,12,level===0?'#30213f':level===1?'#ff7139':'#d84e98');if(level===0){round(gx+13,335,54,70,7,'#111');text('PC',gx+25,426,18,'#fff');}else if(level===1){text('→',gx+23,395,43,'#fff');text('VILLA',gx+9,450,13,'#fff');}else{
 // Princess Charming: Die Princess ist das Ziel des letzten Levels
 round(gx-25,270,132,27,8,'#fff0f7');text('PRINCESS CHARMING',gx-20,289,13,'#8f2867');
 ctx.fillStyle='#f1c5a4';ctx.beginPath();ctx.arc(gx+38,335,17,0,Math.PI*2);ctx.fill();
