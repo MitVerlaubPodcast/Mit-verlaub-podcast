@@ -55,7 +55,7 @@ function episodeNumber(item,index){const explicit=Number(item.itunes_episode||it
  const body=document.createElement("div");body.className="body";
  const date=item.pubDate?new Date(item.pubDate):null;
  const dateText=date&&!Number.isNaN(date.getTime())?date.toLocaleDateString("de-DE",{day:"2-digit",month:"long",year:"numeric"}):"";
- const meta=document.createElement("div");meta.className="meta";meta.textContent=(episodes.length-index)+". Folge"+(dateText?" · "+dateText:"");body.appendChild(meta);
+ const meta=document.createElement("div");meta.className="meta";meta.textContent="Folge "+episodeNumber(item,index)+(dateText?" · "+dateText:"");body.appendChild(meta);
  const title=document.createElement("h2");title.textContent=item.title||"Mit Verlaub – Folge";body.appendChild(title);
  const desc=document.createElement("p");desc.className="desc";const raw=item.description||item.content||"";desc.innerHTML=raw;desc.textContent=desc.textContent.replace(/\s+/g," ").trim();body.appendChild(desc);
  const links=document.createElement("div");links.className="listen";
