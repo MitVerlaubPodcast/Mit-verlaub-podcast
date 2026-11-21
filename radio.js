@@ -5,7 +5,7 @@
   const playerStyle = document.createElement("style");
   playerStyle.id = "mitverlaub-radio-style";
   playerStyle.textContent = `
-    body { padding-bottom: 184px !important; }
+    body { padding-bottom: 70px !important; }
     #mitverlaub-radio { position:fixed; z-index:99999; left:0; right:0; bottom:0; background:rgba(12,8,20,.97); border-top:1px solid #68459a; box-shadow:0 -8px 30px #0008; color:#fff; font-family:Arial,sans-serif; }
     #mitverlaub-radio .radio-inner { max-width:1240px; margin:auto; padding:8px 18px 10px; }
     #mitverlaub-radio .radio-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:6px; }
@@ -18,7 +18,7 @@
     #mitverlaub-radio.is-closed iframe { display:none; }
     #mitverlaub-radio.is-closed + #radio-spacer { display:none; }
     @media(max-width:600px) {
-      body { padding-bottom:178px !important; }
+      body { padding-bottom: 64px !important; }
       #mitverlaub-radio .radio-inner { padding:7px 10px 9px; }
       #mitverlaub-radio.is-open iframe { height:152px; }
       #mitverlaub-radio .radio-brand { font-size:10px; }
@@ -33,24 +33,26 @@
 
   const player = document.createElement("aside");
   player.id = "mitverlaub-radio";
-  player.className = "is-open";
+  player.className = "is-closed";
   player.setAttribute("aria-label", "Mit Verlaub Podcast-Player");
   player.innerHTML = `
     <div class="radio-inner">
       <div class="radio-top">
         <div class="radio-brand">♫ Mit Verlaub · Podcast-Radio</div>
-        <button class="radio-toggle" type="button" aria-expanded="true">Player einklappen</button>
+        <button class="radio-toggle" type="button" aria-expanded="false">Player ausklappen</button>
       </div>
       <iframe title="Mit Verlaub auf Spotify" src="https://open.spotify.com/embed/show/1vw3NAgj6bdS60r13hYVzk?utm_source=generator&theme=0" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="eager"></iframe>
     </div>`;
   document.body.appendChild(player);
 
   const toggle = player.querySelector(".radio-toggle");
+  document.body.style.paddingBottom = "70px";
   toggle.addEventListener("click", () => {
     const closed = player.classList.toggle("is-closed");
     player.classList.toggle("is-open", !closed);
     toggle.textContent = closed ? "Player ausklappen" : "Player einklappen";
     toggle.setAttribute("aria-expanded", String(!closed));
+    document.body.style.paddingBottom = closed ? "70px" : "184px";
   });
 
   function shouldHandle(link) {
