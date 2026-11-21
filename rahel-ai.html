@@ -77,5 +77,6 @@ form.addEventListener('submit',e=>{e.preventDefault();sendMessage(promptBox.valu
 promptBox.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();form.requestSubmit()}});
 promptBox.addEventListener('input',()=>{promptBox.style.height='auto';promptBox.style.height=Math.min(promptBox.scrollHeight,130)+'px'});
 </script>
+  <script src="/radio.js" defer></script>
 </body>
 </html>
