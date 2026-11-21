@@ -70,20 +70,20 @@ function face(id,mood){
 }
 let i=0,drink='';
 let story=[
-['patrick','cool','ERZÄHLER','Patrick betritt den Velvet Room. Roter Samt, flackerndes Neon und Gesichter, die schon vor Sonnenaufgang Ärger versprechen. Er ist nicht zum Feiern hier.','VICE CITY · 00:47 AM'],
-['luna','grin','LUNA · DIE STRIPPERIN','Na, hallo, schöner Mann. Du siehst aus, als könntest du eine kleine Ablenkung gebrauchen. Ein Lapdance? Geht heute aufs Haus. Für dich mache ich eine Ausnahme.','MAIN STAGE'],
-['patrick','cool','PATRICK','Heute nicht, Baby. Ich suche Andrew. Und ich hoffe, er hat einen verdammt guten Grund, mich um diese Uhrzeit herzubestellen.','MAIN STAGE'],
-['luna','grin','LUNA','Andrew? Hinten in der Lounge. Zweite Tür links. Und sag ihm, er soll sich öfter blicken lassen. Der Laden läuft nicht von allein – obwohl er das gern glaubt.','THE LOUNGE'],
-['andrew','neutral','ANDREW · CLUBBESITZER','Patrick! Mein Lieblingsproblem auf zwei Beinen. Setz dich. Whiskey? Zigarre? Oder willst du direkt wissen, wer heute Nacht versucht hat, mich umzubringen?','PRIVATE LOUNGE'],
-['patrick','cool','PATRICK','Wenn du schon fragst: Erst die Wahrheit, dann der Whiskey. Ich hab heute nur begrenzt Zeit für schlechte Gesellschaft.','PRIVATE LOUNGE'],
+['patrick','cool','ERZÄHLER','Patrick betritt den Velvet Room. Roter Samt, flackerndes Neon und Männer, die bei seinem Anblick plötzlich leiser werden. In Vice City kennt jeder seinen Namen – und die meisten wissen, dass man ihn besser nicht warten lässt.','VICE CITY · 00:47 AM'],
+['luna','grin','LUNA · DIE STRIPPERIN','Patrick Bischoff. Ich wusste, dass du heute kommst. Du siehst verdammt gut aus. Soll ich dir einen privaten Tanz geben? Nur für dich. Du weißt doch, dass ich bei dir nicht Nein sagen kann.','MAIN STAGE'],
+['patrick','cool','PATRICK','Nicht heute, Luna. Ich bin geschäftlich hier. Und du weißt, dass ich Privates und Geschäftliches nicht vermische.','MAIN STAGE'],
+['luna','grin','LUNA','Andrew ist hinten in seiner Lounge. Zweite Tür links. Und Patrick? Wenn du irgendwann doch Zeit für mich hast – du weißt, wo du mich findest.','THE LOUNGE'],
+['andrew','neutral','ANDREW · UNTERWELTBOSS','Patrick. Gut, dass du da bist. Setz dich. Whiskey? Zigarre? In dieser Stadt gibt es nicht viele, auf die ich mich verlassen kann. Bei dir weiß ich wenigstens, woran ich bin.','PRIVATE LOUNGE'],
+['patrick','cool','PATRICK','Erst die Wahrheit, dann der Whiskey. Und spar dir die Einschüchterungsnummer, Andrew. Bei mir zieht die nicht.','PRIVATE LOUNGE'],
 ['marc','grin','MARC · KELLNER','Die Herren. Darf ich etwas bringen? Whiskey auf Eis oder ein Bier?','KURZE UNTERBRECHUNG','drink'],
 ['patrick','cool','PATRICK','Also, Andrew. Raus mit der Sprache. Was willst du?','PRIVATE LOUNGE'],
-['andrew','neutral','ANDREW','Eine Kleinigkeit. Eine Übergabe am alten Hafen. Ein paar Biker, ein paar Kilo Koks-Paste und Leute, die nervös werden, wenn jemand nur schief atmet.','EIN GESCHÄFT UNTER FREUNDEN'],
+['andrew','neutral','ANDREW','Es geht um eine Übergabe am alten Hafen. Eine Ladung Koks, eine Bikergang und ein paar Leute, die glauben, sie könnten mir in die Geschäfte pfuschen. Normalerweise würde ich das selbst regeln. Aber diesmal brauche ich dich.','EIN GESCHÄFT UNTER FREUNDEN'],
 ['patrick','cool','PATRICK','Andrew, was passiert, wenn man versucht, einen Hecht mit einem Regenwurm zu angeln? Er beißt dir den Arm ab! Und du willst mich hier als Köder benutzen?','PATRICK HAT FRAGEN'],
-['patrick','cool','PATRICK','Raus mit der Sprache: Warum sollte ich mich für Andrews mickrige Kilo-Paste interessieren? Ich hab schon bessere Angebote von Leuten bekommen, die wenigstens ihre Schuhe bezahlen können.','KEIN GUTES ANGEBOT'],
+['patrick','cool','PATRICK','Und warum sollte ich mich darum kümmern? Du hast ein ganzes Imperium hinter dir, Andrew. Wenn du mich trotzdem um Hilfe bittest, muss die Sache größer sein, als du zugibst.','KEIN GUTES ANGEBOT'],
 ['andrew','nervous','ANDREW','Okay, okay. Ich hab gehört, du hast dich auf den Straßen umgehört. Du stellst Fragen über den schwarzen Stein. In Bars, bei den Jungs am Hafen – überall.','ANDREW WIRD NERVÖS'],
 ['patrick','cool','PATRICK','Pass auf, Andrew. Ich stelle viele Fragen. Manche aus Neugier. Manche, weil Leute anfangen, in ganzen Sätzen zu lügen, sobald ich den Raum betrete. Was weißt du über den schwarzen Stein?','DER SCHWARZE STEIN'],
-['andrew','nervous','ANDREW','Vielleicht kann ich dir helfen, ihn zu finden. Ich kenne jemanden, der weiß, wo das Ding zuletzt aufgetaucht ist. Aber ich erzähle nicht jedem alles. Schon gar nicht kostenlos.','EIN ANGEBOT – ODER EINE FALLE','andrewChoice']
+['andrew','nervous','ANDREW','Ich kann dir helfen, ihn zu finden. Ich habe Kontakte in jedem Hafen und in jeder Behörde, die käuflich ist. Aber bevor ich dir alles sage: Ich will wissen, ob du wirklich hinter dem schwarzen Stein her bist.','EIN ANGEBOT – ODER EINE FALLE','andrewChoice']
 ];
 const talkPath=[
 ['patrick','cool','PATRICK','Dann rede. Und lass die Ausschmückungen weg. Ich hab keine Geduld für eine Geschichte, in der du am Ende zufällig der Held bist.','ANDREW PACKT AUS'],
@@ -97,7 +97,7 @@ const threatPath=[
 ];
 const aftermath=[
 ['andrew','neutral','ANDREW','Ich will, dass du die Übergabe am Hafen überwachst. Die Biker kennen dich. Wenn du dort bist, halten sie vielleicht die Finger still. Und ich sorge dafür, dass du an Russo herankommst.','ZWEI FLIEGEN, EIN DEAL'],
-['patrick','cool','PATRICK','Du willst also, dass ich zwischen einer nervösen Bikergang und einer Ladung Koks-Paste stehe – und nebenbei einem Russo hinterherlaufe. Das klingt nach einem Abend, an dem man besser keine weißen Schuhe trägt.','PATRICK ÜBERLEGT'],
+['patrick','cool','PATRICK','Du willst also, dass ich zwischen einer nervösen Bikergang und einer Ladung Koks stehe – und nebenbei einem Russo hinterherlaufe. Das klingt nach einem Abend, an dem man besser keine weißen Schuhe trägt.','PATRICK ÜBERLEGT'],
 ['patrick','cool','PATRICK','Eine letzte Frage: Wenn ich dir helfe, bekomme ich den Zugang zu Russo und eine Spur zum schwarzen Stein. Kein Märchen, keine falschen Namen und keine Überraschungen mit einer Schrotflinte im Kofferraum. Klar?','LETZTE ENTSCHEIDUNG','finalChoice']
  ];
 const originalStory=story.map(s=>[...s]);
