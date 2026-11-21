@@ -57,7 +57,7 @@
     if (!link || !link.href || link.target || link.hasAttribute("download")) return false;
     const url = new URL(link.href, location.href);
     return url.origin === location.origin &&
-      !url.hash && /\\.html?$/.test(url.pathname) &&
+      !url.hash && /\.html?$/.test(url.pathname) &&
       !/^(mailto:|tel:|javascript:)/i.test(link.getAttribute("href") || "");
   }
 
