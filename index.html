@@ -55,5 +55,6 @@ const poll=document.getElementById("host-voting"),toggle=document.getElementById
 async function loadLatestEpisodeTitle(){const el=document.getElementById("new-episode-title"),cover=document.getElementById("latest-cover");if(!el&&!cover)return;try{const rss="https://anchor.fm/s/1018d4e2c/podcast/rss";const url="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(rss);const response=await fetch(url);if(!response.ok)throw new Error("RSS request failed");const feed=await response.json();const latest=feed&&feed.items&&feed.items[0];if(feed.status==="ok"){if(latest&&latest.title&&el)el.textContent=latest.title;const image=feed.feed&&(feed.feed.image||feed.feed.itunes&&feed.feed.itunes.image);if(image&&cover)cover.src=image;}}catch(error){console.warn("Podcast-Cover oder Folgentitel konnten nicht geladen werden:",error);}}
 loadStories();votes();loadLatestEpisodeTitle();
 </script>
+  <script src="/radio.js" defer></script>
 </body>
 </html>
