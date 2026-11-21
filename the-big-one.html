@@ -35,7 +35,20 @@
  .portrait.andrew img{transform:scale(1.2)}
  .portrait.companion{left:0;right:auto;bottom:205px;width:38%;height:245px}
 }
-</style></head><body>
+
+/* Dialogfenster liegt immer vor den Figuren: Text und Entscheidungen bleiben lesbar. */
+.dialogue{z-index:5}
+.portrait{z-index:2}
+.portrait.andrew{z-index:3}
+.portrait.companion{z-index:2}
+.speech{z-index:8;width:70%;min-height:190px}
+.choices{position:relative;z-index:2}
+@media(max-width:620px){
+ .speech{z-index:8;width:96%;bottom:2%;min-height:205px}
+ .portrait{z-index:2;bottom:205px}
+ .portrait.andrew{z-index:3;bottom:205px}
+ .portrait.companion{z-index:2;bottom:205px}
+}</style></head><body>
 <header class="top"><a href="v2.html">MIT <b>VERLAUB</b> · ARCADE</a><a href="spiele.html">← SPIELE</a></header><main><section class="hero"><div class="kicker">A TALE OF DEALS, DRINKS & DESTINY</div><h1>THE BIG ONE</h1><p>Wie Patrick zu Mit Verlaub kam · Kapitel 1: The Night Shift</p></section>
 <section class="game"><div class="bar"><strong>THE BIG ONE</strong><span>KAPITEL 01 · DER CLUB</span><span>● STORY MODE</span></div><div class="scene"><div class="club"></div><div class="spot a"></div><div class="spot b"></div><div class="neon">THE VELVET ROOM</div><div class="pole"></div><div class="scene-label" id="sceneLabel">VICE CITY · 00:47 AM</div>
 <div class="dialogue"><div class="portrait companion" id="companion" hidden></div><div class="portrait" id="portrait"></div><div class="speech"><div><div class="speaker" id="speaker">ERZÄHLER</div><div class="line" id="line">Die Nacht ist jung. Patrick hat keine Ahnung, worauf er sich einlässt.</div><div class="subline" id="subline">Klicke weiter.</div></div><div><div class="choices" id="choices" hidden></div><div class="actions" id="actions"><button class="btn main" id="next">GESPRÄCH FORTSETZEN ▶</button></div></div></div></div>
@@ -56,22 +69,40 @@ function face(id,mood){
  portrait.innerHTML='<img src="'+files[id]+'" alt="'+names[id]+'" /><div class="nameplate">'+names[id]+'</div>';
 }
 let i=0,drink='';
-const story=[
-['patrick','cool','ERZÄHLER','Patrick betritt den Velvet Room. Roter Samt, blinkende Neonlichter und Menschen, die eindeutig zu viel wissen. Er scannt den Laden. Er ist nicht zum Feiern hier.','VICE CITY · 00:47 AM'],
-['luna','grin','LUNA · DIE STRIPPERIN','Na, hallo schöner Mann. Du siehst aus, als könntest du eine kleine Ablenkung gebrauchen. Wie wäre es mit einem Lapdance? Geht heute auf mich. Für dich mache ich eine Ausnahme. 😉','MAIN STAGE'],
-['patrick','cool','PATRICK','Sorry, heute nicht, Baby. Ich suche Andrew.','MAIN STAGE'],
-['luna','grin','LUNA','Andrew? Der ist hinten in der Lounge. Zweite Tür links. Und sag ihm, er soll sich öfter hier blicken lassen. Der Laden ist ohne ihn nur halb so unterhaltsam.','THE LOUNGE · HINTERER BEREICH'],
-['andrew','neutral','ANDREW · CLUBBESITZER','Patrick. Da bist du ja. Setz dich. Ich habe gehört, du bist immer noch der Einzige, der mit diesen Bikern reden kann, ohne dass gleich einer den Tisch umwirft.','PRIVATE LOUNGE'],
-['patrick','cool','PATRICK','Kommt drauf an, wer fragt. Und was auf dem Tisch liegt.','PRIVATE LOUNGE'],
-['andrew','angry','ANDREW','Eine Lieferung. Kokain. Die Übergabe ist morgen Nacht am alten Hafen. Die Biker sind nervös, meine Leute auch. Und wenn einer die Nerven verliert, haben wir ein verdammt großes Problem.','EIN HEISSER DEAL'],
-['marc','grin','MARC · KELLNER','Entschuldigen Sie, die Herren. Darf ich Ihnen etwas zu trinken bringen?','KURZE UNTERBRECHUNG','drink'],
-['patrick','cool','PATRICK','Also Andrew. Warum erzählst du mir das alles?','ZURÜCK ZUM THEMA'],
-['andrew','neutral','ANDREW','Ich will, dass du die Übergabe überwachst. Du bist der Einzige, den die Biker akzeptieren. Wenn du dabei bist, halten sie sich vielleicht zurück. Ich brauche jemanden, der die Lage im Griff behält. Jemanden wie dich.','ANDREWS ANGEBOT'],
-['patrick','neutral','PATRICK','Du willst also, dass ich mich zwischen eine nervöse Bikergang und eine Ladung Koks stelle? Das klingt nach einem richtig beschissenen Abend.','DIE ENTSCHEIDUNG','decision']
+let story=[
+['patrick','cool','ERZÄHLER','Patrick betritt den Velvet Room. Roter Samt, flackerndes Neon und Gesichter, die schon vor Sonnenaufgang Ärger versprechen. Er ist nicht zum Feiern hier.','VICE CITY · 00:47 AM'],
+['luna','grin','LUNA · DIE STRIPPERIN','Na, hallo, schöner Mann. Du siehst aus, als könntest du eine kleine Ablenkung gebrauchen. Ein Lapdance? Geht heute aufs Haus. Für dich mache ich eine Ausnahme.','MAIN STAGE'],
+['patrick','cool','PATRICK','Heute nicht, Baby. Ich suche Andrew. Und ich hoffe, er hat einen verdammt guten Grund, mich um diese Uhrzeit herzubestellen.','MAIN STAGE'],
+['luna','grin','LUNA','Andrew? Hinten in der Lounge. Zweite Tür links. Und sag ihm, er soll sich öfter blicken lassen. Der Laden läuft nicht von allein – obwohl er das gern glaubt.','THE LOUNGE'],
+['andrew','neutral','ANDREW · CLUBBESITZER','Patrick! Mein Lieblingsproblem auf zwei Beinen. Setz dich. Whiskey? Zigarre? Oder willst du direkt wissen, wer heute Nacht versucht hat, mich umzubringen?','PRIVATE LOUNGE'],
+['patrick','cool','PATRICK','Wenn du schon fragst: Erst die Wahrheit, dann der Whiskey. Ich hab heute nur begrenzt Zeit für schlechte Gesellschaft.','PRIVATE LOUNGE'],
+['marc','grin','MARC · KELLNER','Die Herren. Darf ich etwas bringen? Whiskey auf Eis oder ein Bier?','KURZE UNTERBRECHUNG','drink'],
+['patrick','cool','PATRICK','Also, Andrew. Raus mit der Sprache. Was willst du?','PRIVATE LOUNGE'],
+['andrew','neutral','ANDREW','Eine Kleinigkeit. Eine Übergabe am alten Hafen. Ein paar Biker, ein paar Kilo Koks-Paste und Leute, die nervös werden, wenn jemand nur schief atmet.','EIN GESCHÄFT UNTER FREUNDEN'],
+['patrick','cool','PATRICK','Andrew, was passiert, wenn man versucht, einen Hecht mit einem Regenwurm zu angeln? Er beißt dir den Arm ab! Und du willst mich hier als Köder benutzen?','PATRICK HAT FRAGEN'],
+['patrick','cool','PATRICK','Raus mit der Sprache: Warum sollte ich mich für Andrews mickrige Kilo-Paste interessieren? Ich hab schon bessere Angebote von Leuten bekommen, die wenigstens ihre Schuhe bezahlen können.','KEIN GUTES ANGEBOT'],
+['andrew','nervous','ANDREW','Okay, okay. Ich hab gehört, du hast dich auf den Straßen umgehört. Du stellst Fragen über den schwarzen Stein. In Bars, bei den Jungs am Hafen – überall.','ANDREW WIRD NERVÖS'],
+['patrick','cool','PATRICK','Pass auf, Andrew. Ich stelle viele Fragen. Manche aus Neugier. Manche, weil Leute anfangen, in ganzen Sätzen zu lügen, sobald ich den Raum betrete. Was weißt du über den schwarzen Stein?','DER SCHWARZE STEIN'],
+['andrew','nervous','ANDREW','Vielleicht kann ich dir helfen, ihn zu finden. Ich kenne jemanden, der weiß, wo das Ding zuletzt aufgetaucht ist. Aber ich erzähle nicht jedem alles. Schon gar nicht kostenlos.','EIN ANGEBOT – ODER EINE FALLE','andrewChoice']
 ];
-function render(){let s=story[i];face(s[0],s[1]);const companion=$('companion');if(s[0]==='luna'){companion.innerHTML='<img src="icons/Patrick%20Cool.png" alt="Patrick" /><div class="nameplate">PATRICK</div>';companion.hidden=false;}else{companion.hidden=true;companion.innerHTML='';}speaker.textContent=s[2];line.textContent=s[3];sub.textContent=s[4];$('sceneLabel').textContent=s[4];choices.innerHTML='';choices.hidden=true;actions.hidden=false;next.hidden=false;next.textContent='WEITER ▶';if(s[5]==='drink'){next.hidden=true;choices.hidden=false;choices.innerHTML='<button class="btn choice" data-drink="Whiskey auf Eis">🥃 WHISKEY AUF EIS</button><button class="btn choice" data-drink="Ein Bier">🍺 EIN BIER</button>';choices.querySelectorAll('button').forEach(b=>b.onclick=()=>{drink=b.dataset.drink;face('patrick','grin');speaker.textContent='PATRICK';line.textContent=drink==='Whiskey auf Eis'?'Einen Whiskey auf Eis.':'Ein Bier, bitte.';sub.textContent='MARC NICKT UND VERSCHWINDET';choices.hidden=true;actions.hidden=false;next.hidden=false;next.onclick=advance;});}else if(s[5]==='decision'){next.hidden=true;choices.hidden=false;choices.innerHTML='<button class="btn main choice" id="yes">ICH BIN DABEI. ✔</button><button class="btn choice" id="no">VERGISS ES. ✖</button>';$('yes').onclick=()=>{face('andrew','grin');speaker.textContent='ANDREW';line.textContent='Ich wusste, dass ich mich auf dich verlassen kann. Morgen Nacht. Sei pünktlich, Patrick.';sub.textContent='AUFTRAG ANGENOMMEN · KAPITEL 01 ABGESCHLOSSEN';choices.hidden=true;actions.hidden=false;next.hidden=false;next.textContent='KAPITEL ABSCHLIESSEN ▶';next.onclick=()=>end(true);};$('no').onclick=()=>end(false);}}
-function advance(){if(i<story.length-1){i++;render();}}
-function end(ok){ending.hidden=false;$('endTitle').textContent=ok?'LEVEL 1 GESCHAFFT':'GAME OVER';$('endKicker').textContent=ok?'FORTSETZUNG FOLGT':'TIMELINE ALTERED';$('endText').textContent=ok?'Patrick hat zugesagt. Die Übergabe steht bevor – und irgendwo zwischen Hafen, Bikern und einer fragwürdigen Geschäftsidee beginnt die Geschichte von Mit Verlaub.':'Patrick hat Andrew hängen lassen. Ohne ihn kommt die Zusammenarbeit nicht zustande. Durch diese Entscheidung kam es nicht dazu, dass Patrick anfängt, Mit Verlaub zu machen.';}
+const talkPath=[
+['patrick','cool','PATRICK','Dann rede. Und lass die Ausschmückungen weg. Ich hab keine Geduld für eine Geschichte, in der du am Ende zufällig der Held bist.','ANDREW PACKT AUS'],
+['andrew','nervous','ANDREW','Der schwarze Stein ist kein Schmuckstück. Die Hafenjungs nennen ihn so, weil er in einer schwarzen Metallkassette transportiert wird. Zuletzt ging die Spur zu einer Lagerhalle am Pier 9. Ich kann dir einen Namen geben: Russo.','PIER 9 · RUSSO'],
+['patrick','cool','PATRICK','Russo. Natürlich. Ein Mann mit einem Namen wie eine schlechte Tomatensoße und vermutlich doppelt so viel Gift im Blut. Was willst du dafür?','DER PREIS DER INFORMATION']
+];
+const threatPath=[
+['patrick','cool','PATRICK','Wenn du mich belügst, lutschst du gleich Blei aus meiner Pistole. Also atme tief durch und fang noch mal von vorne an.','PATRICK MACHT ERNST'],
+['andrew','nervous','ANDREW','Schon gut! Russo. Pier 9. Eine Lagerhalle mit einem verblassten Anker an der Tür. Der schwarze Stein war dort – zumindest bis gestern. Ich schwöre bei meiner Mutter.','ANDREW REDTET'],
+['patrick','cool','PATRICK','Schwör lieber auf etwas, das dir wichtiger ist. Deine Mutter kann nichts dafür, dass du ein lausiger Geschäftsmann bist. Was willst du für den Tipp?','DER PREIS DER INFORMATION']
+];
+const aftermath=[
+['andrew','neutral','ANDREW','Ich will, dass du die Übergabe am Hafen überwachst. Die Biker kennen dich. Wenn du dort bist, halten sie vielleicht die Finger still. Und ich sorge dafür, dass du an Russo herankommst.','ZWEI FLIEGEN, EIN DEAL'],
+['patrick','cool','PATRICK','Du willst also, dass ich zwischen einer nervösen Bikergang und einer Ladung Koks-Paste stehe – und nebenbei einem Russo hinterherlaufe. Das klingt nach einem Abend, an dem man besser keine weißen Schuhe trägt.','PATRICK ÜBERLEGT'],
+['patrick','cool','PATRICK','Eine letzte Frage: Wenn ich dir helfe, bekomme ich den Zugang zu Russo und eine Spur zum schwarzen Stein. Kein Märchen, keine falschen Namen und keine Überraschungen mit einer Schrotflinte im Kofferraum. Klar?','LETZTE ENTSCHEIDUNG','finalChoice']
+];
+function render(){let s=story[i];face(s[0],s[1]);const companion=$('companion');if(s[0]==='luna'){companion.innerHTML='<img src="icons/Patrick%20Cool.png" alt="Patrick" /><div class="nameplate">PATRICK</div>';companion.hidden=false;}else{companion.hidden=true;companion.innerHTML='';}speaker.textContent=s[2];line.textContent=s[3];sub.textContent=s[4];$('sceneLabel').textContent=s[4];choices.innerHTML='';choices.hidden=true;actions.hidden=false;next.hidden=false;next.textContent='WEITER ▶';if(s[5]==='drink'){next.hidden=true;choices.hidden=false;choices.innerHTML='<button class="btn choice" data-drink="Whiskey auf Eis">🥃 WHISKEY AUF EIS</button><button class="btn choice" data-drink="Ein Bier">🍺 EIN BIER</button>';choices.querySelectorAll('button').forEach(b=>b.onclick=()=>{drink=b.dataset.drink;face('patrick','grin');speaker.textContent='PATRICK';line.textContent=drink==='Whiskey auf Eis'?'Einen Whiskey auf Eis.':'Ein Bier, bitte.';sub.textContent='MARC NICKT UND VERSCHWINDET';choices.hidden=true;actions.hidden=false;next.hidden=false;next.onclick=advance;});}else if(s[5]==='andrewChoice'){next.hidden=true;choices.hidden=false;choices.innerHTML='<button class="btn choice" id="talk">ANDREW REDEN LASSEN</button><button class="btn choice" id="threat">ANDREW BEDROHEN</button><button class="btn choice" id="kill">ANDREW TÖTEN</button>';$('talk').onclick=()=>branch(talkPath);$('threat').onclick=()=>branch(threatPath);$('kill').onclick=()=>end(false,'DU HAST ANDREW GETÖTET','Andrew fällt zu Boden. Die einzige Person, die dich zu Russo und zum schwarzen Stein führen konnte, ist tot. Die Türsteher verriegeln den Club. Das war’s.');}else if(s[5]==='finalChoice'){next.hidden=true;choices.hidden=false;choices.innerHTML='<button class="btn main choice" id="yes">DEAL ANNEHMEN</button><button class="btn choice" id="no">ABLEHNEN</button>';$('yes').onclick=()=>{face('andrew','grin');speaker.textContent='ANDREW';line.textContent='Ich wusste, dass du Vernunft hast. Morgen Nacht, Pier 9. Und Patrick? Zieh etwas an, das keine Kugeln durchlässt.';sub.textContent='AUFTRAG ANGENOMMEN · KAPITEL 01 ABGESCHLOSSEN';choices.hidden=true;actions.hidden=false;next.hidden=false;next.textContent='KAPITEL ABSCHLIESSEN ▶';next.onclick=()=>end(true);};$('no').onclick=()=>end(false,'DIE CHANCE VERPASST','Patrick lehnt ab. Ohne Andrew gibt es keinen Zugang zu Russo und keine Spur zum schwarzen Stein. Die Nacht endet hier – und Mit Verlaub wird nie gegründet.');}}
+function branch(path){story.splice(i+1,story.length-i-1,...path,...aftermath);i++;render();}\nfunction advance(){if(i<story.length-1){i++;render();}}
+function end(ok,title,text){ending.hidden=false;$('endTitle').textContent=title||(ok?'LEVEL 1 GESCHAFFT':'GAME OVER');$('endKicker').textContent=ok?'FORTSETZUNG FOLGT':'TIMELINE ALTERED';$('endText').textContent=text||(ok?'Patrick hat zugesagt. Die Übergabe steht bevor – und irgendwo zwischen Hafen, Bikern und einer fragwürdigen Geschäftsidee beginnt die Geschichte von Mit Verlaub.':'Patrick hat Andrew hängen lassen. Ohne ihn kommt die Zusammenarbeit nicht zustande. Durch diese Entscheidung kam es nicht dazu, dass Patrick anfängt, Mit Verlaub zu machen.');}
 $('begin').onclick=()=>{$('start').hidden=true;i=0;render();};next.onclick=advance;$('restart').onclick=()=>{ending.hidden=true;$('start').hidden=false;i=0;drink='';next.onclick=advance;};
 })();
 </script><script src="/radio.js" defer></script></body></html>
