@@ -23,10 +23,16 @@
 .club{background:url('icons/Neon-Stripclub%20bei%20Nacht.png') center center/cover no-repeat!important}
 .club:before,.club:after,.scene:before,.scene:after,.spot,.neon,.pole{display:none!important}
 .portrait img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 8px 10px #0009)}
+/* Andrew soll als dominante Figur im Club deutlich größer erscheinen */
+.portrait.andrew{width:54%;height:470px;right:1%;bottom:72px;z-index:3}
+.portrait.andrew img{transform:scale(1.28);transform-origin:center bottom}
+.portrait.andrew .nameplate{left:20%;right:20%}
 .portrait.companion{left:2%;right:auto;width:29%;height:310px;bottom:115px;z-index:2}
 .portrait.companion .nameplate{left:8%;right:8%}
 @media(max-width:620px){
  .portrait{right:1%;bottom:205px;width:52%;height:300px}
+ .portrait.andrew{right:0;bottom:190px;width:76%;height:365px}
+ .portrait.andrew img{transform:scale(1.2)}
  .portrait.companion{left:0;right:auto;bottom:205px;width:38%;height:245px}
 }
 </style></head><body>
@@ -39,6 +45,7 @@
 (()=>{
 const $=id=>document.getElementById(id),portrait=$('portrait'),speaker=$('speaker'),line=$('line'),sub=$('subline'),choices=$('choices'),actions=$('actions'),next=$('next'),ending=$('ending');
 function face(id,mood){
+ portrait.classList.toggle('andrew',id==='andrew');
  const files={
   patrick:mood==='cool'?'icons/Patrick%20Cool.png':mood==='arrival'?'icons/Patrick%20Ankunft.png':'icons/Patrick%20Standart.png',
   luna:'icons/Stripperin.png',
